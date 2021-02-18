@@ -22,7 +22,7 @@
                 <div class="tab-pane fade show active" id="Employee-list" role="tabpanel">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><strong> Lista Pacientes en Espera</strong></h3>
+                            <h3 class="card-title"><strong> Lista Pacientes pendientes de resultado</strong></h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -74,8 +74,8 @@
                                                 <td>
                                                     <button type="button" class="btn btn-icon btn-sm" title="View"><i
                                                             class="fa fa-eye"></i></button>
-                                                    <button type="button" class="btn btn-icon btn-sm" title="Edit"><i
-                                                            class="fa fa-edit"></i></button>
+                                                    <a href="{{route('order.edit', $admission)}}" class="btn btn-icon btn-sm" 
+                                                    title="Edit"><i class="fa fa-edit"></i></a>
                                                     <a href="{{route('admission.destroy', $admission)}}" class="btn btn-icon btn-sm js-sweetalert"
                                                     title="Delete" data-type="confirm"><i
                                                         class="fa fa-trash-o text-danger"></i></a>

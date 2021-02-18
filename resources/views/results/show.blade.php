@@ -85,7 +85,10 @@
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
-                                    <label class="form-label">Correo Doctor(a)</label>
+                                    <label class="form-label">Enviar correo a:</label>
+                                    @if ($admission->user->name == "GENERICO")
+                                        hola
+                                    @else
                                     <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
                                         @csrf @method('PUT')
                                         <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
@@ -98,6 +101,10 @@
                                             </span>
                                         </div>
                                     </form>
+
+                                    @endif
+
+                                    
                                 </div>
                             </div>
                         </div>
@@ -105,7 +112,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('attention.index') }}" class="btn btn-secondary btn-sm ml-2">Dejar Pendiente</a>
-                    @if ($progress == 100)
+                    @if ($progress == 100 and $admission->user->email != "")
                         <a href="{{ route('admission.endding', ['admission' => $admission]) }}"
                             class="btn btn-primary btn-sm">Finalizar Proceso </a>
                     @endif

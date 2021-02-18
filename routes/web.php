@@ -65,7 +65,7 @@ Route::group([  'prefix' => 'attention',
                 'middleware' => 'checkstaff',], 
     function () {
         
-        Route::get('/', 'AttentionController@index')->name('attention.index');   
+        Route::get('/', 'AttentionController@index')->name('attention.index');
         Route::get('/inprogress', 'AttentionController@attending')->name('attention.attending');   
         Route::post('/order', 'ServiceOrderController@create')->middleware('checkpin')->name('order.create');
         Route::get('/order/{admission}', 'ServiceOrderController@edit')->name('order.edit');
