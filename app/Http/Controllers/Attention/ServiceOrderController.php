@@ -29,7 +29,9 @@ class ServiceOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {        
+    {
+        
+        $check_user = 1;
         $user = User::pinpad($request->pin)->first();        
         $admission = new Admission();
         $admission = Admission::where('id' , $request->admission)->first();
@@ -38,8 +40,21 @@ class ServiceOrderController extends Controller
         /* Search for equivalences in BillDetail */
         $orders = app()->call('App\Http\Controllers\PackageController@search', [ 'billdetails' => $admission->billdetail]);
          
+        
+        /** check if a patient is register as user in Portal  and returns email*/
+        if ($admission->user_id == 999) {
+            if ($admission->delivery == 'Virtual' || $admission->delivery == 'Ambas' ) {
+               $check_user = User::where('legal_id', $admission->patient->legal_id)->first();
+               if ($check_user) {
+                    $check_user = $check_user->email;
+                    /* return form view in order to create SO's */
+                    return view('attention.create', compact('user', 'admission', 'orders', 'check_user'));
+               }
+                                       
+            }
+        }
         /* return form view in order to create SO's */
-        return view('attention.create', compact('user', 'admission', 'orders'));
+        return view('attention.create', compact('user', 'admission', 'orders', 'check_user'));
     }
 
     /**
@@ -50,6 +65,7 @@ class ServiceOrderController extends Controller
      */
     public function store(Request $request)
     {
+        
         //return $request->all();
 
         $user = User::where('id', $request->user)->first();
@@ -78,13 +94,17 @@ class ServiceOrderController extends Controller
                 'status'            => 'nuevo'
             ]);
                   
-        }   
-        //Admission Status to "En Atención"
-        $admission->status = 'En Atención';
-        $admission->save();
-
+        }
         
+        // Creating an User-Patient in Portal
+        // Checking if User exists
+        
+        if ($admission->user->id == 999 && ($admission->delivery == "Virtual" || $admission->delivery == "Ambas") ) {
+            $new_user = app()->call('App\Http\Controllers\Admin\UserController@create_user_generic', [ 
+                'email' => $request->email_patient, 'id'=> $admission->patient->legal_id]);
+        }
 
+        $admission->save();
 
         //returning view Attending Patient in progress 
         return view('attention.createprinting', compact('admission', 'user'));

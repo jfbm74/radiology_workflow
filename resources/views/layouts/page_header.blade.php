@@ -23,7 +23,7 @@
                             <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Perfil</a>
                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> ¿Necesita Ayuda?</a>
-                            <a class="dropdown-item" href="login.html"><i class="dropdown-icon fe fe-log-out"></i> Cerrar Sesión</a>
+                            <a class="dropdown-item" href="{{ url('/logout') }}"><i class="dropdown-icon fe fe-log-out"></i> Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>

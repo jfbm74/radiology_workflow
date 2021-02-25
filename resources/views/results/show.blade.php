@@ -21,6 +21,7 @@
 @section('content')
 
     @php
+    $endding = 0;
     $total_op = 0;
     $virtual = 0;
     $printed = 0;
@@ -37,10 +38,14 @@
     }
     }
     $total_op = $total_op;
-    $progress = ( $printed / $total_op) * 100;
-    $progress = number_format( $progress, 0);
+    try{
+        $progress = ( $printed / $total_op) * 100;
+        $progress = number_format( $progress, 0);
+    }
+    catch(Exception $e){
+        $progress = 0.01;
+    }    
     @endphp
-
     <div class="section-body">
         <div class="container-fluid">
             <div class="card">
@@ -85,36 +90,65 @@
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
-                                    <label class="form-label">Enviar correo a:</label>
-                                    @if ($admission->user->name == "GENERICO")
-                                        hola
-                                    @else
-                                    <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
-                                        @csrf @method('PUT')
-                                        <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
-                                            <input  name="user_email"
-                                                    type="text" 
-                                                    class="form-control" 
-                                                    value="{{ $admission->user->email }}">
-                                            <span class="input-group-append">
-                                                <button class="btn btn-primary">Actualizar!</button>
-                                            </span>
-                                        </div>
-                                    </form>
-
-                                    @endif
-
+                                   
+                                    @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas')
+                                        <label class="form-label">Enviar correo a:</label>
+                                            @if ($admission->user->name == "GENERICO")
+                                                <form action="{{route('user.create_generic', ['id' => $admission->patient->legal_id ])}}"  method="post">
+                                                    @csrf @method('PUT')
+                                                    <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
+                                                        <input  name="user_email"
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        value="{{ $generic_user }}">
+                                                        <span class="input-group-append">
+                                                            <button class="btn btn-primary">Actualizar Correo</button>
+                                                        </span>
+                                                    </div>
+                                                @if ($generic_user)
+                                                    @php
+                                                        $endding = 1;
+                                                    @endphp
+                                                @endif
+                                            @else
+                                                <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
+                                                    @csrf @method('PUT')
+                                                    <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
+                                                        <input  name="user_email"
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        value="{{ $admission->user->email }}">
+                                                        <span class="input-group-append">
+                                                            <button class="btn btn-primary">Actualizar!</button>
+                                                        </span>
+                                                    </div>
+                                                </form>
+                                                @php
+                                                    if ($admission->user->email){
+                                                        $endding = 1;
+                                                    }                                               
+                                                @endphp
+                                            @endif
+                                                                               
+                                        @endif                         
                                     
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>                                                   
+
                 <div class="card-footer">
                     <a href="{{ route('attention.index') }}" class="btn btn-secondary btn-sm ml-2">Dejar Pendiente</a>
-                    @if ($progress == 100 and $admission->user->email != "")
+                    @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') 
+                        @if ($endding == 1 && $progress == 100)
+                            <a href="{{ route('admission.endding', ['admission' => $admission]) }}"
+                                class="btn btn-primary btn-sm">Finalizar Proceso </a>
+                        @endif
+                    @elseif ($admission->delivery == "Acetato" && $progress == 100)
+                    
                         <a href="{{ route('admission.endding', ['admission' => $admission]) }}"
-                            class="btn btn-primary btn-sm">Finalizar Proceso </a>
+                                class="btn btn-primary btn-sm">Finalizar Proceso </a>
                     @endif
 
                 </div>

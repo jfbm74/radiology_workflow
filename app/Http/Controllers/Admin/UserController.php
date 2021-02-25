@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Patient;
 
 class UserController extends Controller
 {
@@ -110,6 +111,47 @@ class UserController extends Controller
         //
     }
 
+     /**
+     * Creates  a patient as an user in order to access to portal.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function create_user_generic( Request $request, $id, $email="")
+    {
+        // //email validation
+        //  $this->validate($request, [
+        //     'user_email' => 'email'
+        // ]);
+
+        
+        //Retrieve patient object
+        $patient = Patient::where('legal_id', $id)->first();
+        
+        //Saving new user in DB
+        $user = User::where('legal_id', $id)->first();
+        
+        $user = User::firstOrCreate([
+            'legal_id' => $id 
+        ], [
+            'name' => $patient->name,
+            'password' => bcrypt($patient->legal_id),
+            'email' => $request->user_email,
+            'is_staff' => 3
+        ]);
+        $user->legal_id = $id;
+        $user->save();
+        
+        //Adding permissions to user generic to view his owns studies
+        $permissions = DB::table('patient_user')->where('user_id', $user->id)->where('patient_id', $patient->id)->first();
+        if (!$permissions){
+            $user->patient()->attach($patient);
+        }      
+        
+        return back()->with('flash', 'Usuario Generico Actualizado'); 
+    }
+
+
     /**
      * Update email of the specified user.
      *
@@ -117,28 +159,19 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function email_update(Request $request, $id)
-    {
-        
+    {        
         //email validation
         $this->validate($request, [
             'user_email' => 'email'
         ]);
-
         
         try {
             $user = User::where('id', $id)->first();
             $user->email = $request->user_email;
             $user->save();
-            return back()->with('flash', 'Correo Actualizado');
-            
-        } catch (\Throwable $th) {
-          
-        }
-        
+            return back()->with('flash', 'Correo Actualizado');            
+        } catch (\Throwable $th) { 
+        }   
         return back()->with('err', 'Error desconocido');
-        
-
     }
-
-
 }

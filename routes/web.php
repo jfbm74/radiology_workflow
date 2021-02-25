@@ -26,7 +26,9 @@ Route::group([  'prefix' => 'admin',
                 'middleware' => 'checkstaff',], 
     function () {
         Route::get('/users', 'UserController@index')->name('user.index');           
-        Route::put('/user/{id}', 'UserController@email_update')->name('user.update_email');           
+        Route::put('/user/{id}', 'UserController@email_update')->name('user.update_email');   
+        Route::put('/user/create/{id}', 'UserController@create_user_generic')->name('user.create_generic');   
+
     }
 );
 
@@ -118,3 +120,6 @@ Route::group([  'prefix' => 'portal' ,
 
 Route::post('posts/{post}/photos', 'PhotosController@store')->name('photos.store');
 Route::delete('photos/{photo}', 'PhotosController@destroy')->name('photos.destroy');
+
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

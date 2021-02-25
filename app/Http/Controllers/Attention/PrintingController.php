@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Attention;
 
-
+use App\User;
 use App\Printing;
 use App\Admission;
 use App\ServiceOrder;
 use App\ServiceOrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class PrintingController extends Controller
 {
@@ -73,6 +74,8 @@ class PrintingController extends Controller
                 }
             }
         }
+        $admission->status = 'En Atención';
+        $admission->save();
         return redirect()->action([AttentionController::class, 'attending']);
     }
 
@@ -89,6 +92,26 @@ class PrintingController extends Controller
         $admission = Admission::where('id', $request->admission_id)->first();
         $os = ServiceOrder::where('admission_id', $admission->id)->first();
         $os_details = ServiceOrderDetail::where('service_order_id', $os->id)->get();
+
+        //Verifing if user Generic is on user's table
+       
+        if ($admission->user->name ==  'GENERICO') {
+            if ( $admission->delivery == 'Virtual' || $admission->delivery == 'Ambas') {
+                $generic_user =  User::where('legal_id', $admission->patient->legal_id)->first();
+                
+                if (is_null ($generic_user)) {
+          
+                    return view('results.show', compact('os_details', 'admission','generic_user'));
+                }
+                else {
+                    $generic_user =$generic_user->email;
+                 
+                    return view('results.show', compact('os_details', 'admission', 'generic_user'));
+                }
+                
+            } 
+        }
+
 
         return view('results.show', compact('os_details', 'admission'));
     }

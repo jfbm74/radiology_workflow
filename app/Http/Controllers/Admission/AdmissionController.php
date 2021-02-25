@@ -204,8 +204,6 @@ class AdmissionController extends Controller
         $admission->delete();
         return redirect()->route('admission.index')->with('flash', 'Ingreso Eliminado');
     }
-
-
     /**
      * Update the specified admission status to "Finalizado".
      *
@@ -214,6 +212,7 @@ class AdmissionController extends Controller
      */
     public function endding($id)
     {
+        
         $admission = Admission::where('id', $id)->first();
         $admission->status = 'Finalizado';
         $admission->save();
@@ -223,6 +222,4 @@ class AdmissionController extends Controller
 
         return redirect()->route('attention.index')->with('flash', 'Atención del Paciente Finalizada');
     }
-
-
 }
