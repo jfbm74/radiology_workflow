@@ -27,7 +27,7 @@
                             <div class="col-sm-12">
                                 <figure class="imagecheck-figure">
                                     <img    style="width: 80px; height: 80px; object-fit: cover;" 
-                                            src="{{ url($photo->url) }}" alt="}"
+                                            src="{{ url($photo->url) }}" alt=""
                                             class="imagecheck-image" />
                                 </figure>
                             </div>

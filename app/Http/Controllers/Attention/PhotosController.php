@@ -17,7 +17,7 @@ class PhotosController extends Controller
         ]);
 
         $photo = request()->file('photo')->store('public');
-
+        
         Photos::create([
             'url' => Storage::url($photo),
             'admission_id' => $admission->id

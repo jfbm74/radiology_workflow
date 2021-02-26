@@ -43,7 +43,7 @@
                                         <div class="col-sm-12">
                                             <figure class="imagecheck-figure">
                                                 <img style="width: 80px; height: 80px; object-fit: cover;"
-                                                    src="{{ url($photo->url) }}" alt="}" class="imagecheck-image" />
+                                                    src="{{ url($photo->url) }}" alt="" class="imagecheck-image" />
                                             </figure>
                                         </div>
                                     </a>
@@ -59,7 +59,7 @@
                 <div class="col-sm-12">
                     <figure class="imagecheck-figure">
                         <img class="zoom" style="width: 100%; height: 100%; object-fit: cover;"
-                            src="{{ url($photo_zoom->url) }}" alt="}" />
+                            src="{{ url($photo_zoom->url) }}" alt="" />
                     </figure>
                 </div>
             </div>
