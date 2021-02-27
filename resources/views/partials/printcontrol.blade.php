@@ -91,7 +91,7 @@
                                 <td>
                                     <input  style="width:40px" 
                                             type="number"
-                                            min="0"
+                                            min="0"0
                                             max="5"
                                             value="0"
                                             name="print[{{$order->name}}][ModSinMontar]">

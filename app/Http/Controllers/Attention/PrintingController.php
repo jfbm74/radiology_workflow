@@ -7,6 +7,8 @@ use App\Printing;
 use App\Admission;
 use App\ServiceOrder;
 use App\ServiceOrderDetail;
+use App\StatisticAdmission;
+use Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -74,8 +76,28 @@ class PrintingController extends Controller
                 }
             }
         }
+
         $admission->status = 'En Atención';
+        // Register Patient Calling Time
+        $admission->calling_date = now();
         $admission->save();
+        // Register Statistics
+        $billing = Carbon\Carbon::parse($admission->invoice_date);
+        $waiting = now();
+        $waiting = Carbon\Carbon::parse($waiting);
+        $waiting_time = $billing->diffInMinutes($waiting);
+        
+
+        $statistic_admission = StatisticAdmission::firstOrCreate(
+            ['admission_id' => $admission->id],
+            [
+                'waiting_time' => $waiting_time,
+                'user_id' => $admission->serviceorder->user->id,
+                'professional_id' => $admission->user_id,
+                'admission_date' => $admission->invoice_date
+            ]
+        );
+
         return redirect()->action([AttentionController::class, 'attending']);
     }
 
@@ -111,7 +133,6 @@ class PrintingController extends Controller
                 
             } 
         }
-
 
         return view('results.show', compact('os_details', 'admission'));
     }

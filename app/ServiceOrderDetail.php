@@ -23,4 +23,10 @@ class ServiceOrderDetail extends Model
     public function printing(){
         return $this->hasMany(Printing::class, 'service_order_details_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

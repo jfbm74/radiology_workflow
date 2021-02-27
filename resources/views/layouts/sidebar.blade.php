@@ -23,7 +23,7 @@
                         <ul>
                             <li class="active"><a href="{{route('user.index')}}"><span>Usuarios</span></a></li>
                             <li><a href="hr-users.html"><span>Pacientes</span></a></li>
-                            <li><a href="hr-users.html"><span>Ingresos</span></a></li>
+                            <li><a href="{{ route('admission.list') }}"><span>Ingresos</span></a></li>
                         </ul>
                     </li>
                     <li class="">

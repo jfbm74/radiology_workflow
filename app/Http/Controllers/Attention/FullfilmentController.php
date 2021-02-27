@@ -9,6 +9,8 @@ use App\ServiceOrderDetail;
 use App\Http\Controllers\Attention\PrintingController;
 use Illuminate\Http\Request;
 use ServiceOrderDetailSeeder;
+use Carbon;
+use App\StatisticAdmission;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 
@@ -132,7 +134,22 @@ class FullfilmentController extends Controller
             }
 
         $admission->status = 'Pendiente';
+        $admission->attending_date = now();
         $admission->save();
+
+         // Register Statistics
+         $billing = Carbon\Carbon::parse($admission->invoice_date);
+         $attention = now();
+         $attention = Carbon\Carbon::parse($attention);
+         $attention_time = $billing->diffInMinutes($attention);
+         
+ 
+         $statistic_admission = StatisticAdmission::updateOrCreate(
+             ['admission_id' => $admission->id],
+             [
+                 'attention_time' => $attention_time
+             ]
+         );
 
        
          return redirect()->action('Attention\PrintingController@show',

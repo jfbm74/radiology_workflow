@@ -21,4 +21,8 @@ class ServiceOrder extends Model
     {
         return $this->hasMany(ServiceOrderDetail::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

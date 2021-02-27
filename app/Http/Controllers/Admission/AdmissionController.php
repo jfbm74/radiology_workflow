@@ -8,6 +8,8 @@ use App\Patient;
 use App\Admission;
 use Faker\Factory;
 use App\BillDetail;
+use App\StatisticAdmission;
+use Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +18,6 @@ use App\Http\Controllers\Controller;
 
 class AdmissionController extends Controller
 {
-
-    
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +30,7 @@ class AdmissionController extends Controller
         $today_patients = Admission::dailytotal()->get()->count();
         $penddings = Admission::pendding()->get()->count();
         $in_progress = Admission::attending()->get()->count();
-
-       
+     
 
         return view('admission.index', 
                         compact(    'admissions', 
@@ -215,10 +214,25 @@ class AdmissionController extends Controller
         
         $admission = Admission::where('id', $id)->first();
         $admission->status = 'Finalizado';
+        $admission->finish_date = now();
         $admission->save();
 
         $admission->serviceorder->is_active = '1';
         $admission->serviceorder->save();
+
+        // Register Statistics
+        $billing = Carbon\Carbon::parse($admission->invoice_date);
+        $finish = now();
+        $finish = Carbon\Carbon::parse($finish);
+        $finish_time = $billing->diffInMinutes($finish);
+        
+
+        $statistic_admission = StatisticAdmission::updateOrCreate(
+            ['admission_id' => $admission->id],
+            [
+                'finish_time' => $finish_time
+            ]
+        );
 
         return redirect()->route('attention.index')->with('flash', 'Atención del Paciente Finalizada');
     }

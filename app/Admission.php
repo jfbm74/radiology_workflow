@@ -68,4 +68,10 @@ class Admission extends Model
     public function photos(){
         return $this->hasMany(Photos::class);
     }
+
+    public function statisticadmission()
+    {
+        return $this->belongsTo(StatisticAdmission::class);
+    }
+    
 }

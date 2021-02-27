@@ -28,6 +28,12 @@ Route::group([  'prefix' => 'admin',
         Route::get('/users', 'UserController@index')->name('user.index');           
         Route::put('/user/{id}', 'UserController@email_update')->name('user.update_email');   
         Route::put('/user/create/{id}', 'UserController@create_user_generic')->name('user.create_generic');   
+        
+        /** Amission Manager Views */
+        Route::get('/admission/all', 'ManagerAdmissionController@index')->name('admission.list');   
+        Route::get('/admission/show/{id}', 'ManagerAdmissionController@show')->name('admission.show');   
+
+
 
     }
 );

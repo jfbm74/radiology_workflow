@@ -52,7 +52,19 @@ class UsersTableSeeder extends Seeder
         $user->name = 'GENERICO';
         $user->email = '';
         $user->password = bcrypt('PORTALES');
-        $user->is_staff = true;
+        $user->is_staff = false;
+        $user->pin = '';
+        $user->save();
+
+        $user->save();
+
+        $user = new User;
+        $user->id = 369;
+        $user->name = 'NATURAL SMILE';
+        $user->legal_id = "901077262";
+        $user->email = 'natural@smile.com';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = false;
         $user->pin = '';
         $user->save();
 
