@@ -17,7 +17,8 @@ class AdmissionSeeder extends Seeder
         $admission = new Admission;
         $admission->id = "1";
         $admission->invoice_number = 5999;
-        $admission->doctype = "FV00";
+        $admission->doctype = "FV";
+        $admission->docclase = "FV00";
         $admission->invoice_date = "2021-02-26 19:06:02";
         $admission->calling_date = "2021-02-26 19:19:36";
         $admission->finish_date = "2021-02-26 19:23:33";

@@ -6,7 +6,6 @@ use App\User;
 
 use App\Patient;
 use App\Admission;
-use Faker\Factory;
 use App\BillDetail;
 use App\StatisticAdmission;
 use Carbon;
@@ -21,7 +20,7 @@ class AdmissionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
@@ -30,17 +29,17 @@ class AdmissionController extends Controller
         $today_patients = Admission::dailytotal()->get()->count();
         $penddings = Admission::pendding()->get()->count();
         $in_progress = Admission::attending()->get()->count();
-     
+        $time_to_attend = StatisticAdmission::AverageTimeAttending();
 
-        return view('admission.index', 
-                        compact(    'admissions', 
+        return view('admission.index',
+                        compact(    'admissions',
                                     'waiting_room',
                                     'today_patients',
                                     'penddings',
-                                    'in_progress'));
+                                    'in_progress',
+                                    'time_to_attend'
+                        ));
     }
-
-    
 
 
     /**
@@ -60,15 +59,16 @@ class AdmissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       
+    {
+
         //Saving Patient
         $patient = new Patient;
         $patient = app()->call('App\Http\Controllers\Admission\PatientController@store', ['request' => $request]);
-       
+
         //Save Admission
          if ( $request->priority == "1") {
             $request->priority ='1';
-         }     
+         }
          else{
             $request->priority = '5';
          }
@@ -85,10 +85,11 @@ class AdmissionController extends Controller
                 'priority' => $request->priority,
                 'delivery' => $request->option,
                 'obs' => $request->observations,
-                'doctype' => $request->doctype,
+                'doctype' => $request->doctipo,
+                'docclase' => $request->docclase,
             ]);
 
-            //Save Bill Details ( ordinal, codprod, desprod, patient_id, bill_id )            
+            //Save Bill Details ( ordinal, codprod, desprod, patient_id, bill_id )
             foreach ($request->details as $key => $detail) {
                 if ($detail['codprod'] != '.') {
                     $billdetail = BillDetail::firstOrCreate([
@@ -101,14 +102,14 @@ class AdmissionController extends Controller
                 }
                 else{continue;}
             };
-        }   
+        }
 
         //Save User
         $user = app()->call('App\Http\Controllers\Admin\UserController@store', ['id' => $request->docvende]);
         $user->patient()->attach($patient);
 
         //Admission Stats
-         
+
         //returning admission.index view
         return redirect()->route('admission.index')->with('flash', 'Ingreso guardado');
 
@@ -133,7 +134,7 @@ class AdmissionController extends Controller
      */
     public function edit(Admission $admission)
     {
-        
+
         return view("admission.edit", compact('admission'));
     }
 
@@ -146,13 +147,13 @@ class AdmissionController extends Controller
      */
     public function update(Request $request, Admission $admission)
     {
-        
-        
+
+
         $from_module = $request->server('REQUEST_URI');
-        
-        
+
+
         $patient = Patient::where('legal_id', $request->patient_id)->first();
-        $request->name = Str::upper($request->name);  
+        $request->name = Str::upper($request->name);
         $patient->name = $request->name;
         $patient->birthday = $request->birthday;
         $patient->save();
@@ -161,19 +162,19 @@ class AdmissionController extends Controller
         if ($request->user_id) {
             $user = User::where('id',  $request->user_id)->first();
             $admission->user_id = $request->user_id;
-            
+
             $validate = DB::table('patient_user')->where('user_id' , $user->id)->where('patient_id', $patient->id)->first();
             if (!$validate) {
                 $user->patient()->attach($patient);
             }
-        }  
+        }
         if ( $request->priority == "on") {
             $request->priority ='1';
-         }     
+         }
          else{
             $request->priority = '5';
          }
-        
+
         //Updating Admission
         $admission->priority = $request->priority;
         $admission->delivery = $request->option;
@@ -181,8 +182,8 @@ class AdmissionController extends Controller
         $admission->save();
 
         //Auditing Update Classes
-        
-        
+
+
         //Returning to requested url
         if ( $from_module ) {
             return redirect()->route('admission.index')->with('flash', 'Ingreso Actualizado');
@@ -211,7 +212,7 @@ class AdmissionController extends Controller
      */
     public function endding($id)
     {
-        
+
         $admission = Admission::where('id', $id)->first();
         $admission->status = 'Finalizado';
         $admission->finish_date = now();
@@ -225,7 +226,7 @@ class AdmissionController extends Controller
         $finish = now();
         $finish = Carbon\Carbon::parse($finish);
         $finish_time = $billing->diffInMinutes($finish);
-        
+
 
         $statistic_admission = StatisticAdmission::updateOrCreate(
             ['admission_id' => $admission->id],

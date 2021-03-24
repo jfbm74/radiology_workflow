@@ -9,40 +9,67 @@ use Illuminate\Database\Eloquent\Model;
 class Admission extends Model
 {
     protected $fillable = [
-        
+
         'doctype',
+        'docclase',
         'invoice_number',
         'invoice_date',
         'user_id',
         'patient_id',
         'status',
         'priority',
-        'obs', 
+        'obs',
         'delivery'
     ];
 
+
+    /**
+     * Functions that returns a admissions  collection that have status Active
+     * @param $query
+     * @return  Collection of admission with status active
+     */
     public function scopeActivated($query){
         return $query = Admission::where('status', 'En Espera')
                         ->orderBy('priority', 'asc')
-                        ->orderBy('invoice_date', 'asc');                        
+                        ->orderBy('invoice_date', 'asc');
     }
 
+
+    /**
+     * Functions that returns all admission for today
+     * @param $query
+     * @return mixed
+     */
     public function scopeDailytotal($query){
         return $query = Admission::whereDate('created_at', Carbon::today());
     }
 
+
+    /**
+     * Function that returns the patients (admission) that have been attending in a given moment
+     * @param $query
+     * @return mixed
+     */
     public function scopeAttending($query){
         return $query = Admission::where('status', 'En Atención')
                         ->orderBy('priority', 'asc')
-                        ->orderBy('invoice_date', 'asc');       
+                        ->orderBy('invoice_date', 'asc');
     }
 
-    public function scopePendding($query){
-        return $query = Admission::where('status', 'Pendiente')
-                        ->orderBy('invoice_date', 'asc');       
-    }
 
     /**
+     * Function that returns a collection for admission with pending service orders
+     * @param $query
+     * @return mixed
+     */
+    public function scopePendding($query){
+        return $query = Admission::where('status', 'Pendiente')
+                        ->orderBy('invoice_date', 'asc');
+    }
+
+
+    /**
+     * ======================relationships=================================
      * Get the Patient record associated with the Admission.
      */
     public function patient()
@@ -73,5 +100,5 @@ class Admission extends Model
     {
         return $this->belongsTo(StatisticAdmission::class);
     }
-    
+
 }

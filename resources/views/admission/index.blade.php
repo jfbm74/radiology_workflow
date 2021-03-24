@@ -16,16 +16,20 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <ul class="nav nav-tabs page-header-tab">
+                    <div class="header-action">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fe fe-plus mr-2"></i>Factura</button>
+                    </div>
+                        &nbsp;&nbsp;
+                    <div class="header-action">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalos"><i
+                                class="fe fe-plus mr-2"></i>Órden Servicio</button>
+                    </div>
                 </ul>
-                <div class="header-action">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
-                            class="fe fe-plus mr-2"></i>Ingreso</button>
-                </div>
             </div>
             {{-- Start Stats --}}
             @include('admission.partials.stats')
             {{-- End Stats --}}
-
         </div>
     </div>
     <div class="section-body">
@@ -36,7 +40,7 @@
                         <div class="card-header">
                             <h3 class="card-title"> <strong> Lista Pacientes en Espera</strong></h3>
                             <div class="card-options">
-                                
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -84,10 +88,10 @@
                                                     <a href="{{route('admission.edit', $admission)}}" class="btn btn-icon btn-sm" title="Edit"><i
                                                             class="fa fa-edit"></i></a>
                                                     <a  onclick="return confirm('¿Está seguro(a) eliminar este registro? Esta operación no se puede deshacer.')"
-                                                        href="{{route('admission.destroy', $admission)}}" 
-                                                        type="button" 
+                                                        href="{{route('admission.destroy', $admission)}}"
+                                                        type="button"
                                                         class="btn btn-icon btn-sm js-sweetalert"
-                                                        title="Delete" 
+                                                        title="Delete"
                                                         data-type="confirm"><i
                                                         class="fa fa-trash-o text-danger"></i>
                                                     </a>
@@ -103,7 +107,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Billing-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -118,9 +122,46 @@
                     <div class="modal-body">
                         <div class="row clearfix">
                             <div class="col-md-12 col-sm-6">
+                                <input type="hidden" id="docclase" name="docclase" value="FV01">
+                                <input type="hidden" id="doctipo" name="doctipo" value="FV">
+
 
                                 <div class="form-group">
                                     <input type="number" name="invoice" class="form-control" placeholder="N° Factura">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal OS-->
+    <div class="modal fade" id="exampleModalos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="POST" action="{{ route('bill.search') }}">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Buscar Órden Servicio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="col-md-12 col-sm-6">
+
+                                <div class="form-group">
+                                    <input type="hidden" id="docclase" name="docclase" value="FV00">
+                                    <input type="hidden" id="doctipo" name="doctipo" value="OS">
+                                    <input type="number" name="invoice" class="form-control" placeholder="N° Orden Servicio">
                                 </div>
                             </div>
 

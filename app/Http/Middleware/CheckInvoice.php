@@ -17,14 +17,16 @@ class CheckInvoice
      */
     public function handle($request, Closure $next)
     {
+
         $invoice = DB::connection('manager')
                 ->table('manager.mngdoc')
                 ->select(   'docnumero')
-                ->where('docclase', 'FV00')
+                ->where('docclase', $request->docclase)
                 ->where('docnumero', $request->invoice)
                 ->first();
-        
+
         //Checks if given invoice number exists in ManagerDB
+
         if ($invoice) {
             //echo "la Factura Existe";
             //Check if given invoice number is associated with an Admission
@@ -33,10 +35,10 @@ class CheckInvoice
                 return $next($request);
             }
             else {
-               
+
                 return back()->with('err', 'Error: Ya existe un ingreso asociado a esa factura');
             }
-        }        
+        }
         return back()->with('err', 'Error: No existe la factura en Manager');
     }
 }

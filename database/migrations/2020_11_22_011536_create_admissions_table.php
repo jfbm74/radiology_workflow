@@ -27,10 +27,11 @@ class CreateAdmissionsTable extends Migration
             $table->id();
             $table->integer('invoice_number')->unique();
             $table->string('doctype');
-            $table->dateTime('invoice_date');   
+            $table->string('docclase');
+            $table->dateTime('invoice_date');
             $table->dateTime('calling_date')->nullable();
             $table->dateTime('attending_date')->nullable();
-            $table->dateTime('finish_date')->nullable();                          
+            $table->dateTime('finish_date')->nullable();
             $table->string('status')->default('En Espera');
             $table->unsignedSmallInteger('priority')->nullable()->default('5');
             $table->string('delivery');

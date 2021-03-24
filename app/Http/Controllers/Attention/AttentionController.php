@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Attention;
 
 use App\Admission;
+use App\StatisticAdmission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,15 +21,16 @@ class AttentionController extends Controller
         $today_patients = Admission::dailytotal()->get()->count();
         $in_progress = Admission::attending()->get()->count();
         $penddings = Admission::pendding()->get()->count();
+        $time_to_attend = StatisticAdmission::AverageTimeAttending();
 
-       
 
-        return view('attention.waitting', 
-                    compact(    'admissions', 
+        return view('attention.waitting',
+                    compact(    'admissions',
                                 'waiting_room',
                                 'today_patients',
                                 'in_progress',
-                                'penddings'
+                                'penddings',
+                                'time_to_attend'
                             ));
     }
 
@@ -110,12 +112,12 @@ class AttentionController extends Controller
         $penddings = Admission::pendding()->get()->count();
         $today_patients = Admission::dailytotal()->get()->count();
         $in_progress = Admission::attending()->get()->count();
-        
 
-       
 
-        return view('attention.attending', 
-                    compact(    'admissions', 
+
+
+        return view('attention.attending',
+                    compact(    'admissions',
                                 'waiting_room',
                                 'today_patients',
                                 'in_progress',

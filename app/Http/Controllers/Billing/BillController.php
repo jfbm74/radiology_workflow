@@ -40,14 +40,14 @@ class BillController extends Controller
      */
     public function show($bill)
     {
-        
+
         //Search Invoice into ManagarDB
         $invoice = DB::connection('manager')
                 ->table('manager.mngdoc')
                 ->join('manager.vendedor', 'docvende', '=', 'vencodigo' )
                 ->join('manager.vinculado', 'docvincula', '=', 'vincedula' )
-                ->select(   'docclase', 
-                            'doctipo', 
+                ->select(   'docclase',
+                            'doctipo',
                             'docnumero',
                             'docvincula',
                             'docnewfec',
@@ -92,6 +92,8 @@ class BillController extends Controller
     public function search(Request $request)
     {
         $bill = $request->invoice;
+        $docclase = $request->docclase;
+        $doctipo = $request->doctipo;
 
         //Search Invoice into ManagarDB
         $invoice = DB::connection('manager')
@@ -99,30 +101,35 @@ class BillController extends Controller
                 ->join('manager.vendedor', 'docvende', '=', 'vencodigo' )
                 ->join('manager.vinculado', 'docvincula', '=', 'vincedula' )
                 ->select(   'docnumero',
-                            'docclase', 
-                            'doctipo', 
+                            'docclase',
+                            'doctipo',
                             'docnumero',
                             'docvincula',
                             'docnewfec',
                             'docvende',
                             'vennombre',
                             'vinnombre',
-                            'vinfnacio'
+                            'vinfnacio',
+                            'doctipo'
                             )
-                ->where('docclase', 'FV00')
+                ->where('docclase', $docclase)
                 ->where('docnumero', $bill)
+                ->where('doctipo', $doctipo)
                 ->first();
+
+        //dd($invoice);
 
         // Search for Invoice Details
         $details = DB::connection('manager')
                 ->table('manager.mngmcn')
                 ->join('manager.producto', 'mcnproduct', '=', 'procodigo' )
                 ->select(   'mcnreg',
-                            'mcnproduct',
-                            'pronombre',
-                            'mcnfactor'
+                                    'mcnproduct',
+                                    'pronombre',
+                                    'mcnfactor'
                             )
                 ->where('mcnnumedoc', $bill)
+                ->where('mcntipodoc', $doctipo)
                 ->orderBy('mcnreg', 'asc')
                 ->get();
 

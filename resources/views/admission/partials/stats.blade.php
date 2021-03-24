@@ -56,7 +56,7 @@
             <div class="card-body w_sparkline">
                 <div class="details">
                     <span>Tiempo Espera</span>
-                    <h3 class="mb-0 counter">110</h3>
+                    <h3 class="mb-0 counter">{{ $time_to_attend ?? '' }}</h3>
                 </div>
                 <div class="w_chart">
                     <span id="mini-bar-chart4" class="mini-bar-chart"></span>

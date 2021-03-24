@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb pull-rigth">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/home"><i class="fa fa-home"></i></a></li>
-            <li class="breadcrumb-item "><a href="{{route('admission.index')}}">Admisión</a></li>    
-            <li class="breadcrumb-item active">Crear</li>         
+            <li class="breadcrumb-item "><a href="{{route('admission.index')}}">Admisión</a></li>
+            <li class="breadcrumb-item active">Crear</li>
         </ol>
     </nav>
 @endsection
@@ -17,19 +17,30 @@
             <div class="col-lg-7 col-md-12">
                 <form class="card" method="POST" action="{{ route('admission.store') }}">
                     @csrf
-                    <input id="doctype" name="doctype" type="hidden" value="{{ $invoice->docclase }}">
+                    <input id="docclase" name="docclase" type="hidden" value="{{ $invoice->docclase }}">
                     <input id="docvende" name="docvende" type="hidden" value="{{ $invoice->docvende }}">
-                    
+
                     <div class="card-body">
                         <h3 class="card-title">DATOS FACTURA</h3>
                         <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="form-label">Tipo Documento</label>
+                                    <input  type="text"
+                                            id="doctipo"
+                                            name="doctipo"
+                                            class="form-control"
+                                            value="{{ $invoice->doctipo }}"
+                                            readonly>
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">Factura N°</label>
                                     <input  type="text"
                                             id="docnumero"
-                                            name="docnumero" 
-                                            class="form-control"                                               
+                                            name="docnumero"
+                                            class="form-control"
                                             value="{{ $invoice->docnumero }}"
                                             readonly>
                                 </div>
@@ -37,10 +48,10 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-label">Fecha Factura</label>
-                                    <input  type="text" 
+                                    <input  type="text"
                                             id="invoice_date"
                                             name="invoice_date"
-                                            class="form-control"                                             
+                                            class="form-control"
                                             value="{{ $invoice->docnewfec}}"
                                             readonly>
                                 </div>
@@ -48,31 +59,31 @@
                             <div class="col-sm-6 col-md-5">
                                 <div class="form-group">
                                     <label class="form-label">Médico Tratante</label>
-                                    <input  type="text" 
+                                    <input  type="text"
                                             name="user_name"
                                             class="form-control"
-                                            name="invoice_date" 
-                                            value="{{ $invoice->vennombre}}" 
+                                            name="invoice_date"
+                                            value="{{ $invoice->vennombre}}"
                                             readonly>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">ID Paciente</label>
-                                    <input  type="text" 
+                                    <input  type="text"
                                             name="patient_id"
-                                            class="form-control"  
-                                            value="{{ $invoice->docvincula}}" 
+                                            class="form-control"
+                                            value="{{ $invoice->docvincula}}"
                                             readonly>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">F. Nacimiento</label>
-                                    <input  type="text" 
+                                    <input  type="text"
                                             name="birthday"
-                                            class="form-control"  
-                                            value="{{ $invoice->vinfnacio}}" 
+                                            class="form-control"
+                                            value="{{ $invoice->vinfnacio}}"
                                             readonly>
                                 </div>
                             </div>
@@ -80,17 +91,17 @@
                                 <div class="form-group">
                                     <label class="form-label">Edad</label>
                                     <input type="text" class="form-control"
-                                            value="{{ Carbon\Carbon::parse($invoice->vinfnacio)->age }}" 
+                                            value="{{ Carbon\Carbon::parse($invoice->vinfnacio)->age }}"
                                             readonly>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label">Nombre Paciente</label>
-                                    <input  type="text" 
+                                    <input  type="text"
                                             name="name"
-                                            class="form-control"  
-                                            value="{{ $invoice->vinnombre}}" 
+                                            class="form-control"
+                                            value="{{ $invoice->vinnombre}}"
                                             readonly>
                                 </div>
                             </div>
@@ -109,37 +120,37 @@
                                                 @foreach ($details as $item)
                                                     <tr>
                                                         <th>
-                                                            <input  name="details[{{$loop->index}}][ordinal]" 
-                                                                    type="hidden" 
+                                                            <input  name="details[{{$loop->index}}][ordinal]"
+                                                                    type="hidden"
                                                                     value="{{ $item->mcnreg }}">
                                                             {{ $item->mcnreg }}
                                                         </th>
                                                         <th>
-                                                            <input  name="details[{{$loop->index}}][codprod]" 
-                                                                    type="hidden" 
+                                                            <input  name="details[{{$loop->index}}][codprod]"
+                                                                    type="hidden"
                                                                     value="{{ $item->mcnproduct }}">
                                                             {{ $item->mcnproduct }}
                                                         </th>
                                                         <th>
-                                                            <input  name="details[{{$loop->index}}][nomprod]" 
-                                                                    type="hidden" 
+                                                            <input  name="details[{{$loop->index}}][nomprod]"
+                                                                    type="hidden"
                                                                     value="{{ $item->pronombre }}">
                                                             {{ $item->pronombre }}
                                                         </th>
                                                         <th>
-                                                            <input  name="details[{{$loop->index}}][quanty]" 
-                                                                    type="hidden" 
+                                                            <input  name="details[{{$loop->index}}][quanty]"
+                                                                    type="hidden"
                                                                     value="{{ $item->mcnfactor }}">
                                                             {{ $item->mcnfactor }}
                                                         </th>
-                                                    </tr>    
+                                                    </tr>
                                                 @endforeach
-                                                
+
                                         </table>
-                                    </div>                          
-                                </div>                
+                                    </div>
+                                </div>
                             </div>
-                        </div>                                  
+                        </div>
                     </div>
                     <div class="col-lg-5 col-md-12">
                         <div class="card">
@@ -149,7 +160,7 @@
                                         <div class="form-group">
                                             <div class="form-label">Atención Prioritaria</div>
                                             <label class="custom-switch">
-                                                <input type="checkbox" 
+                                                <input type="checkbox"
                                                         name="priority"
                                                         value="1"
                                                         class="custom-switch-input">
@@ -157,8 +168,8 @@
                                                 <span class="custom-switch-description">Prioritaria</span>
                                             </label>
                                         </div>
-                                        
-                                        <h3 class="form-label">Entrega de Resultados</h3>                              
+
+                                        <h3 class="form-label">Entrega de Resultados</h3>
                                         <div class="form-group">
                                             <div class="custom-switches-stacked">
                                                 <label class="custom-switch">
@@ -185,22 +196,22 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Observaciones</label>
-                                            <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" 
-                                                    name="observations" 
-                                                    id="textarea" 
+                                            <textarea class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
+                                                    name="observations"
+                                                    id="textarea"
                                                     rows="6"
                                                     placeholder=""></textarea>
-                                                    
+
                                         </div>
                                         <div class="card-footer text-right">
                                             <button type="submit" class="btn btn-primary">Ingreso</button>
                                         </div>
-                </form>                      
+                </form>
                 </div>
-                </div>        
+                </div>
             </div>
         </div>
-    </div>            
+    </div>
 </div>
 
 @endsection
