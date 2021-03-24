@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+
 <div class="section-body mt-3">
     <div class="container-fluid">
         <div class="row clearfix">
@@ -25,7 +26,7 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label class="form-label">Tipo Documento</label>
+                                    <label class="form-label">Tipo</label>
                                     <input  type="text"
                                             id="doctipo"
                                             name="doctipo"
@@ -47,7 +48,7 @@
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
-                                    <label class="form-label">Fecha Factura</label>
+                                    <label class="form-label">Fecha</label>
                                     <input  type="text"
                                             id="invoice_date"
                                             name="invoice_date"
@@ -77,24 +78,26 @@
                                             readonly>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label class="form-label">F. Nacimiento</label>
-                                    <input  type="text"
-                                            name="birthday"
-                                            class="form-control"
-                                            value="{{ $invoice->vinfnacio}}"
-                                            readonly>
+                            @if($invoice->doctipo == 'OS  ')
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">F. Nacimiento</label>
+                                        <input  type="text"
+                                                name="birthday"
+                                                class="form-control"
+                                                value="{{ $invoice->vinfnacio}}"
+                                                readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label class="form-label">Edad</label>
-                                    <input type="text" class="form-control"
-                                            value="{{ Carbon\Carbon::parse($invoice->vinfnacio)->age }}"
-                                            readonly>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Edad</label>
+                                        <input type="text" class="form-control"
+                                               value="{{ Carbon\Carbon::parse($invoice->vinfnacio)->age }}"
+                                               readonly>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label">Nombre Paciente</label>
@@ -157,6 +160,16 @@
                                 <div class="card-body">
                                     <h3 class="card-title">DATOS DE INGRESO</h3>
                                     <div class="col">
+                                        @if($invoice->doctipo != 'OS  ')
+                                            <div class="form-group">
+                                                <label class="form-label">F. Nacimiento Paciente</label>
+                                                <input  type="date"
+                                                        name="birthday"
+                                                        class="form-control"
+                                                        value=""
+                                                        >
+                                            </div>
+                                        @endif
                                         <div class="form-group">
                                             <div class="form-label">Atención Prioritaria</div>
                                             <label class="custom-switch">
