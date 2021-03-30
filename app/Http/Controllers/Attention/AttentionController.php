@@ -112,6 +112,7 @@ class AttentionController extends Controller
         $penddings = Admission::pendding()->get()->count();
         $today_patients = Admission::dailytotal()->get()->count();
         $in_progress = Admission::attending()->get()->count();
+        $time_to_attend = StatisticAdmission::AverageTimeAttending();
 
 
 
@@ -121,7 +122,8 @@ class AttentionController extends Controller
                                 'waiting_room',
                                 'today_patients',
                                 'in_progress',
-                                'penddings'
+                                'penddings',
+                                'time_to_attend'
                             ));
     }
 }

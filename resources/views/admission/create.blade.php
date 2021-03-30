@@ -167,7 +167,7 @@
                                                         name="birthday"
                                                         class="form-control"
                                                         value=""
-                                                        >
+                                                        required>
                                             </div>
                                         @endif
                                         <div class="form-group">

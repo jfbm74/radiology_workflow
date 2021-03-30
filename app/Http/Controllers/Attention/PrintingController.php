@@ -86,7 +86,7 @@ class PrintingController extends Controller
         $waiting = now();
         $waiting = Carbon\Carbon::parse($waiting);
         $waiting_time = $billing->diffInMinutes($waiting);
-        
+
 
         $statistic_admission = StatisticAdmission::firstOrCreate(
             ['admission_id' => $admission->id],
@@ -116,22 +116,22 @@ class PrintingController extends Controller
         $os_details = ServiceOrderDetail::where('service_order_id', $os->id)->get();
 
         //Verifing if user Generic is on user's table
-       
+
         if ($admission->user->name ==  'GENERICO') {
             if ( $admission->delivery == 'Virtual' || $admission->delivery == 'Ambas') {
                 $generic_user =  User::where('legal_id', $admission->patient->legal_id)->first();
-                
+
                 if (is_null ($generic_user)) {
-          
+
                     return view('results.show', compact('os_details', 'admission','generic_user'));
                 }
                 else {
                     $generic_user =$generic_user->email;
-                 
+
                     return view('results.show', compact('os_details', 'admission', 'generic_user'));
                 }
-                
-            } 
+
+            }
         }
 
         return view('results.show', compact('os_details', 'admission'));
@@ -218,6 +218,7 @@ class PrintingController extends Controller
         $today_patients = Admission::dailytotal()->get()->count();
         $penddings = Admission::pendding()->get()->count();
         $in_progress = Admission::attending()->get()->count();
+        $time_to_attend = StatisticAdmission::AverageTimeAttending();
 
 
 
@@ -228,7 +229,8 @@ class PrintingController extends Controller
                 'waiting_room',
                 'today_patients',
                 'penddings',
-                'in_progress'
+                'in_progress',
+                'time_to_attend'
             )
         );
     }

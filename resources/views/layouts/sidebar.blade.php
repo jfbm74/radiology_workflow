@@ -13,8 +13,9 @@
                                 class="fa fa-gear"></i><span>Configuración</span></a>
                         <ul>
                             <li class=""><a href="index.html"><span>Usuarios</span></a></li>
-                            <li><a href="hr-users.html"><span>Pacientes</span></a></li>
-                            <li><a href="hr-users.html"><span>Paquetes</span></a></li>
+                            <li><a href="{{ route('package.index') }}"><span>Paquetes</span></a></li>
+                            <li><a href="hr-users.html"><span>Radiometría</span></a></li>
+
                         </ul>
                     </li>
                     <li class="">
@@ -55,11 +56,11 @@
                                 class="fa fa-clipboard"></i><span>Inventario</span></a>
                         <ul>
                             {{-- <li><a href="login.html">Login</a></li> --}}
-                            
+
                         </ul>
                     </li>
                 @endif
-                
+
                 <li>
                     <a href="javascript:void(0)" class="has-arrow arrow-c"><i
                             class="fa fa-universal-access"></i><span>Portal Pacientes</span></a>

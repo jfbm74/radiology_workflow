@@ -5,6 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
             <li class="breadcrumb-item active">Atención de Pacientes</li>
+            <li class="breadcrumb-item active">Pacientes En Atención</li>
         </ol>
     </nav>
 @endsection
@@ -25,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title"><strong> Lista Pacientes En Atención</strong></h3>
                             <div class="card-options">
-                                
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -59,24 +60,24 @@
                                                 {{-- Patient Name --}}
                                                 <td class="d-flex">
                                                     <div class="ml-3">
-                                                        <h6 class="mb-0">{{ $admission->patient->name }}</h6>
-                                                        <span class="text-muted">ID:
-                                                            {{ $admission->patient->legal_id }}</span><br>
+                                                        <h6 class="mb-0">{{ $admission->patient->name }}
+                                                            ({{(Carbon\Carbon::parse($admission->patient->birthday)->age)}} Años)</h6>
+                                                        <span class="text-muted"><strong>ID:</strong>
+                                                            {{ $admission->patient->legal_id }}  <strong>FA/OS:</strong> {{ $admission->doctype}}-{{ $admission->invoice_number}} </span>
 
                                                         <div class="clearfix">
-
                                                             @php
-                                                            $servicedetails = $admission->serviceorder;
-                                                            $totalorders = $servicedetails->serviceorderdetail->count();
-                                                            $orders_tmp = $servicedetails->serviceorderdetail;
-                                                            $fullfil = 0;
-                                                            foreach ( $orders_tmp as $key => $value) {
-                                                            if ($value->status == 'cumplido') {
-                                                            $fullfil += 1;
-                                                            }
-                                                            }
-                                                            $progress = ($fullfil / $totalorders) * 100;
-                                                            $progress = number_format( $progress, 0);
+                                                                $servicedetails = $admission->serviceorder;
+                                                                $totalorders = $servicedetails->serviceorderdetail->count();
+                                                                $orders_tmp = $servicedetails->serviceorderdetail;
+                                                                $fullfil = 0;
+                                                                foreach ( $orders_tmp as $key => $value) {
+                                                                    if ($value->status == 'cumplido') {
+                                                                        $fullfil += 1;
+                                                                    }
+                                                                }
+                                                                $progress = ($fullfil / $totalorders) * 100;
+                                                                $progress = number_format( $progress, 0);
                                                             @endphp
                                                             <div class="float-left"><strong>{{ $progress }}%</strong></div>
                                                             <div class="float-right"><small
@@ -96,8 +97,7 @@
                                                                 <button type="button" class="btn btn-outline-danger btn-sm"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModal{{ $order->id }}">
-                                                                    <i
-                                                                        class="fa fa-check-square-o"></i>&nbsp;{{ $order->name }}</button><br>
+                                                                    <i   class="fa fa-check-square-o"></i>&nbsp;{{ $order->name }}</button><br>
 
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="exampleModal{{ $order->id }}"
@@ -110,16 +110,27 @@
                                                                                 @csrf @method('PUT')
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="exampleModalLabel">Pin
-                                                                                        Personal</h5>
+                                                                                        id="exampleModalLabel">Confirmar Cumplimiento</h5>
                                                                                     <button type="button" class="close"
                                                                                         data-dismiss="modal"
                                                                                         aria-label="Close"><span
                                                                                             aria-hidden="true">&times;</span></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
+                                                                                    <h6>Radiometría</h6>
                                                                                     <div class="row clearfix">
                                                                                         <div class="col-md-12 col-sm-6">
+                                                                                            @if (strpos($order->name, 'RX') !== false)
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="exposure_time"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="Tiempo de exposición"
+                                                                                                           step="0.01"  min="0" max="5"
+                                                                                                           autocomplete="off"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                            @endif
 
                                                                                             <div class="form-group">
                                                                                                 <input type="number"
@@ -147,7 +158,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                
+
 
                                                             @else
                                                                 <button type="button"
@@ -214,7 +225,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
+
                                                     @else
                                                         <div class="header-action">
                                                             <button class="btn btn-outline-warning btn-sm"
@@ -272,7 +283,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                
+
                                                 </td>
 
                                                 <td>

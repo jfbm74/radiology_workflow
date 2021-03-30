@@ -78,6 +78,7 @@ class FullfilmentController extends Controller
      */
     public function update(Request $request)
     {
+
         $user = User::pinpad($request->pin)->first();
         $orderdetail = ServiceOrderDetail::where('id', $request->orderservicedetail)->first();
 
@@ -85,13 +86,19 @@ class FullfilmentController extends Controller
         $orderdetail->status = 'cumplido';
         $orderdetail->fullfilment_date = now();
         $orderdetail->user_id =  $user->id;
+
+        //Calculating ionizing radiation dose for patient
+        $orderdetail->exposure_time = $request->exposure_time;
+        $orderdetail->ionizing_radiation_dose = ((-1.533)*($request->exposure_time*$request->exposure_time*$request->exposure_time))
+            +((0.5337)*$request->exposure_time*$request->exposure_time)+((1.0363) * $request->exposure_time);
+
         $orderdetail->save();
 
         $admissions = Admission::attending()->get();
 
         //returning view Attending Patient in progress
         //return view('attention.attending', compact('admissions'));
-        return back()->with('flash', 'Orden cumplida');  
+        return back()->with('flash', 'Orden cumplida');
     }
 
     /**
@@ -119,9 +126,9 @@ class FullfilmentController extends Controller
         $os = ServiceOrder::where('admission_id', $request->admission)->first();
         $os_details_new = ServiceOrderDetail::where('service_order_id', $os->id)
             ->where('status', 'nuevo')->get();
-        
-           
-        //dd($os_details_new);        
+
+
+        //dd($os_details_new);
             foreach ($os_details_new as $os_detail_new) {
                 $updte = $os_detail_new;
                 $updte->service_order_id = $os->id;
@@ -130,7 +137,7 @@ class FullfilmentController extends Controller
                 $updte->user_id = $user->id;
                 $updte->save();
                 //print_r($updte);
-                
+
             }
 
         $admission->status = 'Pendiente';
@@ -142,8 +149,8 @@ class FullfilmentController extends Controller
          $attention = now();
          $attention = Carbon\Carbon::parse($attention);
          $attention_time = $billing->diffInMinutes($attention);
-         
- 
+
+
          $statistic_admission = StatisticAdmission::updateOrCreate(
              ['admission_id' => $admission->id],
              [
@@ -151,7 +158,7 @@ class FullfilmentController extends Controller
              ]
          );
 
-       
+
          return redirect()->action('Attention\PrintingController@show',
                                      ['admission_id' => $admission->id]);
     }

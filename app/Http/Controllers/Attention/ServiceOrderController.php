@@ -30,17 +30,17 @@ class ServiceOrderController extends Controller
      */
     public function create(Request $request)
     {
-        
+
         $check_user = 1;
-        $user = User::pinpad($request->pin)->first();        
+        $user = User::pinpad($request->pin)->first();
         $admission = new Admission();
         $admission = Admission::where('id' , $request->admission)->first();
         $orders = new BillDetail();
-        
+
         /* Search for equivalences in BillDetail */
         $orders = app()->call('App\Http\Controllers\PackageController@search', [ 'billdetails' => $admission->billdetail]);
-         
-        
+
+
         /** check if a patient is register as user in Portal  and returns email*/
         if ($admission->user_id == 999) {
             if ($admission->delivery == 'Virtual' || $admission->delivery == 'Ambas' ) {
@@ -50,7 +50,7 @@ class ServiceOrderController extends Controller
                     /* return form view in order to create SO's */
                     return view('attention.create', compact('user', 'admission', 'orders', 'check_user'));
                }
-                                       
+
             }
         }
         /* return form view in order to create SO's */
@@ -65,54 +65,54 @@ class ServiceOrderController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //return $request->all();
 
         $user = User::where('id', $request->user)->first();
-        
+
         $admission = Admission::where('id' , $request->admission)->first();
 
-        //Saving OS   
+        //Saving OS
         $os_master =  ServiceOrder::firstOrCreate([
-            'admission_id' => $admission->id 
+            'admission_id' => $admission->id
         ], [
             'user_id'   => $request->user,
             'is_active' => 0
         ]);
-        
-        
+
+
         //  Saving OS Details
          $i = 0;
         foreach ($request->orders as  $order) {
 
             $i +=1;
             $ins_order = ServiceOrderDetail::firstOrCreate([
-                'service_order_id'  => $os_master->id, 
+                'service_order_id'  => $os_master->id,
                 'ordinal'           => $i
             ], [
                 'name'              => $order,
                 'status'            => 'nuevo'
             ]);
-                  
+
         }
-        
+
         // Creating an User-Patient in Portal
         // Checking if User exists
-        
+
         if ($admission->user->id == 999 && ($admission->delivery == "Virtual" || $admission->delivery == "Ambas") ) {
-            $new_user = app()->call('App\Http\Controllers\Admin\UserController@create_user_generic', [ 
+            $new_user = app()->call('App\Http\Controllers\Admin\UserController@create_user_generic', [
                 'email' => $request->email_patient, 'id'=> $admission->patient->legal_id]);
         }
 
         $admission->save();
 
-        //returning view Attending Patient in progress 
+        //returning view Attending Patient in progress
         return view('attention.createprinting', compact('admission', 'user'));
-        
+
     }
 
 
-    
+
 
 
     /**
@@ -135,7 +135,7 @@ class ServiceOrderController extends Controller
     public function edit(Admission $admission)
     {
         $users =  User::all();
-        
+
         return view('attention.edit', compact('admission', 'users'));
     }
 
@@ -148,7 +148,7 @@ class ServiceOrderController extends Controller
      */
     public function update(Request $request ,  $id)
     {
-        
+
     }
 
     /**

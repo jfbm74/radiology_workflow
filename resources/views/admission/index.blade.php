@@ -65,9 +65,10 @@
                                                 </td>
                                                 <td class="d-flex">
                                                     <div class="ml-3">
-                                                        <h6 class="mb-0">{{ $admission->patient->name }}</h6>
-                                                        <span class="text-muted">N° Fact: <strong>
-                                                                {{ $admission->invoice_number }}</strong></span>
+                                                        <h6 class="mb-0">{{ $admission->patient->name }}
+                                                            ({{(Carbon\Carbon::parse($admission->patient->birthday)->age)}} Años)</h6>
+                                                        <span class="text-muted">ID:
+                                                            {{ $admission->patient->legal_id }}   FA/OS: <strong>{{ $admission->doctype}}-{{ $admission->invoice_number}} </strong> </span>
                                                     </div>
                                                 </td>
                                                 <td><span> {{ $admission->patient->legal_id }}</span></td>

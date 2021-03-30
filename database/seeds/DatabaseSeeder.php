@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceOrderSeeder::class);
         $this->call(ServiceOrderDetailSeeder::class);
         $this->call(PrintingSeeder::class);
-        $this->call(StatisticAdmissionSeeder::class);        
+        $this->call(StatisticAdmissionSeeder::class);
+        $this->call(ProductSeeder::class);
+
     }
 }

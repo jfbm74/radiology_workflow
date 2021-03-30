@@ -9,9 +9,12 @@ class ServiceOrderDetail extends Model
     protected $fillable = [
         'service_order_id',
         'ordinal',
+        'cod_manager',
         'name',
         'status',
-        'fullfilment:date',
+        'fullfilment_date',
+        'exposure_time',
+        'ionizing_radiation_dose',
         'user_id'
     ];
 

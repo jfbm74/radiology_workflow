@@ -46,8 +46,8 @@
                                                 <td class="d-flex">
                                                     <div class="ml-3">
                                                         <h6 class="mb-0">{{ $admission->patient->name }}</h6>
-                                                        <span class="text-muted">ID:
-                                                            {{ $admission->patient->legal_id }}</span>
+                                                        <span class="text-muted"><strong>ID:</strong>
+                                                            {{ $admission->patient->legal_id }}  <strong>FA/OS:</strong> {{ $admission->doctype}}-{{ $admission->invoice_number}} </span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -56,25 +56,25 @@
 
                                                 <td>
                                                     <div class="tags">
-                                                        @foreach ($admission->serviceorder->serviceorderdetail as $detail)                                                        
+                                                        @foreach ($admission->serviceorder->serviceorderdetail as $detail)
                                                             <span class="tag tag-rounded">{{ $detail->desprod }}</span><br>
                                                         @endforeach
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    
+
                                                     <form action="{{ route('printing.show', ['admission_id' => $admission->id]) }}" method="post">
                                                         @csrf
                                                         <button class="btn btn-primary" type="submit"><i class="icon-printer"> Imprimir</i></button>
-                                                        
-                                                        
+
+
                                                     </form>
                                                 </td>
 
                                                 <td>
                                                     <button type="button" class="btn btn-icon btn-sm" title="View"><i
                                                             class="fa fa-eye"></i></button>
-                                                    <a href="{{route('order.edit', $admission)}}" class="btn btn-icon btn-sm" 
+                                                    <a href="{{route('order.edit', $admission)}}" class="btn btn-icon btn-sm"
                                                     title="Edit"><i class="fa fa-edit"></i></a>
                                                     <a href="{{route('admission.destroy', $admission)}}" class="btn btn-icon btn-sm js-sweetalert"
                                                     title="Delete" data-type="confirm"><i

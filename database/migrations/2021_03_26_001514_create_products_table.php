@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackageDetailsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreatePackageDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('package_details', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('package_id');Z
+            $table->string('cod_manager');
             $table->string('name');
+            $table->smallInteger('radiation_dose_type')->nullable();
+            $table->string('station')->nullable();
+            $table->boolean('is_package')->nullable();
+            $table->boolean('is_active')->default('1');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreatePackageDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package_details');
+        Schema::dropIfExists('products');
     }
 }

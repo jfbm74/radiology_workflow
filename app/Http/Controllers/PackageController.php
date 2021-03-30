@@ -16,7 +16,9 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        $admissions = Package::all();
+        return view('config.package.index', compact('admissions'));
+
     }
 
     /**
@@ -92,8 +94,8 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function search($billdetails)
-    {   
-        
+    {
+
         $orders = [];
         foreach ($billdetails as $billdetail) {
             $os_temp = Package::where('code' , $billdetail->codprod)->first();
@@ -103,10 +105,10 @@ class PackageController extends Controller
                     array_push($orders, $equivalencia->name);
                 }
             } else {
-                array_push($orders, $billdetail->desprod);               
-            }                       
+                array_push($orders, $billdetail->desprod);
+            }
         }
-        
+
         return $orders;
     }
 }

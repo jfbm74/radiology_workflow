@@ -46,7 +46,7 @@ class PackageDetailSeeder extends Seeder
         $detail->package_id = '3';
         $detail->name = 'Fotos';
         $detail->save();
-        
+
         $detail = new PackageDetail;
         $detail->package_id = '4';
         $detail->name = 'RX Panorámica Virtual';
@@ -59,12 +59,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '5';
-        $detail->name = 'Rx Panorámica Papel';
+        $detail->name = 'RX Panorámica Papel';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '5';
-        $detail->name = 'Rx Perfil Papel';
+        $detail->name = 'RX Perfil Papel';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -74,12 +74,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->name = 'Rx Panorámica Virtual';
+        $detail->name = 'RX Panorámica Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->name = 'Rx Perfil Virtual';
+        $detail->name = 'RX Perfil Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -89,12 +89,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '7';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '7';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -104,14 +104,14 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '8';
-        $detail->name = 'Rx Panorámica Virtual';
+        $detail->name = 'RX Panorámica Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '8';
-        $detail->name = 'Rx Perfil Virtual';
+        $detail->name = 'RX Perfil Virtual';
         $detail->save();
-        
+
         $detail = new PackageDetail;
         $detail->package_id = '8';
         $detail->name = 'Modelos';
@@ -119,19 +119,19 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '9';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '9';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '9';
         $detail->name = '8 Fotos';
         $detail->save();
-        
+
         $detail = new PackageDetail;
         $detail->package_id = '9';
         $detail->name = 'Modelo E/T';
@@ -144,19 +144,19 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = 'Rx Panorámica Virtual';
+        $detail->name = 'RX Panorámica Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = 'Rx Perfil Virtual';
+        $detail->name = 'RX Perfil Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
         $detail->name = '8 Fotos Virtual';
         $detail->save();
-        
+
         $detail = new PackageDetail;
         $detail->package_id = '10';
         $detail->name = 'Modelo E/T';
@@ -169,12 +169,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '11';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '11';
-        $detail->name = 'Rx Perfil Completo';
+        $detail->name = 'RX Perfil Completo';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -189,7 +189,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '12';
-        $detail->name = 'Rx Periapical Completo';
+        $detail->name = 'RX Periapical Completo';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -199,17 +199,17 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '13';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '13';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '13';
-        $detail->name = 'Rx AP';
+        $detail->name = 'RX AP';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -224,12 +224,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->name = 'Rx Periapical Completo';
+        $detail->name = 'RX Periapical Completo';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -244,12 +244,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -264,12 +264,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -289,12 +289,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->name = 'Rx Panorámica';
+        $detail->name = 'RX Panorámica';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -309,7 +309,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->name = 'Rx Perfil Virtual';
+        $detail->name = 'RX Perfil Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -329,7 +329,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '19';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -349,14 +349,14 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'Rx Panoramica Virtual';
+        $detail->name = 'RX Panoramica Virtual';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'Rx Perfil Virtual';
+        $detail->name = 'RX Perfil Virtual';
         $detail->save();
-        
+
         $detail = new PackageDetail;
         $detail->package_id = '20';
         $detail->name = 'Fotos Virtual';
@@ -374,7 +374,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '22';
-        $detail->name = 'Rx Perfil';
+        $detail->name = 'RX Perfil';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -382,8 +382,5 @@ class PackageDetailSeeder extends Seeder
         $detail->name = 'Foto';
         $detail->save();
 
-
-
-        
     }
 }

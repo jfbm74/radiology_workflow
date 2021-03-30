@@ -5,6 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
             <li class="breadcrumb-item active">Atención de Pacientes</li>
+            <li class="breadcrumb-item active">Pacientes En Espera</li>
         </ol>
     </nav>
 @endsection
@@ -33,7 +34,6 @@
                                         <tr>
                                             <th>Tiempo</th>
                                             <th>Nombre</th>
-
                                             <th>Órdenes</th>
                                             <th>Acciones</th>
                                             <th></th>
@@ -56,9 +56,10 @@
                                                 </td>
                                                 <td class="d-flex">
                                                     <div class="ml-3">
-                                                        <h6 class="mb-0">{{ $admission->patient->name }}</h6>
-                                                        <span class="text-muted">ID:
-                                                            {{ $admission->patient->legal_id }}</span>
+                                                        <h6 class="mb-0">{{ $admission->patient->name }}
+                                                            ({{(Carbon\Carbon::parse($admission->patient->birthday)->age)}} Años)</h6>
+                                                        <span class="text-muted"><strong>ID:</strong>
+                                                            {{ $admission->patient->legal_id }}  <strong>FA/OS:</strong> {{ $admission->doctype}}-{{ $admission->invoice_number}} </span>
                                                     </div>
                                                 </td>
 
@@ -117,7 +118,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </td>
 
                                                 <td>

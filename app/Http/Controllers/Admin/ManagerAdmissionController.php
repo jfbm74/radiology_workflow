@@ -18,8 +18,8 @@ class ManagerAdmissionController extends Controller
     public function index()
     {
         $admissions = Admission::all()->sortByDesc('id');
-       
-        
+
+
         return view('admin.admission.admission_manager_index', compact('admissions'));
     }
 
@@ -51,8 +51,8 @@ class ManagerAdmissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Admission $id)
-    {  
-       
+    {
+
         $admission = $id;
         $statistics = StatisticAdmission::where('admission_id', $admission->id)->first();
 
@@ -91,5 +91,16 @@ class ManagerAdmissionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a listing of the patients attended today.
+     *
+     * @return listing | \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function list_today_patients()
+    {
+        $admissions = Admission::Dailytotal()->get();
+        return view('admin.admission.admission_today', compact(    'admissions' ));
     }
 }
