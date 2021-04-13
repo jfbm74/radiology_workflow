@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackageDetailsTable extends Migration
+class CreateSuppliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreatePackageDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('package_details', function (Blueprint $table) {
+        Schema::create('supplies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('package_id');
-            $table->unsignedInteger('product_id');
+            $table->string('type');
+            $table->smallInteger('quanty');
+            $table->smallInteger('remain')->default(0);
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreatePackageDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package_details');
+        Schema::dropIfExists('supplies');
     }
 }

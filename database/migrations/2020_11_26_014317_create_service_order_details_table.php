@@ -1,4 +1,4 @@
-<?php$table->string('cod_manager');
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,12 +17,12 @@ class CreateServiceOrderDetailsTable extends Migration
             $table->id();
             $table->unsignedInteger('service_order_id');
             $table->integer('ordinal');
-            $table->string('cod_manager')->nullable();
-            $table->string('name');
+            $table->unsignedBigInteger('product_id')->nullable();
+//            $table->string('name');
             $table->string('status')->nullable();
             $table->dateTime('fullfilment_date')->nullable();
-            $table->integer('exposure_time')->nullable();
-            $table->integer('ionizing_radiation_dose')->nullable();
+            $table->float('exposure_time')->nullable();
+            $table->float('ionizing_radiation_dose')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });

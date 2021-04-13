@@ -44,7 +44,7 @@
     }
     catch(Exception $e){
         $progress = 0.01;
-    }    
+    }
     @endphp
     <div class="section-body">
         <div class="container-fluid">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
-                                   
+
                                     @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas')
                                         <label class="form-label">Enviar correo a:</label>
                                             @if ($admission->user->name == "GENERICO")
@@ -98,8 +98,8 @@
                                                     @csrf @method('PUT')
                                                     <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
                                                         <input  name="user_email"
-                                                        type="text" 
-                                                        class="form-control" 
+                                                        type="text"
+                                                        class="form-control"
                                                         value="{{ $generic_user }}">
                                                         <span class="input-group-append">
                                                             <button class="btn btn-primary">Actualizar Correo</button>
@@ -115,8 +115,8 @@
                                                     @csrf @method('PUT')
                                                     <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
                                                         <input  name="user_email"
-                                                        type="text" 
-                                                        class="form-control" 
+                                                        type="text"
+                                                        class="form-control"
                                                         value="{{ $admission->user->email }}">
                                                         <span class="input-group-append">
                                                             <button class="btn btn-primary">Actualizar!</button>
@@ -126,27 +126,27 @@
                                                 @php
                                                     if ($admission->user->email){
                                                         $endding = 1;
-                                                    }                                               
+                                                    }
                                                 @endphp
                                             @endif
-                                                                               
-                                        @endif                         
-                                    
+
+                                        @endif
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>                                                   
+                </div>
 
                 <div class="card-footer">
                     <a href="{{ route('attention.index') }}" class="btn btn-secondary btn-sm ml-2">Dejar Pendiente</a>
-                    @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') 
+                    @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas')
                         @if ($endding == 1 && $progress == 100)
                             <a href="{{ route('admission.endding', ['admission' => $admission]) }}"
                                 class="btn btn-primary btn-sm">Finalizar Proceso </a>
                         @endif
                     @elseif ($admission->delivery == "Acetato" && $progress == 100)
-                    
+
                         <a href="{{ route('admission.endding', ['admission' => $admission]) }}"
                                 class="btn btn-primary btn-sm">Finalizar Proceso </a>
                     @endif
@@ -163,7 +163,7 @@
                                 </strong>
                             </div>
                         @endif
-                        
+
                         <table class="table table-hover table-vcenter mb-0 table_custom spacing8 text-nowrap">
                             <thead>
                                 <tr>
@@ -192,7 +192,7 @@
                                                 {{ $number }}
                                             </td>
                                             <td>
-                                                <h6 class="mb-0">{{ $print->serviceorderdetail->name }}</h6>
+                                                <h6 class="mb-0">{{ $print->serviceorderdetail->product->name }}</h6>
 
                                             </td>
                                             <td>
@@ -267,21 +267,20 @@
                         <div class="card-header">
                             <h3 class="card-title"><strong> ADJUNTAR ESTUDIOS VIRTUALES</strong></h3>
                             <div class="card-options">
-                                
                                 @if ($virtual == 1)
                                     <a href="{{ route('results.photos.confirm', ['admission' => $admission]) }}"
                                         class="btn btn-primary btn-sm">Guardar Órdenes Virtuales </a>
                                 @endif
-                                
                             </div>
                         </div>
                         <div class="card-body">
                             <ul class="list-group">
                                 <li class="list-group-item">
+
                                     @foreach ($os_details as $order)
                                         @foreach ($order->printing as $print)
                                             @if ($print->type == 'Virtual')
-                                                <span class="tag tag-azure">{{ $print->serviceorderdetail->name }}</span>
+                                                <span class="tag tag-azure">{{ $print->serviceorderdetail->product->name}}</span>
                                             @endif
                                             @continue
                                         @endforeach

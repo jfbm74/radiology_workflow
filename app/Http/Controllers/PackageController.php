@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BillDetail;
 use App\Package;
 use App\PackageDetail;
+use App\Product;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -28,7 +29,9 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::where('is_package', 0)->get();
+
+        return view('config.package.create', compact('products'));
     }
 
     /**
@@ -95,20 +98,19 @@ class PackageController extends Controller
      */
     public function search($billdetails)
     {
-
         $orders = [];
         foreach ($billdetails as $billdetail) {
             $os_temp = Package::where('code' , $billdetail->codprod)->first();
             if ($os_temp) {
                 $equivalencias =  PackageDetail::where('package_id', $os_temp->id)->get();
                 foreach ($equivalencias as $equivalencia) {
-                    array_push($orders, $equivalencia->name);
+                    array_push($orders, $equivalencia->product->cod_manager);
+
                 }
             } else {
-                array_push($orders, $billdetail->desprod);
+                array_push($orders, $billdetail->codprod);
             }
         }
-
         return $orders;
     }
 }

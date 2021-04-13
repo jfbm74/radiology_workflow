@@ -14,4 +14,11 @@ class Product extends Model
         'is_package',
         'is_active',
     ];
+
+    public function serviceorderdetail()
+    {
+        return $this->belongsToMany(ServiceOrderDetail::class);
+    }
+
+
 }

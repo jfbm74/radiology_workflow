@@ -45,17 +45,15 @@ class PrintingController extends Controller
     {
 
         $admission = Admission::where('id', $request->admission)->first();
-
         $os = ServiceOrder::where('admission_id', $admission->id)->first();
-
         $os_details = ServiceOrderDetail::where('service_order_id', $os->id)->get();
 
         //Saving Printings
         $ordinal = 0;
         foreach ($os_details as $os_detail) {
             foreach ($request->print as $order => $type) {
-                if ($os_detail->name == $order) {
-                    if ($order == $os_detail->name) {
+                if ($os_detail->product_id == $order) {
+                    if ($order == $os_detail->product_id) {
                         foreach ($type as $type_printing => $quanty) {
                             $ordinal += 1;
                             if ($quanty > 0) {
@@ -114,6 +112,8 @@ class PrintingController extends Controller
         $admission = Admission::where('id', $request->admission_id)->first();
         $os = ServiceOrder::where('admission_id', $admission->id)->first();
         $os_details = ServiceOrderDetail::where('service_order_id', $os->id)->get();
+
+
 
         //Verifing if user Generic is on user's table
 

@@ -554,6 +554,7 @@ class ComposerStaticInit5b11c10badcbbcf26343d3f85964c6e8
         'App\\ServiceOrder' => __DIR__ . '/../..' . '/app/ServiceOrder.php',
         'App\\ServiceOrderDetail' => __DIR__ . '/../..' . '/app/ServiceOrderDetail.php',
         'App\\StatisticAdmission' => __DIR__ . '/../..' . '/app/StatisticAdmission.php',
+        'App\\Supply' => __DIR__ . '/../..' . '/app/Supply.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',

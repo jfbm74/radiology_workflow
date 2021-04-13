@@ -42,6 +42,8 @@ Route::group([  'prefix' => 'config',
     function () {
         /** Package Manager Views */
         Route::get('/package/', 'PackageController@index')->name('package.index');
+        Route::get('/package/create', 'PackageController@create')->name('package.create');
+
     }
 );
 

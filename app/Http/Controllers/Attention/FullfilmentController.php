@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Attention;
 
+use App\Product;
 use App\User;
 use App\Admission;
 use App\ServiceOrder;
@@ -13,6 +14,7 @@ use Carbon;
 use App\StatisticAdmission;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
+
 
 class FullfilmentController extends Controller
 {
@@ -78,7 +80,6 @@ class FullfilmentController extends Controller
      */
     public function update(Request $request)
     {
-
         $user = User::pinpad($request->pin)->first();
         $orderdetail = ServiceOrderDetail::where('id', $request->orderservicedetail)->first();
 
@@ -87,11 +88,16 @@ class FullfilmentController extends Controller
         $orderdetail->fullfilment_date = now();
         $orderdetail->user_id =  $user->id;
 
-        //Calculating ionizing radiation dose for patient
-        $orderdetail->exposure_time = $request->exposure_time;
-        $orderdetail->ionizing_radiation_dose = ((-1.533)*($request->exposure_time*$request->exposure_time*$request->exposure_time))
-            +((0.5337)*$request->exposure_time*$request->exposure_time)+((1.0363) * $request->exposure_time);
+        //retrive Product
+        $product = Product::where('id', $orderdetail->product_id)->first();
 
+        //Calculating ionizing radiation dose for patient
+        $dose = app()->call('App\Http\Controllers\Attention\FullfilmentController@calculate_dose', [
+            'request' => $request,
+            'product' => $product
+        ]);
+        $orderdetail->exposure_time = $request->exposure_time;
+        $orderdetail->ionizing_radiation_dose = $dose;
         $orderdetail->save();
 
         $admissions = Admission::attending()->get();
@@ -121,24 +127,13 @@ class FullfilmentController extends Controller
     public function complete(Request $request)
     {
 
+
         $user = User::where('pin', $request->pin)->first();
         $admission = Admission::where('id', $request->admission)->first();
         $os = ServiceOrder::where('admission_id', $request->admission)->first();
         $os_details_new = ServiceOrderDetail::where('service_order_id', $os->id)
             ->where('status', 'nuevo')->get();
 
-
-        //dd($os_details_new);
-            foreach ($os_details_new as $os_detail_new) {
-                $updte = $os_detail_new;
-                $updte->service_order_id = $os->id;
-                $updte->status = 'cumplido';
-                $updte->fullfilment_date = now();
-                $updte->user_id = $user->id;
-                $updte->save();
-                //print_r($updte);
-
-            }
 
         $admission->status = 'Pendiente';
         $admission->attending_date = now();
@@ -158,8 +153,34 @@ class FullfilmentController extends Controller
              ]
          );
 
-
          return redirect()->action('Attention\PrintingController@show',
                                      ['admission_id' => $admission->id]);
+    }
+
+    /**
+     * Calculating ionizing radiation dose.
+     *
+     * @param  Product  $product
+     * @param  Request $request
+     * @return int dose ionizing radiation dose
+     */
+    public function calculate_dose (Request $request, Product $product) {
+
+        switch ($product->radiation_dose_type){
+            case 1:
+                echo "Periapical";
+                $dose = ((-1.533)*($request->exposure_time*$request->exposure_time*$request->exposure_time))
+                    +((0.5337)*$request->exposure_time*$request->exposure_time)+((1.0363) * $request->exposure_time);
+                break;
+            case 2:
+                echo "X-ray";
+                $dose = (3.9988)*($request->exposure_time);
+                break;
+            case 0:
+                echo 'No definido';
+                $dose = 0;
+                break;
+        }
+        return $dose;
     }
 }

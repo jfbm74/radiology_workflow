@@ -66,6 +66,7 @@ return array(
     'App\\ServiceOrder' => $baseDir . '/app/ServiceOrder.php',
     'App\\ServiceOrderDetail' => $baseDir . '/app/ServiceOrderDetail.php',
     'App\\StatisticAdmission' => $baseDir . '/app/StatisticAdmission.php',
+    'App\\Supply' => $baseDir . '/app/Supply.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',

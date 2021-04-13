@@ -12,8 +12,6 @@ class PackageSeeder extends Seeder
      */
     public function run()
     {
-
-
         $package = new Package();
         $package->code = 'PDA';
         $package->name = 'PAQ. DIAGNOSTICO BASICO A (RXPA.+RXPE.+8FOTOS )';
@@ -23,6 +21,12 @@ class PackageSeeder extends Seeder
         $package = new Package();
         $package->code = 'PPF';
         $package->name = 'PAQ. PANORÁMICA Y FOTOS';
+        $package->is_active = '1';
+        $package->save();
+
+        $package = new Package();
+        $package->code = 'PDC';
+        $package->name = 'PAQ. DIAGNOSTICO BASICO  COMPLETO (RXPA.+RXPE.+FOTOS/MODELOS+TRAZO)';
         $package->is_active = '1';
         $package->save();
 
@@ -99,12 +103,6 @@ class PackageSeeder extends Seeder
         $package->save();
 
         $package = new Package();
-        $package->code = 'PDC';
-        $package->name = 'PAQ. DIAGNOSTICO BASICO  COMPLETO (RXPA.+RXPE.+FOTOS/MODELOS+TRAZO)';
-        $package->is_active = '1';
-        $package->save();
-
-        $package = new Package();
         $package->code = 'PO';
         $package->name = 'PAQ. ORTODONCIA COMPLETO (RXPA.+ RXPE+ 8FOTOS + MOD.E/T + TRAZO CEF.)';
         $package->is_active = '1';
@@ -146,6 +144,6 @@ class PackageSeeder extends Seeder
         $package->is_active = '1';
         $package->save();
 
-        
+
     }
 }

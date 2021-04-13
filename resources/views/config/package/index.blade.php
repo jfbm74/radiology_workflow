@@ -41,7 +41,7 @@
                         <div class="card-header">
                             <h3 class="card-title"><strong> Listado de Paquetes</strong></h3>
                             <div class="card-options">
-                                <a href="#" class="btn btn-primary btn-sm"> + Agregar</a>
+                                <a href="{{route('package.create')}}" class="btn btn-primary btn-sm"> + Agregar</a>
 
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                         <tr>
                                             <th><strong>#</strong></th>
                                             <th><strong>Nombre</strong></th>
-                                            <th><strong>Órdenes</strong></th>
+                                            <th><strong>Productos</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </thead>
@@ -61,7 +61,7 @@
                                         <tr>
                                             <th><strong>#</strong></th>
                                             <th><strong>Nombre</strong></th>
-                                            <th><strong>Órdenes</strong></th>
+                                            <th><strong>Productos</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </tfoot>
@@ -72,7 +72,9 @@
                                                 <td>{{ $admission->name }}</td>
                                                 <td>
                                                     @foreach( $admission->packagedetail as $detail)
-                                                        <span class="tag">{{ $detail->name }}</span>
+                                                        <div class="row">
+                                                        <span class="tag"><strong>{{ $detail->product->cod_manager }}</strong>-{{ $detail->product->name }}</span>
+                                                        </div>
                                                     @endforeach
                                                 </td>
                                                 <td class="actions">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Attention;
 
 use App\Admission;
 use App\BillDetail;
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,9 +38,16 @@ class ServiceOrderController extends Controller
         $admission = Admission::where('id' , $request->admission)->first();
         $orders = new BillDetail();
 
-        /* Search for equivalences in BillDetail */
+        /** Search for equivalences in BillDetail */
         $orders = app()->call('App\Http\Controllers\PackageController@search', [ 'billdetails' => $admission->billdetail]);
 
+        /** Convert Orders into Products */
+        $prod = [];
+        foreach ($orders as $order) {
+            $temp = Product::where('cod_manager' ,$order)->first();
+            array_push($prod, $temp);
+        }
+        $orders = $prod;
 
         /** check if a patient is register as user in Portal  and returns email*/
         if ($admission->user_id == 999) {
@@ -53,6 +61,7 @@ class ServiceOrderController extends Controller
 
             }
         }
+
         /* return form view in order to create SO's */
         return view('attention.create', compact('user', 'admission', 'orders', 'check_user'));
     }
@@ -90,12 +99,13 @@ class ServiceOrderController extends Controller
                 'service_order_id'  => $os_master->id,
                 'ordinal'           => $i
             ], [
-                'name'              => $order,
-                'status'            => 'nuevo'
+                'product_id'         => $order,
+                'status'             => 'nuevo'
             ]);
+            $ins_order->product_id = $order;
+            $ins_order->save();
 
         }
-
         // Creating an User-Patient in Portal
         // Checking if User exists
 

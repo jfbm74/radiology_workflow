@@ -67,6 +67,7 @@
                                             <th>#</th>
                                             <th>Fecha</th>
                                             <th>Imágenes</th>
+                                            <th>Estudios</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -77,13 +78,18 @@
                                                     <th scope="row">{{ $loop->index + 1 }}</th>
                                                     <td>{{ $adm->invoice_date }}</td>
                                                     <td>
+                                                        @foreach ($adm->serviceorder->serviceorderdetail as $order)
+                                                            <span class="tag tag-gray">{{$order->product->name}}</span>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
                                                         <a href="{{ route('patient.gallery', ['admission' => $adm]) }}"
                                                             class="btn btn-success"><i class="fe fe-check mr-2"></i>Ver</a>
                                                     </td>
                                                     <td><a href="#" class="btn btn-dark"><i
                                                                 class="fe fe-download mr-2"></i>Descargar</a></td>
                                                 </tr>
-                                            @endif                                            
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>

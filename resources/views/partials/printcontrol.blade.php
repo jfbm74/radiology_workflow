@@ -2,12 +2,12 @@
     <div class="card-header">
         <h3 class="card-title"><strong> Órdenes de Servicio</strong></h3>
         <div class="card-options">
-            <span class="tag tag-azure">{{ $admission->delivery }}</span>                                        
+            <span class="tag tag-azure">{{ $admission->delivery }}</span>
         </div>
     </div>
 
-    <div class="card-footer">                            
-        <h3 class="card-title"><strong>Control de Impresiones</strong></h3>  
+    <div class="card-footer">
+        <h3 class="card-title"><strong>Control de Impresiones</strong></h3>
         <div class="table-responsive">
             <form action="{{route('printing.store')}}" method="post">
                 @csrf
@@ -25,78 +25,79 @@
                             <th>M. Est</th>
                             <th>M. Tra</th>
                             <th>M. SinM</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             @foreach ($admission->serviceorder->serviceorderdetail as $order)
-                                <th scope="row">{{ $order->name }}</th>
+
+                                <th scope="row">{{ $order->product->name }}</th>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][Virtual]">
+                                            name="print[{{$order->product_id}}][Virtual]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][Acetato]">
+                                            name="print[{{$order->product_id}}][Acetato]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][Foto]">
+                                            name="print[{{$order->product_id}}][Foto]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][P-cal]">
+                                            name="print[{{$order->product_id}}][P-cal]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][TRZ]">
+                                            name="print[{{$order->product_id}}][TRZ]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][ModEstudio]">
+                                            name="print[{{$order->product_id}}][ModEstudio]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][Modtrabajo]">
+                                            name="print[{{$order->product_id}}][Modtrabajo]">
                                 </td>
                                 <td>
-                                    <input  style="width:40px" 
+                                    <input  style="width:40px"
                                             type="number"
                                             min="0"0
                                             max="5"
                                             value="0"
-                                            name="print[{{$order->name}}][ModSinMontar]">
+                                            name="print[{{$order->product_id}}][ModSinMontar]">
                                 </td>
-                
+
                             </tr>
                             @endforeach
                     </tbody>

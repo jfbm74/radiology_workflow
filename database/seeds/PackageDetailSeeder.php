@@ -14,372 +14,412 @@ class PackageDetailSeeder extends Seeder
     {
         $detail = new PackageDetail;
         $detail->package_id = '1';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '1';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '1';
-        $detail->name = '8 Fotos';
+        $detail->product_id = '12';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '2';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '2';
-        $detail->name = 'Fotos';
+        $detail->product_id = '12';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '3';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '3';
-        $detail->name = 'Fotos';
+        $detail->product_id = '61';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '3';
+        $detail->product_id = '10';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '3';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '4';
-        $detail->name = 'RX Panorámica Virtual';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '4';
-        $detail->name = 'Fotos Virtual';
+        $detail->product_id = '70';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '5';
-        $detail->name = 'RX Panorámica Papel';
+        $detail->product_id = '57';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '5';
-        $detail->name = 'RX Perfil Papel';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '5';
-        $detail->name = '8 Fotos Papel';
+        $detail->product_id = '11';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->name = 'RX Panorámica Virtual';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->name = 'RX Perfil Virtual';
+        $detail->product_id = '67';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->name = '8 Fotos Virtual';
+        $detail->product_id = '72';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '7';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '57';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '7';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '62';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '7';
-        $detail->name = 'Modelos';
+        $detail->product_id = '11';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '8';
-        $detail->name = 'RX Panorámica Virtual';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '8';
-        $detail->name = 'RX Perfil Virtual';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '8';
-        $detail->name = 'Modelos';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '9';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '57';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '9';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '60';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '9';
-        $detail->name = '8 Fotos';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '9';
-        $detail->name = 'Modelo E/T';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '9';
-        $detail->name = 'Trazo Cefalométrico';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = 'RX Panorámica Virtual';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = 'RX Perfil Virtual';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = '8 Fotos Virtual';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = 'Modelo E/T';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->name = 'Trazo Cefalométrico Virtual';
+        $detail->product_id = '17';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '10';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '11';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '57';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '11';
-        $detail->name = 'RX Perfil Completo';
+        $detail->product_id = '60';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '11';
-        $detail->name = 'Modelos de Trabajo';
+        $detail->product_id = '11';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '11';
-        $detail->name = '5 Fotos';
+        $detail->product_id = '16';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '11';
+        $detail->product_id = '17';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '11';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '12';
-        $detail->name = 'RX Periapical Completo';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '12';
-        $detail->name = '5 Fotos Intraorales';
+        $detail->product_id = '61';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '12';
+        $detail->product_id = '17';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '12';
+        $detail->product_id = '9';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '13';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '61';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '13';
-        $detail->name = 'RX Perfil';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '13';
-        $detail->name = 'RX AP';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '13';
-        $detail->name = '14 Fotos';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '13';
-        $detail->name = 'Modelo Estudio';
+        $detail->product_id = '9';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->name = 'RX Periapical Completo';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->name = 'Modelo Trabajo';
+        $detail->product_id = '44';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->name = '5 Fotos';
+        $detail->product_id = '10';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '14';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '61';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->name = 'Fotos / Modelos';
+        $detail->product_id = '17';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->name = 'Trazo Cefalométrico';
+        $detail->product_id = '9';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = '8 Fotos';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = 'Modelo E / T';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->name = 'Trazo Cefalométrico';
+        $detail->product_id = '17';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '16';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->name = 'RX Panorámica';
+        $detail->product_id = '56';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->name = '8 Fotos';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->name = 'Trazo Cefalométrico';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->name = 'RX Perfil Virtual';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->name = 'Modelo Estudio / Trabajo';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->name = '8 Fotos Virtual';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->name = 'Trazo Cefalométrico Virtual';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '19';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '19';
-        $detail->name = 'Modelo Estudio / Trabajo';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '19';
-        $detail->name = '8 Fotos';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '19';
-        $detail->name = 'Trazo Cefalométrico';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'RX Panoramica Virtual';
+        $detail->product_id = '57';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'RX Perfil Virtual';
+        $detail->product_id = '60';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'Fotos Virtual';
+        $detail->product_id = '11';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'Modelos';
+        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '20';
-        $detail->name = 'Trazo Cefalométrico Virtual';
+        $detail->product_id = '80';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '21';
+        $detail->product_id = '56';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '21';
+        $detail->product_id = '58';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '21';
+        $detail->product_id = '10';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '21';
+        $detail->product_id = '16';
+        $detail->save();
+
+        $detail = new PackageDetail;
+        $detail->package_id = '21';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '22';
-        $detail->name = 'RX Perfil';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '22';
-        $detail->name = 'Foto';
+        $detail->product_id = '10';
         $detail->save();
 
     }

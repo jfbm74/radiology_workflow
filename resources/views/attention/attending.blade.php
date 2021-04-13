@@ -97,7 +97,7 @@
                                                                 <button type="button" class="btn btn-outline-danger btn-sm"
                                                                     data-toggle="modal"
                                                                     data-target="#exampleModal{{ $order->id }}">
-                                                                    <i   class="fa fa-check-square-o"></i>&nbsp;{{ $order->name }}</button><br>
+                                                                    <i   class="fa fa-check-square-o"></i>&nbsp;{{ $order->product->name }}</button><br>
 
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="exampleModal{{ $order->id }}"
@@ -117,21 +117,20 @@
                                                                                             aria-hidden="true">&times;</span></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <h6>Radiometría</h6>
-                                                                                    <div class="row clearfix">
-                                                                                        <div class="col-md-12 col-sm-6">
-                                                                                            @if (strpos($order->name, 'RX') !== false)
-                                                                                                <div class="form-group">
-                                                                                                    <input type="number"
-                                                                                                           name="exposure_time"
-                                                                                                           class="form-control"
-                                                                                                           placeholder="Tiempo de exposición"
-                                                                                                           step="0.01"  min="0" max="5"
-                                                                                                           autocomplete="off"
-                                                                                                           required>
-                                                                                                </div>
-                                                                                            @endif
-
+                                                                                        <div class="row clearfix">
+                                                                                            <div class="col-md-12 col-sm-6">
+                                                                                                @if ($order->product->radiation_dose_type > 0) !== false)
+                                                                                                <h6>Radiometría</h6>
+                                                                                                    <div class="form-group">
+                                                                                                        <input type="number"
+                                                                                                               name="exposure_time"
+                                                                                                               class="form-control"
+                                                                                                               placeholder="Tiempo de exposición"
+                                                                                                               step="0.01"  min="0" max="2"
+                                                                                                               autocomplete="off"
+                                                                                                               required>
+                                                                                                    </div>
+                                                                                                @endif
                                                                                             <div class="form-group">
                                                                                                 <input type="number"
                                                                                                     name="pin"
@@ -141,10 +140,8 @@
                                                                                                     min="0" max="9999"
                                                                                                     autocomplete="off"
                                                                                                     autofocus required>
-
                                                                                             </div>
                                                                                         </div>
-
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
@@ -162,7 +159,7 @@
 
                                                             @else
                                                                 <button type="button"
-                                                                    class="btn btn-outline-success btn-sm">{{ $order->name }}</button><br>
+                                                                    class="btn btn-outline-success btn-sm">{{ $order->product->name }}</button><br>
                                                             @endif
 
 
@@ -226,15 +223,15 @@
                                                             </div>
                                                         </div>
 
-                                                    @else
-                                                        <div class="header-action">
-                                                            <button class="btn btn-outline-warning btn-sm"
-                                                                data-toggle="modal"
-                                                                data-target="#exampleModal{{ $admission->id }}">
-                                                                <i class="fa fa-warning"></i>
-                                                                &nbsp; Finalizar
-                                                            </button>
-                                                        </div>
+{{--                                                    @else--}}
+{{--                                                        <div class="header-action">--}}
+{{--                                                            <button class="btn btn-outline-warning btn-sm"--}}
+{{--                                                                data-toggle="modal"--}}
+{{--                                                                data-target="#exampleModal{{ $admission->id }}">--}}
+{{--                                                                <i class="fa fa-warning"></i>--}}
+{{--                                                                &nbsp; Finalizar--}}
+{{--                                                            </button>--}}
+{{--                                                        </div>--}}
                                                     @endif
 
                                                     {{-- Script Warning Remains Orders --}}
