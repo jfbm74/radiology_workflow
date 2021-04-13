@@ -51,7 +51,7 @@
                                             <th><strong>Fecha</strong></th>
                                             <th><strong>Factura</strong></th>
                                             <th><strong>Paciente</strong></th>
-                                            <th><strong>Órdenes</strong></th>                                            
+                                            <th><strong>Órdenes</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </thead>
@@ -61,12 +61,12 @@
                                             <th><strong>Fecha</strong></th>
                                             <th><strong>Factura</strong></th>
                                             <th><strong>Paciente</strong></th>
-                                            <th><strong>Órdenes</strong></th>                                            
+                                            <th><strong>Órdenes</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        
+
                                             @foreach ($admissions as $admission)
                                                 <tr>
                                                     <td>{{$loop->index + 1}}</td>
@@ -74,10 +74,15 @@
                                                     <td>{{ $admission->invoice_number}}</td>
                                                     <td>{{ $admission->patient->name}}</td>
                                                     <td>
-                                                        @foreach ( $admission->serviceorder->serviceorderdetail as $item)
-                                                            <span class="tag">{{$item->name}}</span>                                                            
-                                                        @endforeach
-                                                    </td>                                                                                        
+                                                        @if (empty($admission->serviceorder->serviceorderdetail))
+                                                            Faltan órdenes por confirmar
+                                                        @else
+                                                            @forelse( $admission->serviceorder->serviceorderdetail as $item)
+                                                                <span class="tag">{{$item->product->name}}</span>
+                                                            @empty
+                                                            @endforelse
+                                                        @endif
+                                                    </td>
                                                     <td class="actions">
                                                         <a href="{{ route('admission.show', ['id' => $admission->id])}}}" ><i class="fa fa-eye mr-2"
                                                             data-toggle="tooltip" data-original-title="Consultar"></i></a>
@@ -90,10 +95,10 @@
                                                                 <a  onclick="return confirm('¿Está seguro(a) eliminar este registro? Esta operación no se puede deshacer.')"
                                                                 href="{{route('admission.destroy', $admission)}}" class="btn btn-icon btn-sm js-sweetalert"
                                                                     title="Delete" data-type="confirm"><i
-                                                                        class="fa fa-trash-o text-danger"></i></a>                                                   
+                                                                        class="fa fa-trash-o text-danger"></i></a>
                                                     </td>
-                                            @endforeach                                                
-                                            </tr>                                        
+                                            @endforeach
+                                            </tr>
                                     </tbody>
                                 </table>
                             </div>
