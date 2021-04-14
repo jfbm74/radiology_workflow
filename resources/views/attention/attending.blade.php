@@ -171,67 +171,16 @@
                                                     {{-- Fullfilment with 100% Order Accomplished --}}
                                                     @if ($progress == 100)
                                                         <div class="header-action">
-                                                            <button type="button" class="btn btn-primary"
-                                                                data-toggle="modal"
-                                                                data-target="#exampleModal100{{ $admission->id }}"><i
-                                                                    class="fa fa-check-square-o"></i>&nbsp;
-                                                                Finalizar</button>
+                                                            <form method="POST"
+                                                                  action="{{ route('order.complete', ['admission' => $admission->id]) }}">
+                                                                @csrf @method('PUT')
+                                                                <button type='submit'  class='btn btn-primary'><i
+                                                                class="fa fa-check-square-o"></i>
+                                                                Finalizar&nbsp;
+                                                            </button>
+                                                            </form>
+
                                                         </div>
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModal100{{ $admission->id }}"
-                                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <form method="POST"
-                                                                        action="{{ route('order.complete', ['admission' => $admission->id]) }}">
-                                                                        @csrf @method('PUT')
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                                                Pin
-                                                                                Personal</h5>
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal"
-                                                                                aria-label="Close"><span
-                                                                                    aria-hidden="true">&times;</span></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="row clearfix">
-                                                                                <div class="col-md-12 col-sm-6">
-
-                                                                                    <div class="form-group">
-                                                                                        <input type="number" name="pin"
-                                                                                            class="form-control"
-                                                                                            placeholder="Pin"
-                                                                                            autocomplete="new-password"
-                                                                                            min="0" max="9999"
-                                                                                            autocomplete="off" autofocus
-                                                                                            required>
-
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary"
-                                                                                data-dismiss="modal">Cancelar</button>
-                                                                            <button class="btn btn-primary">Buscar</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-{{--                                                    @else--}}
-{{--                                                        <div class="header-action">--}}
-{{--                                                            <button class="btn btn-outline-warning btn-sm"--}}
-{{--                                                                data-toggle="modal"--}}
-{{--                                                                data-target="#exampleModal{{ $admission->id }}">--}}
-{{--                                                                <i class="fa fa-warning"></i>--}}
-{{--                                                                &nbsp; Finalizar--}}
-{{--                                                            </button>--}}
-{{--                                                        </div>--}}
                                                     @endif
 
                                                     {{-- Script Warning Remains Orders --}}

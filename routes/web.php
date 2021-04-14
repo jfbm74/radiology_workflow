@@ -88,7 +88,7 @@ Route::group([  'prefix' => 'attention',
         Route::get('/order/{admission}', 'ServiceOrderController@edit')->name('order.edit');
         Route::post('/order/store', 'ServiceOrderController@store')->name('order.store');
         Route::put('/order/fullfilment/', 'FullfilmentController@update')->middleware('checkpin')->name('order.fullfilment');
-        Route::put('/order/complete/', 'FullfilmentController@complete')->middleware('checkpin')->name('order.complete');
+        Route::put('/order/complete/', 'FullfilmentController@complete')->name('order.complete');
 
         //Results Process
         Route::get('/results/pendding', 'PrintingController@pendding_list')->name('results.pendding');

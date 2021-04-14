@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceOrderDetailSeeder::class);
         $this->call(PrintingSeeder::class);
         $this->call(StatisticAdmissionSeeder::class);
-
+        $this->call(SupplySeeder::class);
 
     }
 }
