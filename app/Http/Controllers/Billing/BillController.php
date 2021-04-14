@@ -110,14 +110,15 @@ class BillController extends Controller
                             'vennombre',
                             'vinnombre',
                             'vinfnacio',
-                            'doctipo'
+                            'doctipo',
+                            'vintelefon'
                             )
                 ->where('docclase', $docclase)
                 ->where('docnumero', $bill)
                 ->where('doctipo', $doctipo)
                 ->first();
 
-        //dd($invoice);
+
 
         // Search for Invoice Details
         $details = DB::connection('manager')
@@ -132,7 +133,7 @@ class BillController extends Controller
                 ->where('mcntipodoc', $doctipo)
                 ->orderBy('mcnreg', 'asc')
                 ->get();
-
+        
         return view('admission.create', compact('invoice', 'details'));
     }
 }

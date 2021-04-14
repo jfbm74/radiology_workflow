@@ -55,6 +55,8 @@
                                 <div class="col-7 py-1">{{ $admission->invoice_number }}</div>
                                 <div class="col-5 py-1"><strong>Profesional:</strong></div>
                                 <div class="col-7 py-1">{{ $admission->user->name }}</div>
+                                <div class="col-5 py-1"><strong>Teléfono:</strong></div>
+                                <div class="col-7 py-1">{{ $admission->patient->phone }}</div>
                                 <div class="col-5 py-1"><strong>Observaciones</strong></div>
                                 @if (is_null($admission->obs))
                                     Sin Observaciones

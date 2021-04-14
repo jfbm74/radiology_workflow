@@ -68,27 +68,37 @@
                                             readonly>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label class="form-label">ID Paciente</label>
-                                    <input  type="text"
-                                            name="patient_id"
-                                            class="form-control"
-                                            value="{{ $invoice->docvincula}}"
-                                            readonly>
-                                </div>
-                            </div>
-                            @if($invoice->doctipo == 'OS  ')
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
-                                        <label class="form-label">F. Nacimiento</label>
+                                        <label class="form-label">ID Paciente</label>
                                         <input  type="text"
-                                                name="birthday"
+                                                name="patient_id"
                                                 class="form-control"
-                                                value="{{ $invoice->vinfnacio}}"
+                                                value="{{ $invoice->docvincula}}"
                                                 readonly>
                                     </div>
                                 </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="form-label">Teléfono</label>
+                                    <input  type="text"
+                                            name="phone"
+                                            class="form-control"
+                                            value="{{ $invoice->vintelefon}}"
+                                            readonly>
+                                </div>
+                            </div>
+                                @if($invoice->doctipo == 'OS  ')
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label">F. Nacimiento</label>
+                                            <input  type="text"
+                                                    name="birthday"
+                                                    class="form-control"
+                                                    value="{{ $invoice->vinfnacio}}"
+                                                    readonly>
+                                        </div>
+                                    </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
                                         <label class="form-label">Edad</label>

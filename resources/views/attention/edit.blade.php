@@ -30,11 +30,11 @@
 
                         <div class="card-header">
                             <h3 class="card-title">DATOS FACTURA</h3>
-                            
+
                         </div>
-                        
+
                         <div class="card-body">
-                            
+
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -68,6 +68,16 @@
                                         <label class="form-label">ID Paciente</label>
                                         <input type="text" name="patient_id" class="form-control"
                                             value="{{ $admission->patient->legal_id }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="form-label">Teléfono</label>
+                                        <input  type="text"
+                                                name="phone"
+                                                class="form-control"
+                                                value="{{ $admission->patient->phone}}"
+                                                >
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
@@ -141,10 +151,10 @@
                     @include('admission.partials.admission_form')
                     {{-- End Admission Form --}}
                 </div>
-            </div>            
+            </div>
         </div>
           {{-- Section --}}
-          @include('partials.edit_printcontrol')
+{{--          @include('partials.edit_printcontrol')--}}
           {{-- End Section --}}
 
 

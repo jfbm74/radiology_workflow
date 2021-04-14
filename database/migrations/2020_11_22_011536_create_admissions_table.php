@@ -18,6 +18,7 @@ class CreateAdmissionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('legal_id')->unique()->comment('Legal identification number');
+            $table->string('phone')->nullable();
             $table->date('birthday');
             $table->string('email')->nullable();
             $table->timestamps();

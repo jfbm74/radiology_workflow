@@ -42,24 +42,27 @@ class PatientController extends Controller
      */
     public function store($request)
     {
-        $request->name = Str::upper($request->name);  
-        
+        $request->name = Str::upper($request->name);
+
         //Save Patient (name, legal_id, birthday)
         try {
             $patient = Patient::firstOrCreate([
                 'name' => $request->name,
                 'legal_id' => $request->patient_id,
+                'phone' => $request->phone,
                 'birthday' => $request->birthday
             ]);
             return $patient;
+
         } catch (\Throwable $th) {
-            
+
         }
-        $patient = Patient::where('legal_id', $request->patient_id)->first(); 
+        $patient = Patient::where('legal_id', $request->patient_id)->first();
         $patient->name = $request->name;
+        $patient->phone = $request->phone;
         $patient->birthday = $request->birthday;
         $patient->save();
-        return $patient;        
+        return $patient;
     }
 
     /**
@@ -71,7 +74,7 @@ class PatientController extends Controller
     public function show(Request $patient)
     {
         $patient = Patient::where('id', $patient->id)->first();
-        
+
         return view('portal.patient', compact('patient'));
     }
 
@@ -114,7 +117,7 @@ class PatientController extends Controller
         $patient = $admission->patient;
 
         $photos =$admission->photos;
-        
+
         return view('portal.gallery', compact('photos', 'patient' , 'admission'));
     }
 
@@ -123,7 +126,7 @@ class PatientController extends Controller
         $patient = $admission->patient;
         $photo_zoom = $photo;
         $photos =$admission->photos;
-        
+
         return view('portal.zoom', compact('photo_zoom', 'photos', 'patient' , 'admission'));
     }
 }

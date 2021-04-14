@@ -60,6 +60,7 @@ class AdmissionController extends Controller
      */
     public function store(Request $request)
     {
+
         //Saving Patient
         $patient = new Patient;
         $patient = app()->call('App\Http\Controllers\Admission\PatientController@store', ['request' => $request]);
@@ -154,6 +155,7 @@ class AdmissionController extends Controller
         $patient = Patient::where('legal_id', $request->patient_id)->first();
         $request->name = Str::upper($request->name);
         $patient->name = $request->name;
+        $patient->phone = $request->phone;
         $patient->birthday = $request->birthday;
         $patient->save();
 
