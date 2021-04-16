@@ -58,6 +58,16 @@ Route::group([  'prefix' => 'dashboard',
     }
 );
 
+Route::group([  'prefix' => 'reports',
+                'namespace' => 'Report',
+                'middleware' => 'auth',
+                'middleware' => 'checkstaff',],
+    function () {
+        Route::get('/opportunity', 'ReportController@opportunity')->name('report.opportunity');
+
+    }
+);
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -88,7 +98,7 @@ Route::group([  'prefix' => 'attention',
         Route::get('/order/{admission}', 'ServiceOrderController@edit')->name('order.edit');
         Route::post('/order/store', 'ServiceOrderController@store')->name('order.store');
         Route::put('/order/fullfilment/', 'FullfilmentController@update')->middleware('checkpin')->name('order.fullfilment');
-        Route::put('/order/complete/', 'FullfilmentController@complete')->name('order.complete');
+        Route::put('/order/complete/', 'FullfilmentController@complete')->middleware('checkpin')->name('order.complete');
 
         //Results Process
         Route::get('/results/pendding', 'PrintingController@pendding_list')->name('results.pendding');

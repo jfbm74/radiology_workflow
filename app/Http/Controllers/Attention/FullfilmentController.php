@@ -149,7 +149,8 @@ class FullfilmentController extends Controller
          $statistic_admission = StatisticAdmission::updateOrCreate(
              ['admission_id' => $admission->id],
              [
-                 'attention_time' => $attention_time
+                 'attention_time' => $attention_time,
+                 'user_id' => $user->id
              ]
          );
 

@@ -7,6 +7,7 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul class="metismenu">
                 <li class="g_heading">Menú</li>
+
                 @if (auth()->user()->is_staff == 1)
                         <li class="">
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i
@@ -29,13 +30,12 @@
                     </li>
                     <li class="">
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i
-                                class="fa fa-dashboard"></i><span>Reportes</span></a>
+                                class="fa fa-dashboard"></i><span>Dashboard</span></a>
                         <ul>
-                            <li class=""><a href="{{route('dashboard.manager.index')}}"><span>Dashboard</span></a></li>
-                            <li><a href="{{route('dashboard.manager.index')}}"><span>Reportes</span></a></li>
+                            <li class=""><a href="#"><span>Administración</span></a></li>
+                            <li><a href="#"><span>Técnicos</span></a></li>
                         </ul>
                     </li>
-
                     <li><a href="{{ route('admission.index') }}"><i class="fa fa-plus-circle"></i><span>Admisión</span></a>
                     </li>
                     <li>
@@ -49,6 +49,19 @@
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-archive"></i><span>Gestión
                                 Documental</span></a>
                         <ul>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="javascript:void(0)" class="has-arrow arrow-c"><i
+                                class="fa fa-dashboard"></i><span>Reportes</span></a>
+                        <ul>
+                            <li class=""><a href="#"><span>Pacientes</span></a></li>
+                            <li><a href="#"><span>Médicos</span></a></li>
+                            <li><a href="#"><span>Técnicos</span></a></li>
+                            <li><a href="{{route('report.opportunity')}}"><span>Oportunidad</span></a></li>
+                            <li><a href="#"><span>Órdenes</span></a></li>
+
                         </ul>
                     </li>
                     <li>

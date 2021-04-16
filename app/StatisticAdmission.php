@@ -17,6 +17,20 @@ class StatisticAdmission extends Model
         'professional_id',
     ];
 
+
+    /**=================RELATIONSHIPS=====================*/
+    public function admission()
+    {
+        return $this->belongsTo(Admission::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /**=================SCOPES=====================*/
     /**
      * Function that returns average attending time for today's admissions
      * @param $query
@@ -27,4 +41,35 @@ class StatisticAdmission extends Model
         $average_time = $posts->avg('attention_time');
         return $query = $average_time;
     }
+
+    /**
+     * Function that returns a collection patients given date range
+     * @param $query
+     * @param $date_ini initial range date
+     * @param $date_end final range date*
+     * @return mixed
+     */
+    public function scopeOpportunity($query, $date_ini, $date_end){
+
+        $data = StatisticAdmission::whereBetween('admission_date', [$date_ini, $date_end])->get();
+        return $query = $data;
+    }
+
+
+    /**
+     * Function that returns a collection patients given date range and technich
+     * @param $query
+     * @param $date_ini initial range date
+     * @param $date_end final range date
+     * @param $id Technician Id User
+     * @return mixed
+     */
+    public function scopeTechnicianOpportunity($query, $date_ini, $date_end, $id){
+
+        $data = StatisticAdmission::whereBetween('admission_date', [$date_ini, $date_end])
+                                    ->where('user_id', $id)->get();
+        return $query = $data;
+    }
+
+
 }

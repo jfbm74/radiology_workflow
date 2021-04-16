@@ -13,7 +13,7 @@
             <form action="{{ route('order.store') }}" method="post">
                 @csrf
                 <input id="admission" name="admission" type="hidden" value="{{ $admission->id }}">
-                <input id="user" name="user" type="hidden" value="{{ $user->id }}">
+                <input id="user" name="user" type="hidden" value="{{ Auth::user()->id }}">
 
                 <div>
                     <select data-placeholder="Escoja o Elimine una órden..." class="chosen-select" multiple name="orders[]"

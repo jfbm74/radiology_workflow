@@ -17,9 +17,6 @@
 
 
 @section('content')
-
-
-
     <div class="section-body mt-3">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -76,7 +73,6 @@
                                                             <th>Cod</th>
                                                             <th>Descripción</th>
                                                             <th>Cant</th>
-
                                                         </tr>
                                                     </thead>
                                                     <tbody>
