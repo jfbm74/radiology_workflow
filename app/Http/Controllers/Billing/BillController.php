@@ -65,7 +65,7 @@ class BillController extends Controller
                 ->table('manager.mngmcn')
                 ->join('manager.producto', 'mcnproduct', '=', 'procodigo' )
                 ->select(   'mcnproduct',
-                            'pronombre')
+                            'pronombre', 'mcncantid')
                 ->where('mcnnumedoc', $bill)
                 ->get();
 
@@ -118,8 +118,6 @@ class BillController extends Controller
                 ->where('doctipo', $doctipo)
                 ->first();
 
-
-
         // Search for Invoice Details
         $details = DB::connection('manager')
                 ->table('manager.mngmcn')
@@ -127,13 +125,12 @@ class BillController extends Controller
                 ->select(   'mcnreg',
                                     'mcnproduct',
                                     'pronombre',
-                                    'mcnfactor'
+                                    'mcncantid'
                             )
                 ->where('mcnnumedoc', $bill)
                 ->where('mcntipodoc', $doctipo)
                 ->orderBy('mcnreg', 'asc')
                 ->get();
-        
         return view('admission.create', compact('invoice', 'details'));
     }
 }

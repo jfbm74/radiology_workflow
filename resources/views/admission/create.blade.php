@@ -153,8 +153,8 @@
                                                         <th>
                                                             <input  name="details[{{$loop->index}}][quanty]"
                                                                     type="hidden"
-                                                                    value="{{ $item->mcnfactor }}">
-                                                            {{ $item->mcnfactor }}
+                                                                    value="{{ $item->mcncantid }}">
+                                                            {{ $item->mcncantid }}
                                                         </th>
                                                     </tr>
                                                 @endforeach
