@@ -51,19 +51,7 @@
                         <ul>
                         </ul>
                     </li>
-
-                    <li class="">
-                        <a href="javascript:void(0)" class="has-arrow arrow-c"><i
-                                class="fa fa-dashboard"></i><span>Reportes</span></a>
-                        <ul>
-                            <li class=""><a href="#"><span>Pacientes</span></a></li>
-                            <li><a href="#"><span>Médicos</span></a></li>
-                            <li><a href="#"><span>Técnicos</span></a></li>
-                            <li><a href="{{route('report.opportunity')}}"><span>Oportunidad</span></a></li>
-                            <li><a href="#"><span>Órdenes</span></a></li>
-
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('report.index') }}"><i class="fa fa-plus-circle"></i><span>Reportes</span></a></li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i
                                 class="fa fa-clipboard"></i><span>Inventario</span></a>

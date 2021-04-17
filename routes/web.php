@@ -1,7 +1,10 @@
 <?php
 
+use App\Exports\UsersExport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +66,11 @@ Route::group([  'prefix' => 'reports',
                 'middleware' => 'auth',
                 'middleware' => 'checkstaff',],
     function () {
+        Route::get('/index', 'ReportController@index')->name('report.index');
         Route::get('/opportunity', 'ReportController@opportunity')->name('report.opportunity');
+        Route::get('/opportunity-csv', 'ReportController@opportunity_csv')->name('report.opportunity.csv');
+        Route::get('/dosimetry', 'ReportController@dosimetry')->name('report.dosimetry');
+        Route::get('/dosimetry-csv', 'ReportController@dosimetry_csv')->name('report.dosimetry.csv');
 
     }
 );
@@ -146,5 +153,6 @@ Route::group([  'prefix' => 'portal' ,
 Route::post('posts/{post}/photos', 'PhotosController@store')->name('photos.store');
 Route::delete('photos/{photo}', 'PhotosController@destroy')->name('photos.destroy');
 
-
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+

@@ -18,6 +18,7 @@ class StatisticAdmission extends Model
     ];
 
 
+
     /**=================RELATIONSHIPS=====================*/
     public function admission()
     {
@@ -57,7 +58,7 @@ class StatisticAdmission extends Model
 
 
     /**
-     * Function that returns a collection patients given date range and technich
+     * Function that returns a collection patients given date range and technician
      * @param $query
      * @param $date_ini initial range date
      * @param $date_end final range date

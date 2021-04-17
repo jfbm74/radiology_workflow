@@ -18,6 +18,20 @@ class ServiceOrderDetail extends Model
         'user_id'
     ];
 
+//    =======================Scopes===========================
+    /**
+     * Function that returns list of patients and their dosimetry
+     * @param $query
+     * @return mixed
+     */
+    public function scopeDosimetryByDate($query, $date_ini, $date_end){
+
+        $data = ServiceOrderDetail::whereBetween('fullfilment_date', [$date_ini, $date_end])->get();
+        return $query = $data;
+    }
+
+
+//    =================Relationships==========================
     public function serviceorder()
     {
         return $this->belongsTo(ServiceOrder::class, 'service_order_id');
