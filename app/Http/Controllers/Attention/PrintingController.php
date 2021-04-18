@@ -220,8 +220,6 @@ class PrintingController extends Controller
         $in_progress = Admission::attending()->get()->count();
         $time_to_attend = StatisticAdmission::AverageTimeAttending();
 
-
-
         return view(
             'attention.pendding',
             compact(
@@ -244,15 +242,16 @@ class PrintingController extends Controller
      */
     public function print_one(Request $request)
     {
+        $user = User::where('pin', $request->pin)->first();
 
         $printing = Printing::where('id', $request->printing_id)->first();
-        $printing->printed = $printing->printed + 1;
+        $printing->printed +=  1;
         if ($printing->printed == $printing->quanty) {
             $printing->is_printed = 1;
             $printing->printed_date = now();
+            $printing->user_id = $user->id;
         }
         $printing->save();
-
 
         $admission = $printing->serviceorderdetail->serviceorder->admission;
 
@@ -271,8 +270,9 @@ class PrintingController extends Controller
         return redirect()->route('printing.show', ['admission_id' => $admission])->with('flash', 'Registro de impresión repetida guardado');
     }
 
-    public function confirm_photo($id)
+    public function confirm_photo(Request $request, $id)
     {
+        $user = User::where('pin', $request->pin)->first();
 
         $admission = Admission::where('id', $id)->first();
         $os_dets = $admission->serviceorder->serviceorderdetail;
@@ -283,6 +283,7 @@ class PrintingController extends Controller
                     $op->printed = 1;
                     $op->is_printed = 1;
                     $op->printed_date = now();
+                    $op->user_id = $user->id;
                     $op->save();
                 }
             }

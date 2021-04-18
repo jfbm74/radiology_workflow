@@ -34,7 +34,7 @@
 
 @section('content')
 
-    <h1> Reporte Dosimetría por Paciente</h1>
+    <h3 class="text-center"> Reporte Dosimetría por Paciente</h3>
     <div class="section-body mt-3">
         <div class="container-fluid">
             <div class="row clearfix">

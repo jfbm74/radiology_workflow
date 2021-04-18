@@ -34,7 +34,7 @@
 
 @section('content')
 
-    <h1> Reporte de Oportunidad de Atención</h1>
+    <h3 class="text-center"> Reporte de Oportunidad de Atención</h3>
     <div class="section-body mt-3">
         <div class="container-fluid">
             <div class="row clearfix">

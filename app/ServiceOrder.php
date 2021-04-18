@@ -25,4 +25,9 @@ class ServiceOrder extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function statisticadmission()
+    {
+        return $this->belongsTo(StatisticAdmission::class);
+    }
 }

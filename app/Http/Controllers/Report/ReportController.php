@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Report;
 
+use App\Printing;
 use App\ServiceOrderDetail;
 use App\StatisticAdmission;
 use App\User;
@@ -105,5 +106,24 @@ class ReportController extends Controller
             'reporte_dosimetria_'.Carbon::now().'.xlsx');
     }
 
+    /**
+     * Show productivity report detailed.
+     *
+     * @param $request
+     * @return File
+     */
+    public function productivity_detail(Request $request){
+        # Case 1: Dates given
+        if ($request->date_ini && $request->date_end) {
+            $data = Printing::
+            productivitydetail
+            (
+                $request->date_ini,
+                $request->date_end
+            );
+            return view('reports.main.productivity', compact('data'));
+        }
 
+        return view('reports.main.productivity');
+    }
 }

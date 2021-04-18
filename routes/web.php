@@ -71,6 +71,7 @@ Route::group([  'prefix' => 'reports',
         Route::get('/opportunity-csv', 'ReportController@opportunity_csv')->name('report.opportunity.csv');
         Route::get('/dosimetry', 'ReportController@dosimetry')->name('report.dosimetry');
         Route::get('/dosimetry-csv', 'ReportController@dosimetry_csv')->name('report.dosimetry.csv');
+        Route::get('/prod-detail', 'ReportController@productivity_detail')->name('report.productivity.detail');
 
     }
 );
@@ -114,7 +115,7 @@ Route::group([  'prefix' => 'attention',
 
 
         Route::post('/order/print', 'PrintingController@store')->name('printing.store');
-        Route::post('/order/print/show', 'PrintingController@show')->name('printing.show');
+        Route::put('/order/print/show', 'PrintingController@show')->middleware('checkpin')->name('printing.show');
         Route::get('/order/print/show', 'PrintingController@show')->name('printing.show');
         Route::get('/order/print/{id}}', 'PrintingController@edit')->name('printing.edit');
         Route::put('/order/print/{admission}}', 'PrintingController@update')->name('printing.update');
@@ -122,7 +123,7 @@ Route::group([  'prefix' => 'attention',
         //Photos
         Route::post('/order/{admission}/photos', 'PhotosController@store')->name('results.photos.store');
         Route::delete('/photo/{photo}', 'PhotosController@destroy')->name('results.photos.destroy');
-        Route::get('/photo/confirm/{admission}', 'PrintingController@confirm_photo')->name('results.photos.confirm');
+        Route::put('/photo/confirm/{admission}', 'PrintingController@confirm_photo')->middleware('checkpin')->name('results.photos.confirm');
 
     }
 );

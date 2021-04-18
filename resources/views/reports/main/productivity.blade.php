@@ -34,32 +34,16 @@
 
 @section('content')
 
-    <h1> Reporte de Oportunidad de Atención</h1>
+    <h3 class="text-center"> Reporte de Productividad</h3>
     <div class="section-body mt-3">
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{route('report.opportunity')}}" method="GET">
+                            <form action="#" method="GET">
                                 @csrf
                                 <div class="row">
-
-                                    <div class="col-lg-2 col-md-3 col-sm-6">
-                                        <label><strong> Técnico</strong></label>
-                                        <div class="input-group">
-                                            <div class="form-group">
-                                                <select class="form-control show-tick"
-                                                        name="technician">
-                                                    <option></option>
-                                                    @foreach($staff as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
-                                                    @endforeach
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-lg-2 col-md-3 col-sm-6">
                                         <label><strong> Fecha Inicial</strong></label>
                                         <div class="input-group">
@@ -69,7 +53,6 @@
                                                    placeholder="Fecha Inicio">
                                         </div>
                                     </div>
-
                                     <div class="col-lg-2 col-md-3 col-sm-6">
                                         <label ><strong> Fecha Final</strong></label>
                                         <div class="input-group">
@@ -99,7 +82,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <form method="GET"
-                                              action="{{route('report.opportunity.csv')}}">
+                                              action="">
                                             @csrf
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Buscar por Fecha</h5>
@@ -160,39 +143,48 @@
                                                     <thead>
                                                     <tr>
                                                         <th><strong>#</strong></th>
-                                                        <th><strong>Factura</strong></th>
+                                                        <th><strong>Fecha</strong></th>
+                                                        <th><strong>Factura/OS</strong></th>
                                                         <th><strong>Paciente</strong></th>
-                                                        <th><strong>Prioridad</strong></th>
-                                                        <th><strong>Fecha Admisión</strong></th>
-                                                        <th><strong>Tiempo Atención</strong></th>
-                                                        <th><strong>Técnico</strong></th>
+                                                        <th><strong>Código Estudio</strong></th>
+                                                        <th><strong>Nombre Estudio</strong></th>
                                                         <th><strong>Profesional</strong></th>
+                                                        <th><strong>Tipo Impresion</strong></th>
+                                                        <th><strong>Cantidad</strong></th>
+                                                        <th><strong>Técnico</strong></th>
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
                                                     <tr>
                                                         <th><strong>#</strong></th>
-                                                        <th><strong>Factura</strong></th>
+                                                        <th><strong>Fecha</strong></th>
+                                                        <th><strong>Factura/OS</strong></th>
                                                         <th><strong>Paciente</strong></th>
-                                                        <th><strong>Prioridad</strong></th>
-                                                        <th><strong>Fecha Admisión</strong></th>
-                                                        <th><strong>Tiempo Atención</strong></th>
-                                                        <th><strong>Técnico</strong></th>
+                                                        <th><strong>Nombre Estudio</strong></th>
                                                         <th><strong>Profesional</strong></th>
+                                                        <th><strong>Oportunidad</strong></th>
+                                                        <th><strong>Tipo Impresion</strong></th>
+                                                        <th><strong>Cantidad</strong></th>
+                                                        <th><strong>Técnico</strong></th>
                                                     </tr>
                                                     </tfoot>
                                                     <tbody>
                                                         @foreach($data as $a)
-                                                            <tr>
+                                                                <tr>
                                                                     <td>{{$loop->index+1}}</td>
-                                                                    <td>{{$a->admission->doctype}}-{{$a->admission->invoice_number}}</td>
-                                                                    <td><span>{{$a->admission->patient->name}}</span></td>
-                                                                    <td><span class="tag tag-default">{{$a->admission->priority}}</span></td>
-                                                                    <td><span>{{$a->admission_date}}</span></td>
-                                                                    <td><span>{{$a->attention_time}}</span></td>
-                                                                    <td><span>{{$a->user->name}}</span></td>
-                                                                    <td>{{$a->admission->user->name}}</td>
-                                                            </tr>
+                                                                    <td>{{$a->serviceorderdetail->serviceorder->admission->invoice_date}}</td>
+                                                                    <td>
+                                                                        {{$a->serviceorderdetail->serviceorder->admission->doctype}}-
+                                                                        {{$a->serviceorderdetail->serviceorder->admission->invoice_number}}
+                                                                    </td>
+                                                                    <td>{{$a->serviceorderdetail->serviceorder->admission->patient->name}}</td>
+                                                                    <td><span>{{$a->serviceorderdetail->product->cod_manager}}</span></td>
+                                                                    <td>{{$a->serviceorderdetail->product->name}}</td>
+                                                                    <td><span>{{$a->serviceorderdetail->serviceorder->admission->user->name}}</span></td>
+                                                                    <td><span>{{$a->type}}</span></td>
+                                                                    <td><span>{{$a->quanty}}</span></td>
+                                                                    <td>{{$a->user->name}}</td>
+                                                                </tr>
                                                         @endforeach
                                                         </tbody>
                                                 </table>
@@ -203,9 +195,7 @@
                             </div>
                         </div>
                     </div>
-
                 @endisset
-
 @endsection
 @section('before-scripts')
 

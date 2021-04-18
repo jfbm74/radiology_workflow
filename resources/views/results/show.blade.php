@@ -216,14 +216,64 @@
                                             </td>
                                             <td class="row justify-content-center">
                                                 @if ($print->printed / $print->quanty != 1)
-                                                    <form
-                                                        action="{{ route('results.printonce', ['printing_id' => $print->id]) }}"
-                                                        method="post">
-                                                        @csrf @method('PUT')
-                                                        <button class="btn btn-primary btn-sm"><i
-                                                                class="icon-printer">&nbsp; Impreso</i></button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-primary btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#exampleModal{{ $print->id }}">
+                                                        <i   class="icon-printer"></i>&nbsp Impreso</button><br>
+
+{{--                                                    <form--}}
+{{--                                                        action="{{ route('results.printonce', ['printing_id' => $print->id]) }}"--}}
+{{--                                                        method="post">--}}
+{{--                                                        @csrf @method('PUT')--}}
+{{--                                                        <button class="btn btn-primary btn-sm"><i--}}
+{{--                                                                class="icon-printer">&nbsp; Impreso</i></button>--}}
+{{--                                                    </form>--}}
                                                     <br>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal{{ $print->id }}"
+                                                         tabindex="-1" role="dialog"
+                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <form method="POST"
+                                                                      action="{{ route('results.printonce', ['printing_id' => $print->id]) }}">
+                                                                    @csrf @method('PUT')
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">Confirmar Impresión</h5>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-label="Close"><span
+                                                                                aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row clearfix">
+                                                                            <div class="col-md-12 col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <input type="number"
+                                                                                           name="pin"
+                                                                                           class="form-control"
+                                                                                           placeholder="Pin"
+                                                                                           autocomplete="new-password"
+                                                                                           min="0" max="9999"
+                                                                                           autocomplete="off"
+                                                                                           autofocus required>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Cancelar</button>
+                                                                        <button
+                                                                            class="btn btn-primary">Buscar</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 @else
                                                 @endif
                                                 <form
@@ -268,9 +318,59 @@
                             <h3 class="card-title"><strong> ADJUNTAR ESTUDIOS VIRTUALES</strong></h3>
                             <div class="card-options">
                                 @if ($virtual == 1)
-                                    <a href="{{ route('results.photos.confirm', ['admission' => $admission]) }}"
-                                        class="btn btn-primary btn-sm">Guardar Órdenes Virtuales </a>
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                            data-toggle="modal"
+                                            data-target="#exampleModalvirtual{{ $print->id }}">
+                                        <i   class="icon-printer"></i>&nbsp Guardar Órdenes Virtuales</button><br>
+{{--                                    <a href="{{ route('results.photos.confirm', ['admission' => $admission]) }}"--}}
+{{--                                        class="btn btn-primary btn-sm">Guardar Órdenes Virtuales </a>--}}
+
+                                <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalvirtual{{ $print->id }}"
+                                         tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <form method="POST"
+                                                      action="{{ route('results.photos.confirm', ['admission' => $admission]) }}">
+                                                    @csrf @method('PUT')
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"
+                                                            id="exampleModalLabel">Confirmar Imagen en Portal</h5>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal"
+                                                                aria-label="Close"><span
+                                                                aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row clearfix">
+                                                            <div class="col-md-12 col-sm-6">
+                                                                <div class="form-group">
+                                                                    <input type="number"
+                                                                           name="pin"
+                                                                           class="form-control"
+                                                                           placeholder="Pin"
+                                                                           autocomplete="new-password"
+                                                                           min="0" max="9999"
+                                                                           autocomplete="off"
+                                                                           autofocus required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button"
+                                                                class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancelar</button>
+                                                        <button
+                                                            class="btn btn-primary">Buscar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
+
                             </div>
                         </div>
                         <div class="card-body">

@@ -33,7 +33,7 @@
                                         <div class="col-5 py-1"><strong>Por:</strong></div>
                                         <div class="col-7 py-1">Juan Felipe Bustamante</div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Detallado</span></div>
+                                        <div class="col-5 py-1"><a href="{{route('report.productivity.detail')}}"> <span class="tag tag-cyan">Productividad Detallado</span></a></div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
                                         <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Consolidado</span></div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
