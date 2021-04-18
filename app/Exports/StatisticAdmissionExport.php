@@ -70,7 +70,6 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
 
     public function columnFormats(): array
     {
-        // TODO: Implement columnFormats() method.
         return [
           'A' => NumberFormat::FORMAT_DATE_DDMMYYYY,
         ];

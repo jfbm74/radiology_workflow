@@ -110,7 +110,7 @@ class ReportController extends Controller
      * Show productivity report detailed.
      *
      * @param $request
-     * @return File
+     * @return
      */
     public function productivity_detail(Request $request){
         # Case 1: Dates given
@@ -125,5 +125,17 @@ class ReportController extends Controller
         }
 
         return view('reports.main.productivity');
+    }
+
+    /**
+     * Show productivity report detailed in exportable xls.
+     *
+     * @param $request
+     * @return '\Maatwebsite\Excel\Facades\Excel'
+     */
+    public function productivity_detail_csv(Request $request){
+
+        return Excel::download(new \App\Exports\PrintingExport([$request->date_ini, $request->date_end]),
+            'reporte_productividad_detalle_'.Carbon::now().'.xlsx');
     }
 }

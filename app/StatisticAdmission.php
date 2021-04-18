@@ -30,6 +30,11 @@ class StatisticAdmission extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function serviceorder()
+    {
+        return $this->belongsTo(Admission::class, 'admission_id');
+    }
+
 
     /**=================SCOPES=====================*/
     /**

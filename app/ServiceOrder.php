@@ -28,6 +28,6 @@ class ServiceOrder extends Model
 
     public function statisticadmission()
     {
-        return $this->belongsTo(StatisticAdmission::class);
+        return $this->hasOne(StatisticAdmission::class, 'admission_id');
     }
 }

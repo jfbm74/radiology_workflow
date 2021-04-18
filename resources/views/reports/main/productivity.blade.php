@@ -70,19 +70,20 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="header-action">
+                            <div class="header-action mt-4">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModal"><i
+                                        data-target="#exampleModalxls"><i
                                         class="fa fa-file-excel-o"></i>&nbsp; XLS</button>
                             </div>
+
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal"
+                            <div class="modal fade" id="exampleModalxls"
                                  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                  aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <form method="GET"
-                                              action="">
+                                              action="{{route('report.productivity.detail.csv')}}">
                                             @csrf
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Buscar por Fecha</h5>

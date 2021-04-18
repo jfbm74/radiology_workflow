@@ -72,6 +72,7 @@ Route::group([  'prefix' => 'reports',
         Route::get('/dosimetry', 'ReportController@dosimetry')->name('report.dosimetry');
         Route::get('/dosimetry-csv', 'ReportController@dosimetry_csv')->name('report.dosimetry.csv');
         Route::get('/prod-detail', 'ReportController@productivity_detail')->name('report.productivity.detail');
+        Route::get('/prod-detail-csv', 'ReportController@productivity_detail_csv')->name('report.productivity.detail.csv');
 
     }
 );
