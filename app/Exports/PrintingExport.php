@@ -54,7 +54,7 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             $printing->type,
             $printing->quanty,
             $printing->user->name,
-            $printing->serviceorderdetail->serviceorder->statisticadmission->attention_time
+            $printing->serviceorderdetail->serviceorder->admission->statisticadmission->attention_time,
         ];
     }
 

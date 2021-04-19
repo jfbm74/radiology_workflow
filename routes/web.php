@@ -111,7 +111,7 @@ Route::group([  'prefix' => 'attention',
 
         //Results Process
         Route::get('/results/pendding', 'PrintingController@pendding_list')->name('results.pendding');
-        Route::put('/results/printonce', 'PrintingController@print_one')->name('results.printonce');
+        Route::put('/results/printonce', 'PrintingController@print_one')->middleware('checkpin')->name('results.printonce');
         Route::put('/results/printrepeated', 'PrintingController@print_repeated')->name('results.printrepeated');
 
 

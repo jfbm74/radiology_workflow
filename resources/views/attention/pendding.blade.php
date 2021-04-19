@@ -62,13 +62,12 @@
                                                     </div>
                                                 </td>
                                                 <td>
-
-                                                    <form action="{{ route('printing.show', ['admission_id' => $admission->id]) }}" method="post">
-                                                        @csrf
-                                                        <button class="btn btn-primary" type="submit"><i class="icon-printer"> Imprimir</i></button>
-
-
-                                                    </form>
+                                                    <a href="{{ route('printing.show', ['admission_id' => $admission->id]) }}">
+                                                    <button  class="btn btn-primary">
+                                                        <i class="icon-printer">
+                                                            Imprimir</i>
+                                                    </button >
+                                                    </a>
                                                 </td>
 
                                                 <td>

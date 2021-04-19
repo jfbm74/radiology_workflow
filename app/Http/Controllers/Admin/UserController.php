@@ -19,8 +19,8 @@ class UserController extends Controller
     {
         //List all Users
         $users = User::all();
-        
-        return view('admin.users.index', compact('users'));     
+
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -52,8 +52,8 @@ class UserController extends Controller
                 ->table('manager.vendedor')
                 ->where('vencodigo', $id)
                 //->select('vencodigo', 'vennombre', 'vencedula')
-                ->first();  
-                
+                ->first();
+
         //Saving user in DB
         $user = new User;
         $user->name = $usr_manager->vennombre;
@@ -119,36 +119,35 @@ class UserController extends Controller
      */
     public function create_user_generic( Request $request, $id, $email="")
     {
-        // //email validation
-        //  $this->validate($request, [
-        //     'user_email' => 'email'
-        // ]);
+         //email validation
+//          $this->validate($request, [
+//             'user_email' => 'email'
+//         ]);
 
-        
         //Retrieve patient object
         $patient = Patient::where('legal_id', $id)->first();
-        
+
         //Saving new user in DB
         $user = User::where('legal_id', $id)->first();
-        
+
         $user = User::firstOrCreate([
-            'legal_id' => $id 
+            'legal_id' => $id
         ], [
             'name' => $patient->name,
             'password' => bcrypt($patient->legal_id),
-            'email' => $request->user_email,
             'is_staff' => 3
         ]);
+        $user->email = $request->user_email;
         $user->legal_id = $id;
         $user->save();
-        
+
         //Adding permissions to user generic to view his owns studies
         $permissions = DB::table('patient_user')->where('user_id', $user->id)->where('patient_id', $patient->id)->first();
         if (!$permissions){
             $user->patient()->attach($patient);
-        }      
-        
-        return back()->with('flash', 'Usuario Generico Actualizado'); 
+        }
+
+        return back()->with('flash', 'Usuario Generico Actualizado');
     }
 
 
@@ -159,19 +158,19 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function email_update(Request $request, $id)
-    {        
+    {
         //email validation
         $this->validate($request, [
             'user_email' => 'email'
         ]);
-        
+
         try {
             $user = User::where('id', $id)->first();
             $user->email = $request->user_email;
             $user->save();
-            return back()->with('flash', 'Correo Actualizado');            
-        } catch (\Throwable $th) { 
-        }   
+            return back()->with('flash', 'Correo Actualizado');
+        } catch (\Throwable $th) {
+        }
         return back()->with('err', 'Error desconocido');
     }
 }

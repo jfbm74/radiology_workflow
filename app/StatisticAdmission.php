@@ -32,7 +32,7 @@ class StatisticAdmission extends Model
 
     public function serviceorder()
     {
-        return $this->belongsTo(Admission::class, 'admission_id');
+        return $this->hasOne(ServiceOrder::class, 'admission_id');
     }
 
 

@@ -27,15 +27,15 @@
     $printed = 0;
     $os_dets = $admission->serviceorder->serviceorderdetail;
     foreach ($os_dets as $os_det => $opdet) {
-    foreach ($opdet->printing as $print ) {
-    if ($print->is_printed) {
-    $printed +=1;
-    }
-    if ($print->type == 'Virtual') {
-    $virtual = 1;
-    }
-    $total_op +=1;
-    }
+        foreach ($opdet->printing as $print ) {
+            if ($print->is_printed) {
+                $printed +=1;
+            }
+            if ($print->type == 'Virtual') {
+                $virtual = 1;
+            }
+            $total_op +=1;
+        }
     }
     $total_op = $total_op;
     try{
@@ -51,9 +51,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col">
-
                         <h3 class="card-title">{{ $admission->patient->name }}</h3>
-
                         <div class="clearfix">
                             <div class="float-left"><strong>{{ $progress }}%</strong></div>
                             <div class="float-right"><small class="text-muted">Progreso Impresión</small></div>
@@ -90,54 +88,49 @@
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
-
-                                    @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas')
+                                    @if (($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') && $admission->user->name == "GENERICO" )
                                         <label class="form-label">Enviar correo a:</label>
-                                            @if ($admission->user->name == "GENERICO")
-                                                <form action="{{route('user.create_generic', ['id' => $admission->patient->legal_id ])}}"  method="post">
-                                                    @csrf @method('PUT')
-                                                    <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
-                                                        <input  name="user_email"
-                                                        type="text"
-                                                        class="form-control"
-                                                        value="{{ $generic_user }}">
-                                                        <span class="input-group-append">
-                                                            <button class="btn btn-primary">Actualizar Correo</button>
-                                                        </span>
-                                                    </div>
+                                            <form action="{{route('user.create_generic', ['id' => $admission->patient->legal_id ])}}"  method="post">
+                                                @csrf @method('PUT')
+                                                <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
+                                                    <input  name="user_email"
+                                                    type="text"
+                                                    class="form-control"
+                                                    value="{{ $generic_user}}">
+                                                    <span class="input-group-append">
+                                                        <button class="btn btn-primary">Actualizar Correo</button>
+                                                    </span>
+                                                </div>
                                                 @if ($generic_user)
                                                     @php
                                                         $endding = 1;
                                                     @endphp
                                                 @endif
-                                            @else
-                                                <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
-                                                    @csrf @method('PUT')
-                                                    <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
-                                                        <input  name="user_email"
-                                                        type="text"
-                                                        class="form-control"
-                                                        value="{{ $admission->user->email }}">
-                                                        <span class="input-group-append">
-                                                            <button class="btn btn-primary">Actualizar!</button>
-                                                        </span>
-                                                    </div>
-                                                </form>
-                                                @php
-                                                    if ($admission->user->email){
-                                                        $endding = 1;
-                                                    }
-                                                @endphp
-                                            @endif
-
+                                        @elseif (($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') && $admission->user->name != "GENERICO" )
+                                                    <label class="form-label">Enviar correo a:</label>
+                                                    <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
+                                                        @csrf @method('PUT')
+                                                        <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
+                                                            <input  name="user_email"
+                                                            type="text"
+                                                            class="form-control"
+                                                            value="{{ $admission->user->email }}">
+                                                            <span class="input-group-append">
+                                                                <button class="btn btn-primary">Actualizar!</button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
+                                                    @php
+                                                        if ($admission->user->email){
+                                                            $endding = 1;
+                                                        }
+                                                    @endphp
                                         @endif
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="card-footer">
                     <a href="{{ route('attention.index') }}" class="btn btn-secondary btn-sm ml-2">Dejar Pendiente</a>
                     @if ($admission->delivery == "Virtual" || $admission->delivery == 'Ambas')
@@ -218,20 +211,12 @@
                                                 @if ($print->printed / $print->quanty != 1)
                                                     <button type="button" class="btn btn-primary btn-sm"
                                                             data-toggle="modal"
-                                                            data-target="#exampleModal{{ $print->id }}">
+                                                            data-target="#exampleModalReal{{ $print->id }}">
                                                         <i   class="icon-printer"></i>&nbsp Impreso</button><br>
-
-{{--                                                    <form--}}
-{{--                                                        action="{{ route('results.printonce', ['printing_id' => $print->id]) }}"--}}
-{{--                                                        method="post">--}}
-{{--                                                        @csrf @method('PUT')--}}
-{{--                                                        <button class="btn btn-primary btn-sm"><i--}}
-{{--                                                                class="icon-printer">&nbsp; Impreso</i></button>--}}
-{{--                                                    </form>--}}
                                                     <br>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal{{ $print->id }}"
+                                                    <div class="modal fade" id="exampleModalReal{{ $print->id }}"
                                                          tabindex="-1" role="dialog"
                                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -322,8 +307,6 @@
                                             data-toggle="modal"
                                             data-target="#exampleModalvirtual{{ $print->id }}">
                                         <i   class="icon-printer"></i>&nbsp Guardar Órdenes Virtuales</button><br>
-{{--                                    <a href="{{ route('results.photos.confirm', ['admission' => $admission]) }}"--}}
-{{--                                        class="btn btn-primary btn-sm">Guardar Órdenes Virtuales </a>--}}
 
                                 <!-- Modal -->
                                     <div class="modal fade" id="exampleModalvirtual{{ $print->id }}"
