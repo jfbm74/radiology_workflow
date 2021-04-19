@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ServiceOrderDetail extends Model
 {
@@ -28,6 +29,19 @@ class ServiceOrderDetail extends Model
 
         $data = ServiceOrderDetail::whereBetween('fullfilment_date', [$date_ini, $date_end])->get();
         return $query = $data;
+    }
+
+    /**
+     * Function that returns a list of orders given a date
+     * @param $query
+     * @return mixed
+     */
+    public function scopeQuantyOrders($query, $date_ini, $date_end)
+    {
+        $data = DB::table('service_order_details')->
+        whereBetween('created_at', [$date_ini, $date_end]);
+        $query =$data;
+        return $query;
     }
 
 

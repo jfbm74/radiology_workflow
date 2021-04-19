@@ -2,20 +2,66 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Admission;
+use App\Patient;
+use App\ServiceOrderDetail;
+use App\StatisticAdmission;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ManagerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing homepage for admin / manager.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
-        
-        return view('dashboard.manager.index');
+        $today = Carbon::now();
+        $month_ago = Carbon::now()->subMonth();
+
+        # Number of patients last 30 days
+        $monthly_patients = Admission::patients(
+            $month_ago,
+            $today
+        )->count();
+
+        # Number of Orders last 30 days
+        $monthly_orders = ServiceOrderDetail::quantyorders(
+            $month_ago,
+            $today
+        )->count();
+
+        # Attention Opportunity in minutes
+        $monthly_oportunity = StatisticAdmission::opportunityaverage(
+            $month_ago,
+            $today
+        );
+
+        # Pendding Admissions
+        $pending_admission = Admission::pendding()->count();
+
+        #Return view
+        return view('dashboard.manager.index',
+            compact(
+                'monthly_patients',
+                'monthly_orders',
+                'monthly_oportunity',
+                'pending_admission'
+            ));
+    }
+
+    /**
+     * Display a home page for technicians
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_technician()
+    {
+
+        return view('dashboard.technician.index');
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App;
 use App\Patient;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Admission extends Model
 {
@@ -22,6 +23,19 @@ class Admission extends Model
         'delivery'
     ];
 
+
+    /**
+     * Function that returns a list of patients given a date
+     * @param $query
+     * @return mixed
+     */
+    public function scopePatients($query, $date_ini, $date_end)
+    {
+        $data = DB::table('admissions')->
+            whereBetween('invoice_date', [$date_ini, $date_end]);
+        $query =$data;
+        return $query;
+    }
 
     /**
      * Functions that returns a admissions  collection that have status Active

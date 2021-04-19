@@ -56,7 +56,9 @@ Route::group([  'prefix' => 'dashboard',
                 'middleware' => 'auth',
                 'middleware' => 'checkstaff',],
     function () {
-        Route::get('/', 'ManagerController@index')->name('dashboard.manager.index');
+        Route::get('/admin', 'ManagerController@index')->name('dashboard.manager.index');
+        Route::get('/techinican', 'ManagerController@index_technician')->name('dashboard.manager.technician');
+
 
     }
 );

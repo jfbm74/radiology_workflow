@@ -70,7 +70,14 @@
                                 <div class="col-5 py-1"><strong>Estado:</strong></div>
                                 <div class="col-7 py-1">{{$id->status}}</div>
                                 <div class="col-5 py-1"><strong>Usuario Admisión:</strong></div>
-                                <div class="col-7 py-1">{{$id->serviceorder->user->name}}</div>
+                                <div class="col-7 py-1">
+                                    @if(empty($id->serviceorder->user->name))
+                                    @else
+                                        {{$id->serviceorder->user->name}}
+                                    @endif
+
+
+                                </div>
                                 <div class="col-5 py-1"><strong>Profesional:</strong></div>
                                 <div class="col-7 py-1">{{$id->user->name}}</div>
                                 <div class="col-lg-12">
@@ -90,6 +97,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @if(empty($id->serviceorder->serviceorderdetail))
+                                                    @else
                                                       @foreach ($id->serviceorder->serviceorderdetail as $order)
                                                         <tr>
                                                             <th scope="row">{{$order->id}}</th>
@@ -98,8 +107,10 @@
                                                             <td>{{$order->user->name}}</td>
                                                         </tr>
                                                       @endforeach
-                                                        
-                                                 
+                                                    @endif
+
+
+
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -108,27 +119,30 @@
                                 </div>
                             </div>
                             <h6>Informacion Oportunidad</h6>
-                           
-                            
+
+
                             <div class="row">
-                                <div class="col-5 py-1"><strong>Fecha Admisión</strong></div>
-                                <div class="col-7 py-1">{{$id->invoice_date}}</div>
-                                <div class="col-5 py-1"><strong>Tiempo Espera (min):</strong></div>
-                                <div class="col-7 py-1">{{ $statistics->waiting_time }}</div>
-                                <div class="col-5 py-1"><strong>Tipo Atención (min):</strong></div>
-                                <div class="col-7 py-1">{{$statistics->attention_time}}</div>
-                                <div class="col-5 py-1"><strong>Tiempo Resultados:</strong></div>
-                                <div class="col-7 py-1">{{$statistics->finish_time}}</div>
-                                <div class="col-5 py-1"><strong>Usuario Admisión:</strong></div>
-                                <div class="col-7 py-1">{{$id->serviceorder->user->name}}</div>
-                                <div class="col-5 py-1"><strong>Profesional:</strong></div>
-                                <div class="col-7 py-1">{{$id->user->name}}</div>
-                                
+                                @if(empty($id->serviceorder->serviceorderdetail))
+                                @else
+                                    <div class="col-5 py-1"><strong>Fecha Admisión</strong></div>
+                                    <div class="col-7 py-1">{{$id->invoice_date}}</div>
+                                    <div class="col-5 py-1"><strong>Tiempo Espera (min):</strong></div>
+                                    <div class="col-7 py-1">{{ $statistics->waiting_time }}</div>
+                                    <div class="col-5 py-1"><strong>Tipo Atención (min):</strong></div>
+                                    <div class="col-7 py-1">{{$statistics->attention_time}}</div>
+                                    <div class="col-5 py-1"><strong>Tiempo Resultados:</strong></div>
+                                    <div class="col-7 py-1">{{$statistics->finish_time}}</div>
+                                    <div class="col-5 py-1"><strong>Usuario Admisión:</strong></div>
+                                    <div class="col-7 py-1">{{$id->serviceorder->user->name}}</div>
+                                    <div class="col-5 py-1"><strong>Profesional:</strong></div>
+                                    <div class="col-7 py-1">{{$id->user->name}}</div>
+                                @endif
+
                             </div>
 
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

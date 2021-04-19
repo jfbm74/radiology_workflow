@@ -32,8 +32,8 @@
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i
                                 class="fa fa-dashboard"></i><span>Dashboard</span></a>
                         <ul>
-                            <li class=""><a href="#"><span>Administración</span></a></li>
-                            <li><a href="#"><span>Técnicos</span></a></li>
+                            <li class=""><a href="{{route('dashboard.manager.index')}}"><span>Administración</span></a></li>
+                            <li><a href="{{route('dashboard.manager.technician')}}"><span>Técnicos</span></a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('admission.index') }}"><i class="fa fa-plus-circle"></i><span>Admisión</span></a>

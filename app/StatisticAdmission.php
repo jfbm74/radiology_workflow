@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class StatisticAdmission extends Model
 {
@@ -59,6 +60,20 @@ class StatisticAdmission extends Model
 
         $data = StatisticAdmission::whereBetween('admission_date', [$date_ini, $date_end])->get();
         return $query = $data;
+    }
+
+    /**
+     * Function that returns opportunity average given date
+     * @param $query
+     * @return mixed
+     */
+    public function scopeOpportunityAverage($query, $date_ini, $date_end)
+    {
+        $data = DB::table('statistic_admissions')->
+        whereBetween('created_at', [$date_ini, $date_end])
+            ->avg('attention_time');
+        $query =$data;
+        return $query;
     }
 
 
