@@ -58,6 +58,7 @@ Route::group([  'prefix' => 'dashboard',
     function () {
         Route::get('/admin', 'ManagerController@index')->name('dashboard.manager.index');
         Route::get('/techinican', 'ManagerController@index_technician')->name('dashboard.manager.technician');
+        Route::get('/get-yearly-orders', 'ManagerController@get_orders_json_yearly')->name('report.orders.yearly');
 
 
     }

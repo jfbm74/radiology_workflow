@@ -21,6 +21,7 @@ class ManagerController extends Controller
     {
         $today = Carbon::now();
         $month_ago = Carbon::now()->subMonth();
+        $year_ago = Carbon::now()->subMonths(12);
 
         # Number of patients last 30 days
         $monthly_patients = Admission::patients(
@@ -49,8 +50,24 @@ class ManagerController extends Controller
                 'monthly_patients',
                 'monthly_orders',
                 'monthly_oportunity',
-                'pending_admission'
+                'pending_admission',
             ));
+    }
+
+    public function get_orders_json_yearly(){
+
+        $today = Carbon::now();
+        $month_ago = Carbon::now()->subMonth();
+        $year_ago = Carbon::now()->subMonths(12);
+
+        # Orders By Month graph
+        $data_orders = ServiceOrderDetail::quantyordersbymonth(
+            $year_ago,
+            $today
+        );
+        //dd($data_orders);
+        return $data_orders->toJson();
+
     }
 
     /**

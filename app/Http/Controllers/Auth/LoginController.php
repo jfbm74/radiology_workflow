@@ -43,10 +43,10 @@ class LoginController extends Controller
     {
 
         if (auth()->user()->rol == 0){
-           return '/dashboard';
+           return '/dashboard/admin';
         }
         elseif (auth()->user()->rol == 5){
-            return '/dashboard';
+            return '/dashboard/techinican';
         }
         return '/portal';
     }
