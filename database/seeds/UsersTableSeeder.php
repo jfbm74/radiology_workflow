@@ -38,11 +38,38 @@ class UsersTableSeeder extends Seeder
         $user->password = bcrypt('12345678');
         $user->is_staff = true;
         $user->rol = 5;
-        $user->pin = '1425';
+        $user->pin = '1111';
         $user->save();
 
         $user = new User;
-        $user->name = 'Diana - Manager';
+        $user->name = 'Dina - Imagenes';
+        $user->email = 'paola@gmail.com';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = true;
+        $user->rol = 5;
+        $user->pin = '2222';
+        $user->save();
+
+        $user = new User;
+        $user->name = 'Khaterine - Imagenes';
+        $user->email = 'paola@gmail.com';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = true;
+        $user->rol = 5;
+        $user->pin = '3333';
+        $user->save();
+
+        $user = new User;
+        $user->name = 'Jenny - Imagenes';
+        $user->email = 'paola@gmail.com';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = true;
+        $user->rol = 5;
+        $user->pin = '4444';
+        $user->save();
+
+        $user = new User;
+        $user->name = 'Diana Quintero- Manager';
         $user->email = 'diana@gmail.com';
         $user->password = bcrypt('12345678');
         $user->is_staff = true;

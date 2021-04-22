@@ -14,12 +14,6 @@ class ServiceOrderSeeder extends Seeder
     {
         ServiceOrder::truncate();
 
-        $os = new ServiceOrder;
-
-        $os->admission_id = '1';
-        $os->user_id = '1';
-        $os->is_active = '1';
-        $os->save();
 
     }
 }

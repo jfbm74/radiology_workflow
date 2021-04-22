@@ -102,7 +102,7 @@
                                                       @foreach ($id->serviceorder->serviceorderdetail as $order)
                                                         <tr>
                                                             <th scope="row">{{$order->id}}</th>
-                                                            <td>{{$order->name}}</td>
+                                                            <td>{{$order->product->name}}</td>
                                                             <td>{{$order->fullfilment_date}}</td>
                                                             <td>{{$order->user->name}}</td>
                                                         </tr>

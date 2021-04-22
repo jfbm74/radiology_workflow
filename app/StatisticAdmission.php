@@ -70,10 +70,30 @@ class StatisticAdmission extends Model
     public function scopeOpportunityAverage($query, $date_ini, $date_end)
     {
         $data = DB::table('statistic_admissions')->
-        whereBetween('created_at', [$date_ini, $date_end])
+        whereBetween('admission_date', [$date_ini, $date_end])
             ->avg('attention_time');
         $query =$data;
         return $query;
+    }
+
+    /**
+     * Function that returns an average opportunity cumulative by month
+     * grouped by month
+     * @param $query
+     * @return mixed
+     */
+    public function scopeOpportunityOrdersByMonth($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('statistic_admissions')
+            ->select(
+                DB::raw('avg(attention_time) as avg_month'),
+                DB::Raw("DATE_FORMAT(admission_date, '%Y-%m') month" )
+            )
+            ->whereBetween('admission_date', [$date_ini, $date_end])
+            ->groupBy('month')
+            ->orderBy('month', 'ASC')
+            ->get();
     }
 
 

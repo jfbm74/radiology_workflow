@@ -171,6 +171,8 @@
                                                     </tfoot>
                                                     <tbody>
                                                         @foreach($data as $a)
+                                                            @if(empty($a->serviceorderdetail->serviceorder))
+                                                            @else
                                                                 <tr>
                                                                     <td>{{$loop->index+1}}</td>
                                                                     <td>{{$a->serviceorderdetail->serviceorder->admission->invoice_date}}</td>
@@ -186,6 +188,7 @@
                                                                     <td><span>{{$a->quanty}}</span></td>
                                                                     <td>{{$a->user->name}}</td>
                                                                 </tr>
+                                                            @endif
                                                         @endforeach
                                                         </tbody>
                                                 </table>

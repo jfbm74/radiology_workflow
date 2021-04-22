@@ -46,7 +46,7 @@ class LoginController extends Controller
            return '/dashboard/admin';
         }
         elseif (auth()->user()->rol == 5){
-            return '/dashboard/techinican';
+            return '/home';
         }
         return '/portal';
     }

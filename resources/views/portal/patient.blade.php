@@ -85,6 +85,20 @@
                                                     <td>
                                                         <a href="{{ route('patient.gallery', ['admission' => $adm]) }}"
                                                             class="btn btn-success"><i class="fe fe-check mr-2"></i>Ver</a>
+                                                        <input type="text" value="http://127.0.0.1:8000/storage/image-000001.dcm" id="myInput">
+                                                        <button onclick="myFunction()">DICOM</button>
+
+                                                        <script>
+                                                            function myFunction() {
+                                                                var copyText = document.getElementById("myInput");
+                                                                copyText.select();
+                                                                copyText.setSelectionRange(0, 99999)
+                                                                document.execCommand("copy");
+                                                                window.open('http://localhost:3000/u-dicom-viewer/', '_blank');
+                                                                window.location.href = '';
+                                                            }
+                                                        </script>
+
                                                     </td>
                                                     <td><a href="#" class="btn btn-dark"><i
                                                                 class="fe fe-download mr-2"></i>Descargar</a></td>

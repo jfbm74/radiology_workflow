@@ -24,6 +24,7 @@ class Admission extends Model
     ];
 
 
+//    ===============================SCOPES===========================================
     /**
      * Function that returns a list of patients given a date
      * @param $query

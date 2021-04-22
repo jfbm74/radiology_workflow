@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Admission;
+use App\BillDetail;
 use App\Patient;
+use App\Printing;
 use App\ServiceOrderDetail;
 use App\StatisticAdmission;
 use Carbon\Carbon;
@@ -54,6 +56,12 @@ class ManagerController extends Controller
             ));
     }
 
+
+    /**
+     * Return a JSON object with number orders cummulative by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
     public function get_orders_json_yearly(){
 
         $today = Carbon::now();
@@ -67,8 +75,104 @@ class ManagerController extends Controller
         );
         //dd($data_orders);
         return $data_orders->toJson();
-
     }
+
+    /**
+     * Return a JSON object with number opportunity cumulative by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function get_opportunity_json_yearly(){
+
+        $today = Carbon::now();
+        $year_ago = Carbon::now()->subMonths(12);
+
+        # Orders By Month cumulative
+        $data_opportunity = StatisticAdmission::opportunityordersbymonth(
+            $year_ago,
+            $today
+        );
+        //dd($data_opportunity);
+        return $data_opportunity->toJson();
+    }
+
+    /**
+     * Return a JSON object with product's quantity by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function get_product_json_montly(){
+
+        $today = Carbon::now();
+        $year_ago = Carbon::now()->subMonth();
+
+        # Orders By Month cumulative
+        $data_products = Printing::quantyproductsbymonth(
+            $year_ago,
+            $today
+        );
+        //dd($data_products);
+        return $data_products->toJson();
+    }
+
+    /**
+     * Return a JSON object with product's quantity by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function get_package_json_montly(){
+
+        $today = Carbon::now();
+        $month_ago = Carbon::now()->subMonth();
+
+        # Package By Month cumulative
+        $data_package = BillDetail::quantypackagesbymonth(
+            $month_ago,
+            $today
+        );
+        //dd($data_package);
+        return $data_package->toJson();
+    }
+
+    /**
+     * Return a JSON object with Professional's quantity orders by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function get_professionals_json_montly(){
+
+        $today = Carbon::now();
+        $month_ago = Carbon::now()->subMonth();
+
+        # Package By Month cumulative
+        $professional_package = Printing::quantyordersprofessionalbymonth(
+            $month_ago,
+            $today
+        );
+        //dd($professional_package);
+        return $professional_package->toJson();
+    }
+
+
+    /**
+     * Return a JSON object with Techinician's quantity orders by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function get_technicians_json_monthly(){
+
+        $today = Carbon::now();
+        $month_ago = Carbon::now()->subMonth();
+
+        # Package By Month cumulative
+        $technicians_quanty = Printing::OrdersTechnicianByMonth(
+            $month_ago,
+            $today
+        );
+        //dd($technicians_quanty );
+        return $technicians_quanty ->toJson();
+    }
+
 
     /**
      * Display a home page for technicians
@@ -77,7 +181,6 @@ class ManagerController extends Controller
      */
     public function index_technician()
     {
-
         return view('dashboard.technician.index');
     }
 

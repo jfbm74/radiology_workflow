@@ -53,7 +53,7 @@ class ServiceOrderDetail extends Model
     }
 
     /**
-     * Function that returns a list of orders given a date
+     * Function that returns a number of orders cumulative by month
      * grouped by month
      * @param $query
      * @return mixed
