@@ -111,44 +111,46 @@ class UserController extends Controller
         //
     }
 
-     /**
+
+
+     /**  =============depreciated method============================
      * Creates  a patient as an user in order to access to portal.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create_user_generic( Request $request, $id, $email="")
-    {
-         //email validation
-//          $this->validate($request, [
-//             'user_email' => 'email'
-//         ]);
-
-        //Retrieve patient object
-        $patient = Patient::where('legal_id', $id)->first();
-
-        //Saving new user in DB
-        $user = User::where('legal_id', $id)->first();
-
-        $user = User::firstOrCreate([
-            'legal_id' => $id
-        ], [
-            'name' => $patient->name,
-            'password' => bcrypt($patient->legal_id),
-            'is_staff' => 3
-        ]);
-        $user->email = $request->user_email;
-        $user->legal_id = $id;
-        $user->save();
-
-        //Adding permissions to user generic to view his owns studies
-        $permissions = DB::table('patient_user')->where('user_id', $user->id)->where('patient_id', $patient->id)->first();
-        if (!$permissions){
-            $user->patient()->attach($patient);
-        }
-
-        return back()->with('flash', 'Usuario Generico Actualizado');
-    }
+//    public function create_user_generic( Request $request, $id, $email="")
+//    {
+//         //email validation
+////          $this->validate($request, [
+////             'user_email' => 'email'
+////         ]);
+//
+//        //Retrieve patient object
+//        $patient = Patient::where('legal_id', $id)->first();
+//
+//        //Saving new user in DB
+//        $user = User::where('legal_id', $id)->first();
+//
+//        $user = User::firstOrCreate([
+//            'legal_id' => $id
+//        ], [
+//            'name' => $patient->name,
+//            'password' => bcrypt($patient->legal_id),
+//            'is_staff' => 3
+//        ]);
+//        $user->email = $request->user_email;
+//        $user->legal_id = $id;
+//        $user->save();
+//
+//        //Adding permissions to user generic to view his owns studies
+//        $permissions = DB::table('patient_user')->where('user_id', $user->id)->where('patient_id', $patient->id)->first();
+//        if (!$permissions){
+//            $user->patient()->attach($patient);
+//        }
+//
+//        return back()->with('flash', 'Usuario Generico Actualizado');
+//    }
 
 
     /**

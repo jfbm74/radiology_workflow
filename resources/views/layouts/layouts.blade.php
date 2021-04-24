@@ -7,7 +7,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon"> <!-- Favicon-->
-    <title>@yield('title') - {{ config('app.name') }}</title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
     <meta name="description" content="@yield('meta_description', config('app.name'))">
     <meta name="author" content="@yield('meta_author', config('app.name'))">
 
@@ -16,7 +16,7 @@
     @stack('before-styles')
     <link rel="stylesheet" href="{{ asset('/admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 
-    
+
     @stack('after-styles')
     @if (trim($__env->yieldContent('page-styles')))
         @yield('page-styles')
@@ -82,13 +82,13 @@
     @stack('before-scripts')
 
 
-    
+
 
     <script src="{{ asset('/admin/assets/bundles/lib.vendor.bundle.js') }}"></script>
 
 
 
-    
+
     @stack('after-scripts')
     <script src="/admin/assets/js/core.js"></script>
 

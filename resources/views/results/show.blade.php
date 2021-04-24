@@ -89,43 +89,43 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     @if (($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') && $admission->user->name == "GENERICO" )
-                                        <label class="form-label">Enviar correo a:</label>
-                                            <form action="{{route('user.create_generic', ['id' => $admission->patient->legal_id ])}}"  method="post">
+                                        <label class="form-label">Enviar correo a paciente:</label>
+                                            <form action="{{route('patient.update_email', ['id' => $admission->patient->id])}}"  method="post">
                                                 @csrf @method('PUT')
                                                 <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
                                                     <input  name="user_email"
-                                                    type="text"
+                                                    type="email"
                                                     class="form-control"
-                                                    value="{{ $generic_user}}">
+                                                    value="{{ $admission->patient->email}}">
                                                     <span class="input-group-append">
-                                                        <button class="btn btn-primary">Actualizar Correo</button>
+                                                        <button type="submit" class="btn btn-primary">Actualizar Correo</button>
                                                     </span>
                                                 </div>
-                                                @if ($generic_user)
+                                                @if ($admission->patient->email)
                                                     @php
                                                         $endding = 1;
                                                     @endphp
                                                 @endif
-                                        @elseif (($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') && $admission->user->name != "GENERICO" )
+                                                @elseif (($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') && $admission->user->name != "GENERICO" )
                                                     <label class="form-label">Enviar correo a:</label>
-                                                    <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
+                                                        <form action="{{route('user.update_email', ['id' => $admission->user->id])}}"  method="post">
                                                         @csrf @method('PUT')
-                                                        <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
-                                                            <input  name="user_email"
-                                                            type="text"
-                                                            class="form-control"
-                                                            value="{{ $admission->user->email }}">
-                                                            <span class="input-group-append">
-                                                                <button class="btn btn-primary">Actualizar!</button>
-                                                            </span>
-                                                        </div>
-                                                    </form>
+                                                            <div class="input-group" {{ $errors->has('user_email') ? 'has-error' : '' }} >
+                                                                <input  name="user_email"
+                                                                type="text"
+                                                                class="form-control"
+                                                                value="{{ $admission->user->email }}">
+                                                                <span class="input-group-append">
+                                                                    <button type="submit" class="btn btn-primary">Actualizar!</button>
+                                                                </span>
+                                                            </div>
                                                     @php
                                                         if ($admission->user->email){
                                                             $endding = 1;
                                                         }
                                                     @endphp
-                                        @endif
+                                    @endif
+                                    </form>
                                 </div>
                             </div>
                         </div>

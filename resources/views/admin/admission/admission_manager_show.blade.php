@@ -59,7 +59,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h6>Informacion Oportunidad</h6>
                             <div class="row">
                                 <div class="col-5 py-1"><strong>Admision N°:</strong></div>
                                 <div class="col-7 py-1">{{$id->id }}</div>

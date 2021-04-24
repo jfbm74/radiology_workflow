@@ -38,6 +38,7 @@ Route::group([  'prefix' => 'admin',
         Route::get('/admission/show/{id}', 'ManagerAdmissionController@show')->name('admission.show');
         Route::get('/admission/today', 'ManagerAdmissionController@list_today_patients')
             ->name('admission.today');
+
     }
 );
 
@@ -116,6 +117,8 @@ Route::group([  'prefix' => 'admission',
         Route::get('/confirm/{admission}', 'AdmissionController@endding')
             ->middleware('checkdoctormail')
             ->name('admission.endding');
+        /** Patient Manager Views */
+        Route::put('/patient/{id}', 'PatientController@update_email')->name('patient.update_email');
 
     }
 );
@@ -156,7 +159,6 @@ Route::group([  'prefix' => 'attention',
         Route::delete('/photo/{photo}', 'PhotosController@destroy')->name('results.photos.destroy');
         Route::put('/photo/confirm/{admission}', 'PrintingController@confirm_photo')
             ->middleware('checkpin')->name('results.photos.confirm');
-
     }
 );
 

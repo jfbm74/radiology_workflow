@@ -45,37 +45,41 @@
                                     class="table table-hover js-basic-example dataTable table_custom border-style spacing5">
                                     <thead>
                                         <tr>
+                                            <th><strong>#</strong></th>
                                             <th><strong>Nombre</strong></th>
                                             <th><strong>ID</strong></th>
-                                            <th><strong>ültima actualización</strong></th>
+                                            <th><strong>Fecha</strong></th>
                                             <th><strong>Profesional</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th><strong>#</strong></th>
                                             <th><strong>Nombre</strong></th>
                                             <th><strong>ID</strong></th>
-                                            <th><strong>ültima actualización</strong></th>
+                                            <th><strong>Fecha</strong></th>
                                             <th><strong>Profesional</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach ($patients as $patient)
+                                        @foreach ($admissions as $admission)
+
                                             <tr>
-                                                <td>{{$patient->name}}</td>
-                                                <td>{{$patient->legal_id}}</td>
-                                                <td>{{$patient->updated_at}}</td>
+                                                <td>{{$admission->id}}</td>
+                                                <td>{{$admission->patient->name}}</td>
+                                                <td>{{$admission->patient->legal_id}}</td>
+                                                <td>{{$admission->invoice_date}}</td>
                                                 <td>
-                                                    @foreach ($patient->users as $doctor)
+                                                    @foreach ($admission->patient->users as $doctor)
                                                     <div class="tags">
                                                         <span class="tag tag-azure">{{$doctor->name}}</span>
                                                     </div>
                                                     @endforeach
                                                 </td>
                                                 <td class="actions">
-                                                    <a  href="{{route('patient.show', ['id' => $patient->id])}}" class="btn btn-success"><i class="fa fa-file-excel-o mr-2" data-original-title="Consultar Imágenes"></i>Imágenes</a>
+                                                    <a  href="{{route('patient.show', ['id' => $admission->patient->id])}}" class="btn btn-success"><i class="fa fa-file-excel-o mr-2" data-original-title="Consultar Imágenes"></i>Imágenes</a>
                                                     <button class="btn btn-sm btn-icon on-default m-r-5 button-edit"
                                                         data-toggle="tooltip" data-original-title="Editar"><i
                                                             class="icon-pencil" aria-hidden="true"></i></button>

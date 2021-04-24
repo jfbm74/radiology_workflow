@@ -21,7 +21,7 @@ class ServiceOrderDetail extends Model
 
 //    =======================Scopes===========================
     /**
-     * Function that returns list of patients and their dosimetry
+     * Function that returns list of patients and their Radiation Dose
      * @param $query
      * @return mixed
      */
@@ -38,10 +38,6 @@ class ServiceOrderDetail extends Model
      */
     public function scopeQuantyOrders($query, $date_ini, $date_end)
     {
-//        $data = DB::table('service_order_details')->
-//        whereBetween('created_at', [$date_ini, $date_end]);
-//        $query =$data;
-//        return $query;
 
         return DB::
         table('service_order_details')
@@ -58,7 +54,7 @@ class ServiceOrderDetail extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeQuantyOrdersByMonth($query, $date_ini, $date_end)
+    public function scopeQuantyOrdersByDate($query, $date_ini, $date_end)
     {
         return DB::
             table('service_order_details')
@@ -72,6 +68,55 @@ class ServiceOrderDetail extends Model
             ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
             ->groupBy('new_date')
             ->orderBy('new_date', 'ASC')
+            ->get();
+    }
+
+
+    /**
+     * Function that returns a number of orders cumulative by month
+     * grouped by month
+     * @param $query
+     * @return mixed
+     */
+    public function scopeQuantyProductsByDate($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('service_order_details')
+            ->select(
+                DB::raw('count(*) as id_count'),
+                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
+            //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
+            )
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.id', '=', 'admissions.id')
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->groupBy('new_date')
+            ->orderBy('new_date', 'ASC')
+            ->get();
+    }
+
+
+    /**
+     * Function that returns a number of orders grouped by products
+     * grouped by month
+     * @param $query
+     * @return mixed
+     */
+    public function scopeQuantyProducts($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('service_order_details')
+            ->select(
+                DB::raw('count(*) as id_count'),
+                'products.name'
+
+            )
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.id', '=', 'admissions.id')
+            ->join('products', 'service_order_details.product_id', '=', 'products.id')
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->groupBy('products.name')
+            ->orderBy('id_count', 'DESC')
             ->get();
     }
 

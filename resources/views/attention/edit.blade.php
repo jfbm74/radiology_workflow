@@ -113,8 +113,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- {{ dd($admission->billdetail) }}
-                                                --}}
+
                                                 @foreach ($admission->billdetail as $item)
                                                     <tr>
                                                         <th>
@@ -147,17 +146,13 @@
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-12">
+
                     {{-- Admission Form Starts Here --}}
                     @include('admission.partials.admission_form')
                     {{-- End Admission Form --}}
                 </div>
             </div>
         </div>
-          {{-- Section --}}
-{{--          @include('partials.edit_printcontrol')--}}
-          {{-- End Section --}}
-
-
     </div>
 
 @endsection

@@ -17,8 +17,8 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $admissions = Package::all();
-        return view('config.package.index', compact('admissions'));
+        $packages = Package::all();
+        return view('config.package.index', compact('packages'));
 
     }
 

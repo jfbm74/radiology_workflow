@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admission;
 use App\User;
 use App\Patient;
 use Illuminate\Http\Request;
@@ -16,15 +17,19 @@ class PortalController extends Controller
      */
     public function index()
     {
+        // retrieve current user
         $user = User::where('id' , Auth::user()->id)->first();
+
         if ($user->is_staff == 1) {
-            $patients = Patient::all();
-            return view('portal.index', compact('patients'));
+            $admissions = Admission::portalpatientsforstaff()->get();
+            //dd($admissions);
+            return view('portal.index', compact('admissions'));
         }
         $patients = $user->patient()->get();
-        return view('portal.index', compact('patients'));
-
+        $admissions = Admission::getvirtualpatientsbypro($user->id)->get();
+        return view('portal.index', compact('admissions'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +60,7 @@ class PortalController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**

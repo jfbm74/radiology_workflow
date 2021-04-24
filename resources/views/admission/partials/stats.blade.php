@@ -57,7 +57,7 @@
         <div class="card">
             <div class="card-body w_sparkline">
                 <div class="details">
-                    <span>Tiempo Espera</span>
+                    <span>Tiempo Atención</span>
                     @if(is_float($time_to_attend))
                         <h3 class="mb-0 counter">{{ number_format($time_to_attend, 1) ?? '' }}</h3>
                     @else

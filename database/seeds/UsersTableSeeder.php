@@ -68,6 +68,7 @@ class UsersTableSeeder extends Seeder
         $user->pin = '4444';
         $user->save();
 
+
         $user = new User;
         $user->name = 'Diana Quintero- Manager';
         $user->email = 'diana@gmail.com';

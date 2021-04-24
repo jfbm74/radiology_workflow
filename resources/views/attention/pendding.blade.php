@@ -56,9 +56,18 @@
 
                                                 <td>
                                                     <div class="tags">
-                                                        @foreach ($admission->serviceorder->serviceorderdetail as $detail)
-                                                            <span class="tag tag-rounded">{{ $detail->desprod }}</span><br>
-                                                        @endforeach
+                                                        <div class="row">
+                                                            @foreach ($admission->serviceorder->serviceorderdetail as $detail)
+                                                                @foreach($detail->printing as $prt)
+                                                                    @if($prt->is_printed == 0)
+                                                                        <span class="tag tag-red mt-1">{{ $prt->serviceorderdetail->product->name }}</span><br>
+                                                                    @else
+                                                                        <span class="tag tag-lime mt-1">{{ $prt->serviceorderdetail->product->name }}</span>
+                                                                    @endif
+
+                                                                @endforeach
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td>

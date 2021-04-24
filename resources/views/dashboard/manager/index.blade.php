@@ -17,18 +17,20 @@
         <!-- Data Widgets -->
         <div class="container-fluid ">
             <div class="row clearfix">
-                <div class="col-lg-12">
-                    <div class="mb-4">
-                        <h4>Bienvenido, {{ Auth()->user()->name }}</h4>
-                        <small><a href="#"></a></small>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-4">
+                            <h4>Bienvenido, {{ Auth()->user()->name }}</h4>
+                            <small><a href="#"></a></small>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row clearfix">
-                <div class="col-6 col-md-4 col-xl-2">
+                <div class="col-4 col-md-4 col-xl-2">
                     <div class="card">
                         <div class="card-body ribbon">
-                            <a href="" class="my_sort_cut text-muted">
+                            <a href="{{route('admission.list')}}" class="my_sort_cut text-muted">
                                 <i class="icon-users"></i>
                                 <span>Pacientes <small>(30 días)</small></span>
                                 <span><strong> {{$monthly_patients}}</strong></span>
@@ -36,10 +38,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-xl-2">
+                <div class="col-4 col-md-4 col-xl-2">
                     <div class="card">
                         <div class="card-body">
-                            <a href="#" class="my_sort_cut text-muted">
+                            <a href="{{route('report.productivity.detail')}}" class="my_sort_cut text-muted">
                                 <i class="fa fa-paste"></i>
                                 <span>Órdenes <small>(30 días)</small></span>
                                 <span><strong> {{$monthly_orders}}</strong></span>
@@ -47,21 +49,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-xl-2">
+                <div class="col-4 col-md-4 col-xl-2">
                     <div class="card">
                         <div class="card-body ribbon">
-                            <a href="#" class="my_sort_cut text-muted">
+                            <a href="{{route('report.opportunity')}}" class="my_sort_cut text-muted">
                                 <i class="fas fa-stopwatch"></i>
                                 <span>Tiempo <small>(30 días)</small></span>
                                 <span>
                                     @if(is_numeric($monthly_oportunity))
-                                        <strong>
-                                            {{number_format($monthly_oportunity)}}
-                                        </strong>
+                                        <strong>  {{number_format($monthly_oportunity)}}  </strong>
                                     @else
-                                        <strong>
-                                            0
-                                        </strong>
+                                        <strong> 0 </strong>
                                     @endif
                                 </span>
                             </a>
@@ -70,11 +68,12 @@
                 </div>
 
                 <div class="col-6 col-md-4 col-xl-2">
-                    <div class="card">
+                    <div class="card style=">
                         <div class="card-body ribbon">
-                            <a href="#" class="my_sort_cut text-muted">
-                                <i class="fas fa-tasks"></i>
-                                <span>Estudios Pendientes</span>
+                            <div class="ribbon-box pink">{{$pending_older_admission}}</div>
+                            <a href="{{route('results.pendding')}}" class="my_sort_cut text-muted">
+                                <i class="fas fa-calendar-times"  ></i>
+                                <span>Pendientes </span>
                                 <span><strong> {{$pending_admission}}</strong></span>
                             </a>
                         </div>
@@ -101,7 +100,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>
+{{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -121,7 +120,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>
+{{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -143,7 +142,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>
+{{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -163,7 +162,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>
+{{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -185,7 +184,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>
+{{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -204,7 +203,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>
+{{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -219,7 +218,6 @@
             integrity="sha512-BqNYFBAzGfZDnIWSAEGZSD/QFKeVxms2dIBPfw11gZubWwKUjEgmFUtUls8vZ6xTRZN/jaXGHD/ZaxD9+fDo0A=="
             crossorigin="anonymous">
     </script>
-
 
     <!-- Orders ChartJS -->
     <script>
@@ -296,13 +294,9 @@
     <!-- Product ChartJS -->
     <script>
         var xmlhttp = new XMLHttpRequest();
-
         var url = '/dashboard/get-monthly-products';
-
         xmlhttp.open("GET", url, true);
-
         xmlhttp.send();
-
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var prods_data = JSON.parse(this.responseText);
@@ -310,7 +304,7 @@
                     return elem.name;
                 });
                 var quantity = prods_data.map(function (elem) {
-                    return elem.product_count;
+                    return elem.id_count;
                 });
 
                 const data = {

@@ -129,4 +129,29 @@ class PatientController extends Controller
 
         return view('portal.zoom', compact('photo_zoom', 'photos', 'patient' , 'admission'));
     }
+
+    /**
+     * Update email of the specified patient.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_email(Request $request, $id)
+    {
+        //email validation
+        $this->validate($request, [
+            'user_email' => 'email'
+        ]);
+
+        try {
+            $patient = Patient::where('id', $id)->first();
+            $patient->email = $request->user_email;
+            $patient->save();
+            return back()->with('flash', 'Correo Actualizado');
+        } catch (\Throwable $th) {
+        }
+        return back()->with('err', 'Error desconocido');
+    }
+
+
 }

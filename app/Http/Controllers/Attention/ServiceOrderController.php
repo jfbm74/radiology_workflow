@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Attention;
 
 use App\Admission;
 use App\BillDetail;
+use App\Patient;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -52,7 +53,7 @@ class ServiceOrderController extends Controller
         /** check if a patient is register as user in Portal  and returns email*/
         if ($admission->user_id == 999) {
             if ($admission->delivery == 'Virtual' || $admission->delivery == 'Ambas' ) {
-               $check_user = User::where('legal_id', $admission->patient->legal_id)->first();
+               $check_user = Patient::where('id', $admission->patient->id)->first();
                if ($check_user) {
                     $check_user = $check_user->email;
                     /* return form view in order to create SO's */
@@ -106,19 +107,19 @@ class ServiceOrderController extends Controller
             $ins_order->save();
 
         }
-        // Creating an User-Patient in Portal
-        // Checking if User exists
 
+        //Updating Patient's email when delivery is "Virtual" or "Ambas"
         if ($admission->user->id == 999 && ($admission->delivery == "Virtual" || $admission->delivery == "Ambas") ) {
-            $new_user = app()->call('App\Http\Controllers\Admin\UserController@create_user_generic', [
-                'email' => $request->email_patient, 'id'=> $admission->patient->legal_id]);
+            // Retrieve patient ID
+            $patient = Patient::find($admission->patient->id);
+            $patient->email = $request->user_email;
+            $patient->save();
         }
 
         $admission->save();
 
         //returning view Attending Patient in progress
         return view('attention.createprinting', compact('admission', 'user'));
-
     }
 
 

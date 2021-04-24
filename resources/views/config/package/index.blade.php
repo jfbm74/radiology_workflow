@@ -52,6 +52,7 @@
                                     <thead>
                                         <tr>
                                             <th><strong>#</strong></th>
+                                            <th><strong>Código</strong></th>
                                             <th><strong>Nombre</strong></th>
                                             <th><strong>Productos</strong></th>
                                             <th><strong>Acciones</strong></th>
@@ -60,20 +61,22 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>#</strong></th>
+                                            <th><strong>Código</strong></th>
                                             <th><strong>Nombre</strong></th>
                                             <th><strong>Productos</strong></th>
                                             <th><strong>Acciones</strong></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach ($admissions as $admission)
+                                        @foreach ($packages as $package)
                                             <tr>
                                                 <td>{{$loop->index + 1}}</td>
-                                                <td>{{ $admission->name }}</td>
+                                                <td>{{ $package->code }}</td>
+                                                <td>{{ $package->name }}</td>
                                                 <td>
-                                                    @foreach( $admission->packagedetail as $detail)
+                                                    @foreach( $package->packagedetail as $detail)
                                                         <div class="row">
-                                                        <span class="tag"><strong>{{ $detail->product->cod_manager }}</strong>-{{ $detail->product->name }}</span>
+                                                        <span class="tag">{{ $detail->product->cod_manager }}-{{ $detail->product->name }}</span>
                                                         </div>
                                                     @endforeach
                                                 </td>

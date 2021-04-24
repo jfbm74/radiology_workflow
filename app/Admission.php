@@ -39,6 +39,42 @@ class Admission extends Model
     }
 
     /**
+     * Function that returns a list of patients with Virtual Delivery
+     * for staff users
+     * @param $query
+     * @return mixed
+     */
+    public function scopePortalPatientsForStaff($query)
+    {
+        return Admission::where('status', 'Finalizado')
+            ->where(function ($query){
+                $query->where('delivery', 'Virtual')
+                    ->orWhere('delivery', 'Ambas');
+            })
+            ->orderBy('invoice_date', 'DESC');
+    }
+
+
+    /**
+     * Function that returns a list of patients with Virtual Delivery
+     * for specific professional
+     * @param $query
+     * @return mixed
+     */
+    public function scopeGetVirtualPatientsByPro($query, $id)
+    {
+        return Admission::where('status', 'Finalizado')
+            ->where('user_id', $id)
+            ->where(function ($query){
+                $query->where('delivery', 'Virtual')
+                    ->orWhere('delivery', 'Ambas');
+            })
+            ->orderBy('invoice_date', 'DESC');
+    }
+
+
+
+    /**
      * Functions that returns a admissions  collection that have status Active
      * @param $query
      * @return  Collection of admission with status active
@@ -80,6 +116,18 @@ class Admission extends Model
     public function scopePendding($query){
         return $query = Admission::where('status', 'Pendiente')
                         ->orderBy('invoice_date', 'asc');
+    }
+
+    /**
+     * Function that returns a collection for admission with pending service orders
+     * older than 24 hours
+     * @param $query
+     * @return mixed
+     */
+    public function scopePendingOlders($query){
+        return $query = Admission::where('status', 'Pendiente')
+            ->whereDate('invoice_date', '<', Carbon::yesterday())
+            ->orderBy('invoice_date', 'asc');
     }
 
 

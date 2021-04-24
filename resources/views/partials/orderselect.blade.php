@@ -32,12 +32,12 @@
 @if ($check_user != 1)
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><strong> Crear usuario en el Portal</strong></h3>
+        <h3 class="card-title"><strong> Correo del Paciente</strong></h3>
     </div>
 
 
     <div class="card-footer">
-        <h3 class="card-title">Digite o confirme el correo del paciente al que llegará la Clave:</h3>
+        <h3 class="card-title">Digite o confirme el correo del paciente al que llegará el estudio:</h3>
         <div class="side-by-side clearfix">
             <div>
                 <input type="email" id="user_email" name="user_email" value="{{ $check_user }}" required>
