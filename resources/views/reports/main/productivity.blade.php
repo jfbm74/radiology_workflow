@@ -147,12 +147,19 @@
                                                         <th><strong>Fecha</strong></th>
                                                         <th><strong>Factura/OS</strong></th>
                                                         <th><strong>Paciente</strong></th>
+                                                        <th><strong>Num Id</strong></th>
+                                                        <th><strong>Fecha Nacimiento</strong></th>
                                                         <th><strong>Código Estudio</strong></th>
                                                         <th><strong>Nombre Estudio</strong></th>
                                                         <th><strong>Profesional</strong></th>
                                                         <th><strong>Tipo Impresion</strong></th>
                                                         <th><strong>Cantidad</strong></th>
                                                         <th><strong>Técnico</strong></th>
+                                                        <th><strong>kv</strong></th>
+                                                        <th><strong>ma</strong></th>
+                                                        <th><strong>dosis</strong></th>
+                                                        <th><strong>extime</strong></th>
+                                                        <th>Tiempo Atención</th>
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
@@ -161,34 +168,43 @@
                                                         <th><strong>Fecha</strong></th>
                                                         <th><strong>Factura/OS</strong></th>
                                                         <th><strong>Paciente</strong></th>
+                                                        <th><strong>Num Id</strong></th>
+                                                        <th><strong>Fecha Nacimiento</strong></th>
+                                                        <th><strong>Código Estudio</strong></th>
                                                         <th><strong>Nombre Estudio</strong></th>
                                                         <th><strong>Profesional</strong></th>
-                                                        <th><strong>Oportunidad</strong></th>
                                                         <th><strong>Tipo Impresion</strong></th>
                                                         <th><strong>Cantidad</strong></th>
                                                         <th><strong>Técnico</strong></th>
+                                                        <th><strong>kv</strong></th>
+                                                        <th><strong>ma</strong></th>
+                                                        <th><strong>dosis</strong></th>
+                                                        <th><strong>extime</strong></th>
+                                                        <th>Tiempo Atención</th>
                                                     </tr>
                                                     </tfoot>
                                                     <tbody>
+
                                                         @foreach($data as $a)
-                                                            @if(empty($a->serviceorderdetail->serviceorder))
-                                                            @else
-                                                                <tr>
-                                                                    <td>{{$loop->index+1}}</td>
-                                                                    <td>{{$a->serviceorderdetail->serviceorder->admission->invoice_date}}</td>
-                                                                    <td>
-                                                                        {{$a->serviceorderdetail->serviceorder->admission->doctype}}-
-                                                                        {{$a->serviceorderdetail->serviceorder->admission->invoice_number}}
-                                                                    </td>
-                                                                    <td>{{$a->serviceorderdetail->serviceorder->admission->patient->name}}</td>
-                                                                    <td><span>{{$a->serviceorderdetail->product->cod_manager}}</span></td>
-                                                                    <td>{{$a->serviceorderdetail->product->name}}</td>
-                                                                    <td><span>{{$a->serviceorderdetail->serviceorder->admission->user->name}}</span></td>
-                                                                    <td><span>{{$a->type}}</span></td>
-                                                                    <td><span>{{$a->quanty}}</span></td>
-                                                                    <td>{{$a->user->name}}</td>
-                                                                </tr>
-                                                            @endif
+                                                            <tr>
+                                                                <td>{{$loop->index+1}}</td>
+                                                                <td>{{$a->invoice_date}}</td>
+                                                                <td>{{$a->doctype}}-{{$a->invoice_number}} </td>
+                                                                <td>{{$a->PatientName}}</td>
+                                                                <td>{{$a->legal_id}}</td>
+                                                                <td>{{$a->birthday}}</td>
+                                                                <td>{{$a->cod_manager}}</td>
+                                                                <td>{{$a->name}}</td>
+                                                                <td>{{$a->ProfessionalName}}</td>
+                                                                <td>{{$a->type}}</td>
+                                                                <td>{{$a->quanty}}</td>
+                                                                <td>{{$a->TechnicianName}}</td>
+                                                                <td>{{$a->kv}}</td>
+                                                                <td>{{$a->ma}}</td>
+                                                                <td>{{$a->dosis}}</td>
+                                                                <td>{{$a->extime}}</td>
+                                                                <td>{{$a->attention_time}}</td>
+                                                            </tr>
                                                         @endforeach
                                                         </tbody>
                                                 </table>

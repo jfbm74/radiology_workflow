@@ -120,13 +120,41 @@
                                                                                 <div class="row clearfix">
                                                                                     <div class="col-md-12 col-sm-6">
                                                                                         @if ($order->product->radiation_dose_type > 0) !== false)
-                                                                                        <h6>Radiometría</h6>
+                                                                                        <h6>Dosis de radiación</h6>
+                                                                                        <div class="form-group">
+
+                                                                                            <input type="number"
+                                                                                                   name="kv"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="KV"
+                                                                                                   step="1"  min="1" max="100"
+                                                                                                   autocomplete="off"
+                                                                                                   required>
+                                                                                        </div>
                                                                                         <div class="form-group">
                                                                                             <input type="number"
-                                                                                                   name="exposure_time"
+                                                                                                   name="ma"
                                                                                                    class="form-control"
-                                                                                                   placeholder="Tiempo de exposición"
-                                                                                                   step="0.01"  min="0" max="2"
+                                                                                                   placeholder="MA"
+                                                                                                   step="0.1"  min="0" max="10"
+                                                                                                   autocomplete="off"
+                                                                                                   required>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <input type="number"
+                                                                                                   name="dosis"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="DOSIS"
+                                                                                                   step="0.1"  min="1" max="200"
+                                                                                                   autocomplete="off"
+                                                                                                   required>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <input type="number"
+                                                                                                   name="extime"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="EXTIME"
+                                                                                                   step="0.1"  min="1" max="20"
                                                                                                    autocomplete="off"
                                                                                                    required>
                                                                                         </div>

@@ -114,13 +114,14 @@ class ReportController extends Controller
      */
     public function productivity_detail(Request $request){
         # Case 1: Dates given
+
         if ($request->date_ini && $request->date_end) {
-            $data = Printing::
-            productivitydetail
+            $data = Printing::productivitydetail
             (
                 $request->date_ini,
                 $request->date_end
             );
+            //dd($data);
             return view('reports.main.productivity', compact('data'));
         }
 

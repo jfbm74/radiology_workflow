@@ -31,7 +31,8 @@ class ServiceOrderDetailExport implements FromQuery, WithMapping, WithHeadings, 
     {
         return ServiceOrderDetail::
         select('service_order_id', 'service_order_id', 'service_order_id',
-            'service_order_id', 'product_id', 'exposure_time', 'ionizing_radiation_dose', 'user_id' )->
+            'service_order_id', 'service_order_id', 'service_order_id', 'product_id',
+            'kv', 'ma', 'dosis', 'extime', 'user_id' )->
         whereBetween('fullfilment_date', [$this->date1, $this->date2]);
     }
 
@@ -43,9 +44,13 @@ class ServiceOrderDetailExport implements FromQuery, WithMapping, WithHeadings, 
             $row->serviceorder->admission->doctype,
             $row->serviceorder->admission->invoice_number,
             $row->serviceorder->admission->patient->name,
+            $row->serviceorder->admission->patient->legal_id,
+            $row->serviceorder->admission->patient->birthday,
             $row->product->name,
-            $row->exposure_time,
-            $row->ionizing_radiation_dose,
+            $row->kv,
+            $row->ma,
+            $row->dosis,
+            $row->extime,
             $row->user->name,
         ];
     }
@@ -57,9 +62,13 @@ class ServiceOrderDetailExport implements FromQuery, WithMapping, WithHeadings, 
             'Tipo Doc',
             'Numero Factura',
             'Paciente',
+            'Identificación',
+            'Fecha Nacimiento',
             'Estudio',
-            'Tiempo Exposición (s)',
-            'Dosis Radiación (mSv)',
+            'kv',
+            'ma',
+            'dosis',
+            'extime',
             'Técnico',
         ];
     }

@@ -80,6 +80,7 @@ class FullfilmentController extends Controller
      */
     public function update(Request $request)
     {
+        //dd($request);
         $user = User::pinpad($request->pin)->first();
         $orderdetail = ServiceOrderDetail::where('id', $request->orderservicedetail)->first();
 
@@ -91,13 +92,12 @@ class FullfilmentController extends Controller
         //retrive Product
         $product = Product::where('id', $orderdetail->product_id)->first();
 
-        //Calculating ionizing radiation dose for patient
-        $dose = app()->call('App\Http\Controllers\Attention\FullfilmentController@calculate_dose', [
-            'request' => $request,
-            'product' => $product
-        ]);
-        $orderdetail->exposure_time = $request->exposure_time;
-        $orderdetail->ionizing_radiation_dose = $dose;
+
+        // Updating radiation dose parameters
+        $orderdetail->kv = $request->kv;
+        $orderdetail->ma = $request->ma;
+        $orderdetail->dosis = $request->dosis;
+        $orderdetail->extime = $request->extime;
         $orderdetail->save();
 
         $admissions = Admission::attending()->get();

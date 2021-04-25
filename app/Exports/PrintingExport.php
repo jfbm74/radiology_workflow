@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Printing;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
@@ -29,32 +30,48 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
     */
     public function query()
     {
-        return Printing::select('service_order_details_id', 'service_order_details_id',
-            'service_order_details_id', 'service_order_details_id','service_order_details_id',
-            'service_order_details_id', 'service_order_details_id', 'service_order_details_id'
-            , 'service_order_details_id', 'type', 'quanty', 'user_id',
-            'service_order_details_id')->
-            where('is_printed', 1)->
-            whereBetween('created_at', [$this->date1, $this->date2]);
+        return DB::
+        table('printings')
+            ->select('admissions.invoice_date', 'admissions.doctype', 'admissions.invoice_number',
+                'patients.name as PatientName', 'patients.legal_id', 'patients.birthday', 'products.cod_manager',
+                'products.name', 'PRO.name as ProfessionalName', 'printings.type', 'printings.quanty',
+                'TEC.name as TechnicianName', 'service_order_details.kv', 'service_order_details.ma',
+                'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time')
+            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.id', '=', 'admissions.id')
+            ->join('patients', 'admissions.patient_id', '=', 'patients.id')
+            ->join('users as PRO', 'admissions.user_id', '=', 'PRO.id')
+            ->join('users as TEC', 'printings.user_id', '=', 'TEC.id')
+            ->join('products', 'service_order_details.product_id', '=', 'products.id')
+            ->join('statistic_admissions', 'statistic_admissions.admission_id', '=', 'admissions.id')
+            ->whereBetween('admissions.invoice_date',[$this->date1, $this->date2])
+            ->orderBy('admissions.invoice_date');
+
     }
 
     public function map($printing): array
     {
-        $created_at = Carbon::parse($printing->serviceorderdetail->serviceorder->admission->invoice_date);
+        $invoice_date = Carbon::parse($printing->invoice_date);
+
         return [
-            Date::dateTimeToExcel($created_at),
-            $printing->serviceorderdetail->serviceorder->admission->doctype,
-            $printing->serviceorderdetail->serviceorder->admission->invoice_number,
-            $printing->serviceorderdetail->serviceorder->admission->patient->name,
-            $printing->serviceorderdetail->serviceorder->admission->patient->birthday,
-            $printing->serviceorderdetail->serviceorder->admission->patient->legal_id,
-            $printing->serviceorderdetail->product->cod_manager,
-            $printing->serviceorderdetail->product->name,
-            $printing->serviceorderdetail->serviceorder->admission->user->name,
+            Date::dateTimeToExcel($invoice_date),
+            $printing->doctype,
+            $printing->invoice_number,
+            $printing->PatientName,
+            $printing->legal_id,
+            $printing->birthday,
+            $printing->cod_manager,
+            $printing->name,
+            $printing->ProfessionalName,
             $printing->type,
             $printing->quanty,
-            $printing->user->name,
-            $printing->serviceorderdetail->serviceorder->admission->statisticadmission->attention_time,
+            $printing->TechnicianName,
+            $printing->kv,
+            $printing->ma,
+            $printing->dosis,
+            $printing->extime,
+            $printing->attention_time
         ];
     }
 
@@ -65,15 +82,19 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             'Tipo Documento',
             'Número Factura/OS',
             'Paciente',
+            'Identificación',
             'Fecha Nacimiento',
-            'Identificación Paciente',
             'Código Estudio',
             'Nombre Estudio',
             'Profesional',
             'Tipo',
             'Cantidad',
             'Técnico',
-            'Oportunidad (m)',
+            'KV',
+            'mA',
+            'Dosis',
+            'EXTIME',
+            'Tiempo Atención'
         ];
     }
 

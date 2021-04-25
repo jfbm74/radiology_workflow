@@ -33,7 +33,8 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
     public function query()
     {
         return StatisticAdmission::
-        select('admission_date', 'admission_id', 'admission_id', 'admission_id',
+        select('admission_date', 'admission_id', 'admission_id',
+            'admission_id', 'admission_id','admission_id',
             'attention_time', 'user_id', 'professional_id')->
         whereBetween('admission_date', [$this->date1, $this->date2]);
     }
@@ -48,6 +49,8 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
             $statisticadmission->admission->invoice_number,
             $statisticadmission->admission->doctype,
             $statisticadmission->admission->patient->name,
+            $statisticadmission->admission->patient->legal_id,
+            $statisticadmission->admission->patient->birthday,
             $statisticadmission->attention_time,
             $statisticadmission->user->name,
             $statisticadmission->user->name,
@@ -61,6 +64,8 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
             'Numero Factura',
             'Tipo Doc',
             'Paciente',
+            'Identificación',
+            'Fecha Nacimiento',
             'Tiempo Atención',
             'Técnico',
             'Profesional',

@@ -147,8 +147,10 @@
                                             <th><strong>Paciente</strong></th>
                                             <th><strong>Fecha Admisión</strong></th>
                                             <th><strong>Estudio</strong></th>
-                                            <th><strong>Tiempo (s)</strong></th>
-                                            <th><strong>Dosis Radiación (mSv)</strong></th>
+                                            <th>Kv</th>
+                                            <th>mA</th>
+                                            <th>Dosis</th>
+                                            <th>EXTIME</th>
                                             <th><strong>Técnico</strong></th>
                                         </tr>
                                         </thead>
@@ -159,8 +161,10 @@
                                             <th><strong>Paciente</strong></th>
                                             <th><strong>Fecha Admisión</strong></th>
                                             <th><strong>Estudio</strong></th>
-                                            <th><strong>Tiempo Exposición (s)</strong></th>
-                                            <th><strong>Dosis Radiación (mSv)</strong></th>
+                                            <th>Kv</th>
+                                            <th>mA</th>
+                                            <th>Dosis</th>
+                                            <th>EXTIME</th>
                                             <th><strong>Técnico</strong></th>
                                         </tr>
                                         </tfoot>
@@ -172,8 +176,10 @@
                                                 <td><span>{{$a->serviceorder->admission->patient->name}}</span></td>
                                                 <td>{{$a->serviceorder->admission->invoice_date}}</td>
                                                 <td><span class="tag tag-default">{{$a->product->name}}</span></td>
-                                                <td><span>{{$a->exposure_time}}</span></td>
-                                                <td><span>{{$a->ionizing_radiation_dose}}</span></td>
+                                                <td><span>{{$a->kv}}</span></td>
+                                                <td><span>{{$a->ma}}</span></td>
+                                                <td><span>{{$a->dosis}}</span></td>
+                                                <td><span>{{$a->extime}}</span></td>
                                                 <td>{{$a->user->name}}</td>
                                             </tr>
                                         @endforeach
