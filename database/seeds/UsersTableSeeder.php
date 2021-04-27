@@ -24,6 +24,33 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->name = 'Estacion RX';
+        $user->email = 'estacionrayosx@rxdent.co';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = true;
+        $user->rol = 5;
+        $user->pin = '8888';
+        $user->save();
+
+        $user = new User;
+        $user->name = 'Estacion Fotos';
+        $user->email = 'estacionfotos@rxdent.co';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = true;
+        $user->rol = 5;
+        $user->pin = '9999';
+        $user->save();
+
+        $user = new User;
+        $user->name = 'Estacion Periapical';
+        $user->email = 'estacionperiapical@rxdent.co';
+        $user->password = bcrypt('12345678');
+        $user->is_staff = true;
+        $user->rol = 5;
+        $user->pin = '9999';
+        $user->save();
+
+        $user = new User;
         $user->name = 'Andrea - Facturacion';
         $user->email = 'andrea@gmail.com';
         $user->password = bcrypt('12345678');
@@ -96,6 +123,16 @@ class UsersTableSeeder extends Seeder
         $user->legal_id = "901077262";
         $user->email = 'natural@smile.com';
         $user->password = bcrypt('12345678');
+        $user->is_staff = false;
+        $user->pin = '';
+        $user->save();
+
+        $user = new User;
+        $user->id = 11;
+        $user->name = 'USUARIO ANONIMO (NO BORRAR)';
+        $user->legal_id = "";
+        $user->email = 'usuariogen@rxdent.co';
+        $user->password = bcrypt('123asdferASDA$(%$');
         $user->is_staff = false;
         $user->pin = '';
         $user->save();

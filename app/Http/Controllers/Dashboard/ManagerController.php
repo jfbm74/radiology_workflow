@@ -74,7 +74,7 @@ class ManagerController extends Controller
         $year_ago = Carbon::now()->subMonths(12);
 
         # Orders By Month graph
-        $data_orders = ServiceOrderDetail::quantyordersbydate(
+        $data_orders = Printing::quantyordersbydate(
             $year_ago,
             $today
         );
@@ -112,7 +112,7 @@ class ManagerController extends Controller
         $month_ago = Carbon::now()->subMonth();
 
         # Orders By Month cumulative
-        $data_products = ServiceOrderDetail::quantyproducts(
+        $data_products = Printing::quantyproductsbydate(
             $month_ago,
             $today
         );

@@ -20,7 +20,8 @@ class Admission extends Model
         'status',
         'priority',
         'obs',
-        'delivery'
+        'delivery',
+        'order_printing'
     ];
 
 

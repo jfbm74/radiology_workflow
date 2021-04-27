@@ -36,6 +36,7 @@ class CreateAdmissionsTable extends Migration
             $table->string('status')->default('En Espera');
             $table->unsignedSmallInteger('priority')->nullable()->default('5');
             $table->string('delivery');
+            $table->string('order_printing');
             $table->text('obs')->nullable();
             $table->unsignedInteger('patient_id');
             $table->unsignedInteger('user_id');

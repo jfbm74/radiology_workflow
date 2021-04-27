@@ -36,7 +36,7 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
                 'patients.name as PatientName', 'patients.legal_id', 'patients.birthday', 'products.cod_manager',
                 'products.name', 'PRO.name as ProfessionalName', 'printings.type', 'printings.quanty',
                 'TEC.name as TechnicianName', 'service_order_details.kv', 'service_order_details.ma',
-                'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time')
+                'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time', 'admissions.order_printing')
             ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
             ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
             ->join('admissions', 'service_orders.id', '=', 'admissions.id')
@@ -71,7 +71,8 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             $printing->ma,
             $printing->dosis,
             $printing->extime,
-            $printing->attention_time
+            $printing->attention_time,
+            $printing->order_printing
         ];
     }
 
@@ -94,7 +95,8 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             'mA',
             'Dosis',
             'EXTIME',
-            'Tiempo Atención'
+            'Tiempo Atención',
+            'Orden Impresa'
         ];
     }
 

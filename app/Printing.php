@@ -34,7 +34,7 @@ class Printing extends Model
                 'patients.name as PatientName', 'patients.legal_id', 'patients.birthday', 'products.cod_manager',
                 'products.name', 'PRO.name as ProfessionalName', 'printings.type', 'printings.quanty',
                 'TEC.name as TechnicianName', 'service_order_details.kv', 'service_order_details.ma',
-                'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time')
+                'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time', 'admissions.order_printing')
             ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
             ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
             ->join('admissions', 'service_orders.id', '=', 'admissions.id')
@@ -66,100 +66,105 @@ class Printing extends Model
 //            ->get();
 //    }
 
-//
-//    /**
-//     * Function that returns a number of orders cumulative by month given two dates
-//     * grouped by month
-//     * @param $query
-//     * @return mixed
-//     */
-//    public function scopeQuantyOrdersByMonth($query, $date_ini, $date_end)
-//    {
-//        return DB::
-//        table('printings')
-//            ->select(
-//                DB::raw('count(*) as id_count'),
-//                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
-//            //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
-//            )
-//            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
-//            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
-//            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
-//            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
-//            ->groupBy('new_date')
-//            ->orderBy('new_date', 'ASC')
-//            ->get();
-//    }
 
-//    /**
-//     * Function that returns a JSON format with number of orders grouped by product given tow dates
-//     * grouped by month
-//     * @param $query
-//     * @return mixed
-//     */
-//    public function scopeQuantyProductsByDate($query, $date_ini, $date_end)
-//    {
-//        return DB::
-//        table('service_order_details')
-//            ->select(
-//                DB::raw('count(*) as id_count'),
-//                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
-//            //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
-//            )
-//            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
-//            ->join('admissions', 'service_orders.id', '=', 'admissions.id')
-//            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
-//            ->groupBy('new_date')
-//            ->orderBy('new_date', 'ASC')
-//            ->get();
-//    }
+    /**
+     * Function that returns a number of orders cumulative by month given two dates
+     * grouped by month
+     * @param $query
+     * @return mixed
+     */
+    public function scopeQuantyOrdersByDate($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('printings')
+            ->select(
+                DB::raw('count(*) as id_count'),
+                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
+            //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
+            )
+            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->groupBy('new_date')
+            ->orderBy('new_date', 'ASC')
+            ->get();
+    }
 
-//    /**
-//     * Function that returns a JSOM format with number of orders by professional
-//     * @param $query
-//     * @return mixed
-//     */
-//    public function scopeQuantyOrdersProfessionalByMonth($query, $date_ini, $date_end)
-//    {
-//        return DB::
-//        table('printings')
-//            ->select(
-//                DB::raw('count(*) as product_count'),
-//                'users.name'
-//            )
-//            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
-//            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
-//            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
-//            ->join('users', 'users.id', '=', 'admissions.user_id')
-//            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
-//            ->groupBy('users.name')
-//            ->orderBy('product_count', 'DESC')
-//            ->get();
-//    }
+    /**
+     * Function that returns a JSON format with number of orders grouped by product given tow dates
+     * grouped by month
+     * @param $query
+     * @param $date_ini
+     * @param $date_end
+     * @return mixed
+     */
 
-//    /**
-//     * Function that returns a JSOM product quantity by month
-//     * @param $query
-//     * @return mixed
-//     */
-//    public function scopeOrdersTechnicianByMonth($query, $date_ini, $date_end)
-//    {
-//        return DB::
-//        table('printings')
-//            ->select(
-//                DB::raw('count(*) as product_count'),
-//                'users..name'
-//            )
-//            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
-//            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
-//            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
-//            ->join('users', 'users.id', '=', 'printings.user_id')
-//            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
-//            ->where('printings.is_printed', '=', '1')
-//            ->groupBy('users.name')
-//            ->orderBy('product_count', 'DESC')
-//            ->get();
-//    }
+    public function scopeQuantyProductsByDate($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('printings')
+            ->select(
+                DB::raw('count(*) as id_count'),
+                'products.name'
+
+            )
+            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
+            ->join('products', 'products.id', '=', 'service_order_details.product_id')
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->groupBy('products.name')
+            ->orderBy('products.name', 'ASC')
+            ->get();
+    }
+
+    /**
+     * Function that returns a JSOM format with number of orders by professional
+     * @param $query
+     * @return mixed
+     */
+    public function scopeQuantyOrdersProfessionalByMonth($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('printings')
+            ->select(
+                DB::raw('count(*) as product_count'),
+                'users.name'
+            )
+            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
+            ->join('users', 'users.id', '=', 'admissions.user_id')
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->groupBy('users.name')
+            ->orderBy('product_count', 'DESC')
+            ->get();
+    }
+
+    /**
+     * Function that returns a JSOM product quantity by month
+     * @param $query
+     * @return mixed
+     */
+    public function scopeOrdersTechnicianByMonth($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('printings')
+            ->select(
+                DB::raw('count(*) as product_count'),
+                'users..name'
+            )
+            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
+            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
+            ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
+            ->join('users', 'users.id', '=', 'printings.user_id')
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->where('printings.is_printed', '=', '1')
+            ->groupBy('users.name')
+            ->orderBy('product_count', 'DESC')
+            ->get();
+    }
 
 //    ==============================RELATIONSHIPS======================
     public function serviceorderdetail()

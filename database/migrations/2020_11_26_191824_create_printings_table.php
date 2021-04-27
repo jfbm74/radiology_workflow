@@ -21,10 +21,10 @@ class CreatePrintingsTable extends Migration
             $table->smallInteger('quanty')->default(0);
             $table->smallInteger('printed')->default(0);
             $table->smallInteger('repeated')->default(0);
-            $table->string('printer')->nullable();            
+            $table->string('printer')->nullable();
             $table->boolean('is_printed')->default(0);
             $table->dateTime('printed_date')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->default(11)->nullable();
             $table->timestamps();
         });
     }

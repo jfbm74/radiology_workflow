@@ -87,6 +87,7 @@ class AdmissionController extends Controller
                 'obs' => $request->observations,
                 'doctype' => $request->doctipo,
                 'docclase' => $request->docclase,
+                'order_printing' => $request->order_printing,
             ]);
 
             //Save Bill Details ( ordinal, codprod, desprod, patient_id, bill_id )

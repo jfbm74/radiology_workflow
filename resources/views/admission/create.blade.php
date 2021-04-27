@@ -108,6 +108,7 @@
                                     </div>
                                 </div>
                             @endif
+
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label">Nombre Paciente</label>
@@ -180,6 +181,35 @@
                                                         required>
                                             </div>
                                         @endif
+                                            <div class="form-group">
+                                                <div class="form-label">Orden Impresa</div>
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="p-2">
+                                                        <input class="form-check-input"
+                                                               type="radio"
+                                                               name="order_printing"
+                                                               id="order_printing"
+                                                               value="RxDent"
+                                                               required>
+                                                        <label class="form-check-label"
+                                                               for="flexRadioDefault1">
+                                                                RxDent
+                                                        </label>
+                                                    </div>
+                                                    <div class="p-2">
+                                                        <input class="form-check-input"
+                                                               type="radio"
+                                                               name="order_printing"
+                                                               id="order_printing"
+                                                               value="Otra">
+                                                        <label class="form-check-label"
+                                                               for="flexRadioDefault1">
+                                                               Otra
+                                                        </label>
+                                                    </div>
+                                                    <div class="p-2"></div>
+                                                </div>
+                                            </div>
                                         <div class="form-group">
                                             <div class="form-label">Atención Prioritaria</div>
                                             <label class="custom-switch">

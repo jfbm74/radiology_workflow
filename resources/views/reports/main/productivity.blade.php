@@ -160,6 +160,7 @@
                                                         <th><strong>dosis</strong></th>
                                                         <th><strong>extime</strong></th>
                                                         <th>Tiempo Atención</th>
+                                                        <th>Orden Impresa</th>
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
@@ -181,6 +182,7 @@
                                                         <th><strong>dosis</strong></th>
                                                         <th><strong>extime</strong></th>
                                                         <th>Tiempo Atención</th>
+                                                        <th>Orden Impresa</th>
                                                     </tr>
                                                     </tfoot>
                                                     <tbody>
@@ -204,6 +206,7 @@
                                                                 <td>{{$a->dosis}}</td>
                                                                 <td>{{$a->extime}}</td>
                                                                 <td>{{$a->attention_time}}</td>
+                                                                <td>{{$a->order_printing}}</td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>
