@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Billing;
 
 use App\Bill;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -91,6 +92,9 @@ class BillController extends Controller
      */
     public function search(Request $request)
     {
+        // flag for detail product, if at least one product is tagged as virtual then its value is 1
+        $is_virtual= 0;
+
         $bill = $request->invoice;
         $docclase = $request->docclase;
         $doctipo = $request->doctipo;
@@ -131,6 +135,22 @@ class BillController extends Controller
                 ->where('mcntipodoc', $doctipo)
                 ->orderBy('mcnreg', 'asc')
                 ->get();
-        return view('admission.create', compact('invoice', 'details'));
+
+        // Checking if detail product is tagged as Virtual
+        foreach ($details as $det){
+            if ($det->pronombre == "."){
+                continue;
+            }
+            else
+            {
+                $chk_prod = Product::where('cod_manager', $det->mcnproduct)->first();
+                if ($chk_prod->is_virtual == 1)
+                {
+                    $is_virtual = 1;
+                    break;
+                }
+            }
+        }
+        return view('admission.create', compact('invoice', 'details', 'is_virtual'));
     }
 }

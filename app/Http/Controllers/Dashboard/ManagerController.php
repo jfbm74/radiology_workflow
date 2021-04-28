@@ -82,6 +82,27 @@ class ManagerController extends Controller
         return $data_orders->toJson();
     }
 
+
+    /**
+     * Return a JSON object with number orders cummulative by month.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function get_printedorders_json_yearly(){
+
+        $today = Carbon::now();
+        $month_ago = Carbon::now()->subMonth();
+        $year_ago = Carbon::now()->subMonths(12);
+
+        # Orders By Month graph
+        $data_orders = Admission::quantyprintedordersbydate(
+            $year_ago,
+            $today
+        );
+        //dd($data_orders);
+        return $data_orders->toJson();
+    }
+
     /**
      * Return a JSON object with number opportunity cumulative by month.
      *
@@ -157,7 +178,6 @@ class ManagerController extends Controller
         //dd($professional_package);
         return $professional_package->toJson();
     }
-
 
     /**
      * Return a JSON object with Techinician's quantity orders by month.

@@ -16,18 +16,8 @@
     <div class="section-body mt-3 ">
         <!-- Data Widgets -->
         <div class="container-fluid ">
-            <div class="row clearfix">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mb-4">
-                            <h4>Bienvenido, {{ Auth()->user()->name }}</h4>
-                            <small><a href="#"></a></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-4 col-md-4 col-xl-2">
+            <div class="row clearfix row-deck">
+                <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="card">
                         <div class="card-body ribbon">
                             <a href="{{route('admission.list')}}" class="my_sort_cut text-muted">
@@ -38,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-xl-2">
+                <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="card">
                         <div class="card-body">
                             <a href="{{route('report.productivity.detail')}}" class="my_sort_cut text-muted">
@@ -49,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-xl-2">
+                <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="card">
                         <div class="card-body ribbon">
                             <a href="{{route('report.opportunity')}}" class="my_sort_cut text-muted">
@@ -66,8 +56,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-6 col-md-4 col-xl-2">
+                <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="card style=">
                         <div class="card-body ribbon">
                             <div class="ribbon-box pink">{{$pending_older_admission}}</div>
@@ -87,7 +76,7 @@
         <div class="container-fluid">
             <div class="row clearfix row-deck">
                 <!-- Yearly Orders ChartJS -->
-                <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="col-xl-4 col-lg-4 col-md-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Estadística Órdenes Anual</h3>
@@ -107,7 +96,7 @@
                     </div>
                 </div>
                 <!-- Yearly Opportunity ChartJS -->
-                <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="col-xl-4 col-lg-4 col-md-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Estadística Oportunidad Anual</h3>
@@ -121,6 +110,26 @@
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
 {{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
+                                <small>Nota: </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Yearly OrderPrintings ChartJS -->
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Estadística Órdenes Impresas</h3>
+                            <div class="card-options">
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="printedorders-chart" height="100"></canvas>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                {{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -286,6 +295,49 @@
                 };
                 var timeChart = new Chart(
                     document.getElementById('time-chart'),
+                    config
+                );
+            }
+        }
+    </script>
+    <!-- Printed Orders ChartJS -->
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        var url = '/dashboard/get-yearly-printedorders';
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var prtord_data = JSON.parse(this.responseText);
+
+                var monthly = prtord_data.map(function (elem) {
+                    return elem.new_date;
+                });
+                var avgs = prtord_data.map(function (elem) {
+                    return elem.id_count;
+                });
+                var avgs = prtord_data.map(function (elem) {
+                    return elem.id_count;
+                });
+
+                console.log(monthly);
+
+                const data = {
+                    labels: monthly,
+                    datasets: [{
+                        label: 'Órdenes impresas recibidas en Admisión por mes',
+                        backgroundColor: 'rgb(39,130,61)',
+                        borderColor: 'rgb(39,130,61)',
+                        data: avgs,
+                    }]
+                };
+                const config = {
+                    type: 'line',
+                    data,
+                    options: {}
+                };
+                var printedorders = new Chart(
+                    document.getElementById('printedorders-chart'),
                     config
                 );
             }

@@ -226,12 +226,26 @@
                                         <div class="form-group">
                                             <div class="custom-switches-stacked">
                                                 <label class="custom-switch">
-                                                    <input type="radio" name="option" value="Acetato" class="custom-switch-input" checked>
+                                                    <input type="radio"
+                                                           name="option"
+                                                           value="Acetato"
+                                                           class="custom-switch-input"
+                                                            @if($is_virtual == 0)
+                                                               checked
+                                                            @endif
+                                                    >
                                                     <span class="custom-switch-indicator"></span>
                                                     <span class="custom-switch-description">Acetato</span>
                                                 </label>
                                                 <label class="custom-switch">
-                                                    <input type="radio" name="option" value="Virtual" class="custom-switch-input">
+                                                    <input type="radio"
+                                                           name="option"
+                                                           value="Virtual"
+                                                           class="custom-switch-input"
+                                                            @if($is_virtual == 1)
+                                                                checked
+                                                            @endif
+                                                    >
                                                     <span class="custom-switch-indicator"></span>
                                                     <span class="custom-switch-description">Virtual</span>
                                                 </label>

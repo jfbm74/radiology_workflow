@@ -74,7 +74,6 @@ class Admission extends Model
     }
 
 
-
     /**
      * Functions that returns a admissions  collection that have status Active
      * @param $query
@@ -129,6 +128,27 @@ class Admission extends Model
         return $query = Admission::where('status', 'Pendiente')
             ->whereDate('invoice_date', '<', Carbon::yesterday())
             ->orderBy('invoice_date', 'asc');
+    }
+
+
+    /**
+     * Function that returns a printed orders collection in Admission
+     * cumulative months by year
+     * @param $query
+     * @return mixed
+     */
+    public function scopeQuantyPrintedOrdersByDate($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('admissions')
+            ->select(
+                DB::raw('count(*) as id_count'),
+                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" )
+            )
+            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
+            ->groupBy('new_date')
+            ->orderBy('new_date', 'ASC')
+            ->get();
     }
 
 

@@ -20,6 +20,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -27,6 +28,7 @@ class ProductSeeder extends Seeder
         $product->name = 'COPIA (PANORAMICA, ATM, SENOS M.)';
         $product->radiation_dose_type = '0';
         $product->station = 'rayos-x';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -36,6 +38,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -43,6 +46,7 @@ class ProductSeeder extends Seeder
         $product->name = 'COPIA (PERIAPICAL,OCLUSAL,MILIMETRADA,CORONAL)';
         $product->radiation_dose_type = '0';
         $product->station = 'periapical';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -51,6 +55,7 @@ class ProductSeeder extends Seeder
         $product->name = 'COPIA FOTOS';
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -59,6 +64,7 @@ class ProductSeeder extends Seeder
         $product->name = 'COPIA RX';
         $product->radiation_dose_type = '0';
         $product->station = 'rayos-x';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -67,6 +73,7 @@ class ProductSeeder extends Seeder
         $product->name = 'FOTOGRAFIA EN CD';
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -75,6 +82,7 @@ class ProductSeeder extends Seeder
         $product->name = 'FOTOGRAFIA INDIVIDUAL';
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -84,6 +92,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -92,6 +101,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -100,6 +110,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -108,6 +119,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -116,6 +128,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -124,6 +137,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -132,6 +146,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -140,6 +155,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'laboratorio';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -148,6 +164,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'laboratorio';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -156,6 +173,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'laboratorio';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -164,6 +182,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'laboratorio';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -172,6 +191,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '0';
         $product->station = 'laboratorio';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -179,6 +199,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PANORAMICA Y FOTOS';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -186,6 +207,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PANORAMICA Y FOTOS PAPEL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -193,6 +215,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PANORAMICA Y FOTOS VIRTUAL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -200,6 +223,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO  COMPLETO (RXPA.+RXPE.+FOTOS/MODELOS+TRAZO)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -207,6 +231,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO  COMPLETO (RXPA.+RXPE.+FOTOS/MODELOS+TRAZO) -VIRTUAL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -214,6 +239,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO A (RXPA.+RXPE.+8FOTOS )';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -221,6 +247,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO A (RXPA.+RXPE.+8FOTOS ) PAPEL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -228,6 +255,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO A (RXPA.+RXPE.+8FOTOS ) VIRTUAL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -235,6 +263,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO B (RXPA.+RXPE.+MODELOS)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -242,6 +271,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO BASICO B (RXPA.+RXPE.+MODELOS)VIRTUAL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -249,6 +279,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. DIAGNOSTICO COMPLETO SIN PANORAMICA';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -256,6 +287,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. IMPLANTOLOGIA (RXPA.+ RXPERIAP.COMPLETO+MOD. TRAB. +5FOTOS)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -263,6 +295,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. MAXILOFACIAL (RXPA.+ RXPE. + RXAP. + 14FOTOS + MOD. EST.)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -270,6 +303,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. ORTODONCIA COMPLETO (RXPA.+ RXPE+ 8FOTOS + MOD.E/T + TRAZO CEF.)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -277,6 +311,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. ORTODONCIA COMPLETO (RXPA.+ RXPE+ 8FOTOS + MOD.E/T + TRAZO CEF.) PAPEL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -284,6 +319,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. ORTODONCIA COMPLETO (RXPA.+ RXPE+ 8FOTOS + MOD.E/T + TRAZO CEF.) VIRTUAL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -291,6 +327,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. ORTODONCIA COMPLETO (RXPA.+ RXPE+ 8FOTOS + TRAZO CEF.)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -298,6 +335,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. PERIODONCIA (RXPERIAP. COMPLETO+ 5FOTOS INTRAORALES)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -305,6 +343,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ. REHABILITACION (RXPA.+ RXPERIAPICAL COMPLETO + MODELOS DE TRABAJO + 5FOTOS)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -312,6 +351,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ.ORT. SIN PAN. RX DENT PREVIA (PERFIL.+MOD.EST. Ó TRAB.+8FOTOS-TRAZO)';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -319,6 +359,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PAQ.ORT. SIN PAN. RX DENT PREVIA (PERFIL.+MOD.EST. Ó TRAB.+8FOTOS-TRAZO) VIRTUAL';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -326,6 +367,7 @@ class ProductSeeder extends Seeder
         $product->name = 'PERFIL Y FOTO';
         $product->radiation_dose_type = '0';
         $product->is_package = '1';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -334,6 +376,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -342,6 +385,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -350,6 +394,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -357,6 +402,7 @@ class ProductSeeder extends Seeder
         $product->name = 'RX ATM VISTA FRONTAL-VIRTUAL';
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
+        $product->is_virtual = '1';
         $product->is_package = '0';
         $product->save();
 
@@ -366,6 +412,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -374,6 +421,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -382,6 +430,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -390,6 +439,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -397,6 +447,7 @@ class ProductSeeder extends Seeder
         $product->name = 'RX CORONAL DIGITAL VIRTUAL';
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
+        $product->is_virtual = '1';
         $product->is_package = '0';
         $product->save();
 
@@ -406,6 +457,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -414,6 +466,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -422,6 +475,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -430,6 +484,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -438,6 +493,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -446,6 +502,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -454,6 +511,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -462,6 +520,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -470,6 +529,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -478,6 +538,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -485,6 +546,7 @@ class ProductSeeder extends Seeder
         $product->name = 'RX PERIAPICAL COMPLETO DIGITAL (HASTA 14)';
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -494,6 +556,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -502,6 +565,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -509,6 +573,7 @@ class ProductSeeder extends Seeder
         $product->name = 'RX PERIAPICAL MEDIO DIGITAL VIRTUAL (5 O HASTA 7)';
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
+        $product->is_virtual = '1';
         $product->is_package = '0';
         $product->save();
 
@@ -518,6 +583,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -526,6 +592,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -534,6 +601,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -542,6 +610,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -550,6 +619,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '1';
         $product->station = 'periapical';
         $product->is_package = '0';
+        $product->is_virtual = '1';
         $product->save();
 
         $product = New Product;
@@ -557,6 +627,7 @@ class ProductSeeder extends Seeder
         $product->name = 'RX SENOS MAXILARES VISTA FRONTAL';
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -566,6 +637,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -574,6 +646,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -582,6 +655,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -589,6 +663,7 @@ class ProductSeeder extends Seeder
         $product->name = 'TOMOGRAFIA DE MAXILAR SUPERIOR';
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -597,6 +672,7 @@ class ProductSeeder extends Seeder
         $product->name = 'TOMOGRAFIA DIENTE INCLUIDO';
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -606,6 +682,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -614,6 +691,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -622,6 +700,7 @@ class ProductSeeder extends Seeder
         $product->radiation_dose_type = '2';
         $product->station = 'rayos-x';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
 
         $product = New Product;
@@ -629,6 +708,7 @@ class ProductSeeder extends Seeder
         $product->name = 'TRAZO CEFALOMETRICO';
         $product->radiation_dose_type = '0';
         $product->station = 'fotos';
+        $product->is_virtual = '0';
         $product->is_package = '0';
         $product->save();
 
@@ -637,6 +717,7 @@ class ProductSeeder extends Seeder
         $product->name = 'WATTERS';
         $product->radiation_dose_type = '0';
         $product->is_package = '0';
+        $product->is_virtual = '0';
         $product->save();
     }
 }

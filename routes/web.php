@@ -76,6 +76,10 @@ Route::group([  'prefix' => 'dashboard',
             ->name('report.professionals.monthly');
         Route::get('/get-monthly-technicians', 'ManagerController@get_technicians_json_monthly')
             ->name('report.technicians.monthly');
+        Route::get('/get-yearly-printedorders', 'ManagerController@get_printedorders_json_yearly')
+            ->name('report.printedorders.monthly');
+
+
     }
 );
 
