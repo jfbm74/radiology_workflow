@@ -38,12 +38,7 @@
                     </li>
                     <li><a href="{{ route('admission.index') }}"><i class="fa fa-plus-circle"></i><span>Admisión</span></a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)" class="has-arrow arrow-c"><i
-                                class="fa fa-user-md"></i><span>Atención</span></a>
-                        <ul>
-                            <li><a href="{{ route('attention.index') }}"><span>Toma Imágenes</span></a></li>
-                        </ul>
+                    <li><a href="{{ route('attention.index') }}"><i class="fa fa-user-md"></i><span>Atención</span></a>
                     </li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-archive"></i><span>Gestión

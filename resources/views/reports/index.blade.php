@@ -30,46 +30,43 @@
                                     <div class="row">
                                         <div class="col-5 py-1"><strong>Creado:</strong></div>
                                         <div class="col-7 py-1">16 Abril 2021</div>
-                                        <div class="col-5 py-1"><strong>Por:</strong></div>
-                                        <div class="col-7 py-1">Juan Felipe Bustamante</div>
+                                        <div class="col-5 py-1"><strong>Version:</strong></div>
+                                        <div class="col-7 py-1">v1.0</div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
                                         <div class="col-5 py-1"><a href="{{route('report.productivity.detail')}}"> <span class="tag tag-cyan">Productividad Detallado</span></a></div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Consolidado</span></div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
                                         <div class="col-5 py-1"><a href="{{route('report.opportunity')}}"> <span class="tag tag-azure">Oportunidad Detallado</span></a></div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-azure">Oportunidad Consolidado</span></div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">DIMENSIÓN: PROFESIONALES</h3>
-                                    <div class="card-options">
 
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <span class="tag tag-pink mb-3">Profesionales</span>
-                                    <p>Reportes por profesional relacionando el número de órdenes referidas</p>
-                                    <div class="row">
-                                        <div class="col-5 py-1"><strong>Creado:</strong></div>
-                                        <div class="col-7 py-1">16 Abril 2021</div>
-                                        <div class="col-5 py-1"><strong>Por:</strong></div>
-                                        <div class="col-7 py-1">Juan Felipe Bustamante</div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-cyan">Órdenes Consolidado</span></div>
-                                        </div>
-                                </div>
                                 <div class="card-footer">
                                 </div>
                             </div>
                         </div>
+{{--                        <div class="col-lg-4 col-md-12">--}}
+{{--                            <div class="card">--}}
+{{--                                <div class="card-header">--}}
+{{--                                    <h3 class="card-title">DIMENSIÓN: PROFESIONALES</h3>--}}
+{{--                                    <div class="card-options">--}}
+
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="card-body">--}}
+{{--                                    <span class="tag tag-pink mb-3">Profesionales</span>--}}
+{{--                                    <p>Reportes por profesional relacionando el número de órdenes referidas</p>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-5 py-1"><strong>Creado:</strong></div>--}}
+{{--                                        <div class="col-7 py-1">16 Abril 2021</div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Por:</strong></div>--}}
+{{--                                        <div class="col-7 py-1">Juan Felipe Bustamante</div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>--}}
+{{--                                        <div class="col-5 py-1"><span class="tag tag-cyan">Órdenes Consolidado</span></div>--}}
+{{--                                        </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="card-footer">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="col-lg-4 col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -84,45 +81,45 @@
                                     <div class="row">
                                         <div class="col-5 py-1"><strong>Creado:</strong></div>
                                         <div class="col-7 py-1">16 Abril 2021</div>
-                                        <div class="col-5 py-1"><strong>Por:</strong></div>
-                                        <div class="col-7 py-1">Juan Felipe Bustamante</div>
+                                        <div class="col-5 py-1"><strong>Version:</strong></div>
+                                        <div class="col-7 py-1">v1.0</div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><a href="{{route('report.dosimetry')}}"><span class="tag tag-cyan">Dosimetría</span></a> </div>
+                                        <div class="col-5 py-1"><a href="{{route('report.dosimetry')}}"><span class="tag tag-cyan">Dosis de Radiación</span></a> </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">DIMENSIÓN: SEGURIDAD DEL PACIENTE</h3>
-                                    <div class="card-options">
+{{--                        <div class="col-lg-4 col-md-12">--}}
+{{--                            <div class="card">--}}
+{{--                                <div class="card-header">--}}
+{{--                                    <h3 class="card-title">DIMENSIÓN: SEGURIDAD DEL PACIENTE</h3>--}}
+{{--                                    <div class="card-options">--}}
 
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <span class="tag tag-blue mb-3">Paciente</span>
-                                    <p>Principales reportes acerca del comportamiento de las órdenes de servicio</p>
-                                    <div class="row">
-                                        <div class="col-5 py-1"><strong>Creado:</strong></div>
-                                        <div class="col-7 py-1">16 Abril 2021</div>
-                                        <div class="col-5 py-1"><strong>Por:</strong></div>
-                                        <div class="col-7 py-1">Juan Felipe Bustamante</div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Detallado</span></div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Consolidado</span></div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-azure">Oportunidad Detallado</span></div>
-                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
-                                        <div class="col-5 py-1"><span class="tag tag-azure">Oportunidad Consolidado</span></div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="card-body">--}}
+{{--                                    <span class="tag tag-blue mb-3">Paciente</span>--}}
+{{--                                    <p>Principales reportes acerca del comportamiento de las órdenes de servicio</p>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-5 py-1"><strong>Creado:</strong></div>--}}
+{{--                                        <div class="col-7 py-1">16 Abril 2021</div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Por:</strong></div>--}}
+{{--                                        <div class="col-7 py-1">Juan Felipe Bustamante</div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>--}}
+{{--                                        <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Detallado</span></div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>--}}
+{{--                                        <div class="col-5 py-1"><span class="tag tag-cyan">Productividad Consolidado</span></div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>--}}
+{{--                                        <div class="col-5 py-1"><span class="tag tag-azure">Oportunidad Detallado</span></div>--}}
+{{--                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>--}}
+{{--                                        <div class="col-5 py-1"><span class="tag tag-azure">Oportunidad Consolidado</span></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="card-footer">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
 
 

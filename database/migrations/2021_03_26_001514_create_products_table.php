@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('cod_manager');
             $table->string('name');
-            $table->smallInteger('radiation_dose_type')->nullable();
+            $table->integer('radiation_dose_type')->nullable();
             $table->string('station')->nullable();
             $table->boolean('is_package')->nullable();
             $table->boolean('is_active')->default(1);

@@ -76,7 +76,7 @@
         <div class="container-fluid">
             <div class="row clearfix row-deck">
                 <!-- Yearly Orders ChartJS -->
-                <div class="col-xl-4 col-lg-4 col-md-4">
+                <div class="col-xl-6 col-lg-4 col-md-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Estadística Órdenes Anual</h3>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <!-- Yearly Opportunity ChartJS -->
-                <div class="col-xl-4 col-lg-4 col-md-4">
+                <div class="col-xl-6 col-lg-4 col-md-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Estadística Oportunidad Anual</h3>
@@ -110,26 +110,6 @@
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
 {{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
-                                <small>Nota: </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Yearly OrderPrintings ChartJS -->
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Estadística Órdenes Impresas</h3>
-                            <div class="card-options">
-
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="printedorders-chart" height="100"></canvas>
-                        </div>
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-between align-items-center">
-                                {{--                                <a href="javascript:void(0)" class="btn btn-info btn-sm w200 mr-3">Generar Reporte</a>--}}
                                 <small>Nota: </small>
                             </div>
                         </div>
@@ -300,48 +280,7 @@
             }
         }
     </script>
-    <!-- Printed Orders ChartJS -->
-    <script>
-        var xmlhttp = new XMLHttpRequest();
-        var url = '/dashboard/get-yearly-printedorders';
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var prtord_data = JSON.parse(this.responseText);
 
-                var monthly = prtord_data.map(function (elem) {
-                    return elem.new_date;
-                });
-                var avgs = prtord_data.map(function (elem) {
-                    return elem.id_count;
-                });
-                var avgs = prtord_data.map(function (elem) {
-                    return elem.id_count;
-                });
-
-                console.log(monthly);
-
-                const data = {
-                    labels: monthly,
-                    datasets: [{
-                        label: 'Órdenes impresas recibidas en Admisión por mes',
-                        backgroundColor: 'rgb(39,130,61)',
-                        borderColor: 'rgb(39,130,61)',
-                        data: avgs,
-                    }]
-                };
-                const config = {
-                    type: 'line',
-                    data,
-                    options: {}
-                };
-                var printedorders = new Chart(
-                    document.getElementById('printedorders-chart'),
-                    config
-                );
-            }
-        }
     </script>
     <!-- Product ChartJS -->
     <script>

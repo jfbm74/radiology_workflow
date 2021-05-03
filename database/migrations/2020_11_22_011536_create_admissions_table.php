@@ -26,7 +26,7 @@ class CreateAdmissionsTable extends Migration
 
         Schema::create('admissions', function (Blueprint $table) {
             $table->id();
-            $table->integer('invoice_number')->unique();
+            $table->integer('invoice_number');
             $table->string('doctype');
             $table->string('docclase');
             $table->dateTime('invoice_date');

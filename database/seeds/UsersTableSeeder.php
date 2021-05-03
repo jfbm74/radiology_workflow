@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
         User::truncate();
 
         $user = new User;
+        $user->id = 100000;
         $user->name = 'Juan - Administrador';
         $user->email = 'pipe@gmail.com';
         $user->password = bcrypt('12345678');
@@ -24,6 +25,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100001;
         $user->name = 'Estacion RX';
         $user->email = 'estacionrayosx@rxdent.co';
         $user->password = bcrypt('12345678');
@@ -33,6 +35,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100002;
         $user->name = 'Estacion Fotos';
         $user->email = 'estacionfotos@rxdent.co';
         $user->password = bcrypt('12345678');
@@ -42,6 +45,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100003;
         $user->name = 'Estacion Periapical';
         $user->email = 'estacionperiapical@rxdent.co';
         $user->password = bcrypt('12345678');
@@ -51,6 +55,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100004;
         $user->name = 'Andrea - Facturacion';
         $user->email = 'andrea@gmail.com';
         $user->password = bcrypt('12345678');
@@ -60,6 +65,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100005;
         $user->name = 'Paola - Imagenes';
         $user->email = 'paola@gmail.com';
         $user->password = bcrypt('12345678');
@@ -69,6 +75,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100006;
         $user->name = 'Dina - Imagenes';
         $user->email = 'paola@gmail.com';
         $user->password = bcrypt('12345678');
@@ -78,6 +85,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100007;
         $user->name = 'Khaterine - Imagenes';
         $user->email = 'paola@gmail.com';
         $user->password = bcrypt('12345678');
@@ -87,6 +95,7 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->id = 100008;
         $user->name = 'Jenny - Imagenes';
         $user->email = 'paola@gmail.com';
         $user->password = bcrypt('12345678');
@@ -95,40 +104,8 @@ class UsersTableSeeder extends Seeder
         $user->pin = '4444';
         $user->save();
 
-
         $user = new User;
-        $user->name = 'Diana Quintero- Manager';
-        $user->email = 'diana@gmail.com';
-        $user->password = bcrypt('12345678');
-        $user->is_staff = true;
-        $user->rol = 0;
-        $user->pin = '4321';
-
-        $user->save();
-
-        $user = new User;
-        $user->id = 999;
-        $user->name = 'GENERICO';
-        $user->email = '';
-        $user->password = bcrypt('PORTALES');
-        $user->is_staff = false;
-        $user->pin = '';
-        $user->save();
-
-        $user->save();
-
-        $user = new User;
-        $user->id = 369;
-        $user->name = 'NATURAL SMILE';
-        $user->legal_id = "901077262";
-        $user->email = 'natural@smile.com';
-        $user->password = bcrypt('12345678');
-        $user->is_staff = false;
-        $user->pin = '';
-        $user->save();
-
-        $user = new User;
-        $user->id = 11;
+        $user->id = 100009;
         $user->name = 'USUARIO ANONIMO (NO BORRAR)';
         $user->legal_id = "";
         $user->email = 'usuariogen@rxdent.co';

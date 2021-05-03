@@ -119,46 +119,89 @@
                                                                             <div class="modal-body">
                                                                                 <div class="row clearfix">
                                                                                     <div class="col-md-12 col-sm-6">
-                                                                                        @if ($order->product->radiation_dose_type > 0) !== false)
-                                                                                        <h6>Dosis de radiación</h6>
-                                                                                        <div class="form-group">
+                                                                                        @switch($order->product->radiation_dose_type)
+                                                                                            @case(1)
+                                                                                        <-- Periapical Dose -->
+                                                                                                <h6>Dosis de radiación Tipo: {{$order->product->radiation_dose_type}}</h6>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="kv"
+                                                                                                           class="form-control"
+                                                                                                           value="70"
+                                                                                                           readonly>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="ma"
+                                                                                                           class="form-control"
+                                                                                                          value="7"
+                                                                                                           readonly>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="dosis"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="Dosis"
+                                                                                                           value=""
+                                                                                                           disabled>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="extime"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="EXTIME"
+                                                                                                           step="0.01"  min="0.1" max="1"
+                                                                                                           autocomplete="off"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                                @break
 
-                                                                                            <input type="number"
-                                                                                                   name="kv"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="KV"
-                                                                                                   step="1"  min="1" max="100"
-                                                                                                   autocomplete="off"
-                                                                                                   required>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <input type="number"
-                                                                                                   name="ma"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="MA"
-                                                                                                   step="0.1"  min="0" max="10"
-                                                                                                   autocomplete="off"
-                                                                                                   required>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <input type="number"
-                                                                                                   name="dosis"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="DOSIS"
-                                                                                                   step="0.1"  min="1" max="200"
-                                                                                                   autocomplete="off"
-                                                                                                   required>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <input type="number"
-                                                                                                   name="extime"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="EXTIME"
-                                                                                                   step="0.1"  min="1" max="20"
-                                                                                                   autocomplete="off"
-                                                                                                   required>
-                                                                                        </div>
-                                                                                        @endif
+                                                                                            @case(2)
+                                                                                        <-- Pano Dose -->
+                                                                                                <h6>Dosis de radiación Tipo: {{$order->product->radiation_dose_type}}</h6>
+                                                                                                <div class="form-group">
+
+                                                                                                    <input type="number"
+                                                                                                           name="kv"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="KV"
+                                                                                                           step="1"  min="1" max="100"
+                                                                                                           autocomplete="off"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="ma"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="MA"
+                                                                                                           step="0.1"  min="0" max="10"
+                                                                                                           autocomplete="off"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="dosis"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="DOSIS"
+                                                                                                           step="0.1"  min="1" max="200"
+                                                                                                           autocomplete="off"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input type="number"
+                                                                                                           name="extime"
+                                                                                                           class="form-control"
+                                                                                                           placeholder="EXTIME"
+                                                                                                           step="0.1"  min="1" max="20"
+                                                                                                           autocomplete="off"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                                @break
+                                                                                            @default
+                                                                                        <-- No dose -->
+                                                                                            <h6>Dosis de radiación Tipo: {{$order->product->radiation_dose_type}}</h6>
+                                                                                        @endswitch
+
                                                                                         <div class="form-group">
                                                                                             <input type="number"
                                                                                                    name="pin"

@@ -23,7 +23,7 @@ class CreateServiceOrderDetailsTable extends Migration
             $table->dateTime('fullfilment_date')->nullable();
             $table->float('kv')->nullable();
             $table->float('ma')->nullable();
-            $table->float('dosis')->nullable();
+            $table->float('dosis', 10, 3)->nullable();
             $table->float('extime')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();

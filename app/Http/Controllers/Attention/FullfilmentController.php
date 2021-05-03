@@ -91,14 +91,22 @@ class FullfilmentController extends Controller
 
         //retrive Product
         $product = Product::where('id', $orderdetail->product_id)->first();
-
-
         // Updating radiation dose parameters
         $orderdetail->kv = $request->kv;
         $orderdetail->ma = $request->ma;
         $orderdetail->dosis = $request->dosis;
         $orderdetail->extime = $request->extime;
+
+        if ($product->radiation_dose_type == 1)
+        {
+            $dose = app()->call('App\Http\Controllers\Attention\FullfilmentController@calculate_dose', [
+                'request' => $request,
+                'product' => $product
+            ]);
+            $orderdetail->dosis = $dose;
+        }
         $orderdetail->save();
+
 
         $admissions = Admission::attending()->get();
 
@@ -170,8 +178,9 @@ class FullfilmentController extends Controller
         switch ($product->radiation_dose_type){
             case 1:
                 echo "Periapical";
-                $dose = ((-1.533)*($request->exposure_time*$request->exposure_time*$request->exposure_time))
-                    +((0.5337)*$request->exposure_time*$request->exposure_time)+((1.0363) * $request->exposure_time);
+
+                $dose = ((-1.533)*($request->extime*$request->extime*$request->extime))
+                    +((0.5337)*$request->extime*$request->extime)+((1.0363) * $request->extime);
                 break;
             case 2:
                 echo "X-ray";

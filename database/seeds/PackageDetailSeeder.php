@@ -14,7 +14,7 @@ class PackageDetailSeeder extends Seeder
     {
         $detail = new PackageDetail;
         $detail->package_id = '1';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -24,7 +24,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '1';
-        $detail->product_id = '12';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -39,12 +39,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '3';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '3';
-        $detail->product_id = '61';
+        $detail->product_id = '58';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -54,7 +54,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '3';
-        $detail->product_id = '16';
+        $detail->product_id = '80';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -84,12 +84,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->product_id = '67';
+        $detail->product_id = '59';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '6';
-        $detail->product_id = '72';
+        $detail->product_id = '12';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -99,7 +99,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '7';
-        $detail->product_id = '62';
+        $detail->product_id = '60';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -375,11 +375,6 @@ class PackageDetailSeeder extends Seeder
         $detail = new PackageDetail;
         $detail->package_id = '20';
         $detail->product_id = '11';
-        $detail->save();
-
-        $detail = new PackageDetail;
-        $detail->package_id = '20';
-        $detail->product_id = '16';
         $detail->save();
 
         $detail = new PackageDetail;
