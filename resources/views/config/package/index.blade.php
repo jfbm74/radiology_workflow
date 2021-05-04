@@ -76,7 +76,7 @@
                                                 <td>
                                                     @foreach( $package->packagedetail as $detail)
                                                         <div class="row">
-                                                        <span class="tag">{{ $detail->product->cod_manager }}-{{ $detail->product->name }}</span>
+                                                        <span class="tag">{{ $detail->product->id }}-{{ $detail->product->cod_manager }}-{{ $detail->product->name }}</span>
                                                         </div>
                                                     @endforeach
                                                 </td>

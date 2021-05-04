@@ -115,7 +115,7 @@ class Printing extends Model
             ->join('products', 'products.id', '=', 'service_order_details.product_id')
             ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
             ->groupBy('products.name')
-            ->orderBy('products.name', 'ASC')
+            ->orderBy('id_count', 'DESC')
             ->get();
     }
 

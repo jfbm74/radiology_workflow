@@ -29,12 +29,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '2';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '2';
-        $detail->product_id = '12';
+        $detail->product_id = '10';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -64,7 +64,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '4';
-        $detail->product_id = '70';
+        $detail->product_id = '12';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -144,12 +144,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->product_id = '58';
+        $detail->product_id = '59';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '10';
-        $detail->product_id = '10';
+        $detail->product_id = '12';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -199,12 +199,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '12';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '12';
-        $detail->product_id = '61';
+        $detail->product_id = '62';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -219,7 +219,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '13';
-        $detail->product_id = '61';
+        $detail->product_id = '62';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -229,7 +229,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '14';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -254,12 +254,12 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
         $detail->package_id = '15';
-        $detail->product_id = '61';
+        $detail->product_id = '62';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -274,7 +274,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '16';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -304,7 +304,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '17';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -324,7 +324,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->product_id = '58';
+        $detail->product_id = '60';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -334,7 +334,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '18';
-        $detail->product_id = '10';
+        $detail->product_id = '11';
         $detail->save();
 
         $detail = new PackageDetail;
@@ -384,7 +384,7 @@ class PackageDetailSeeder extends Seeder
 
         $detail = new PackageDetail;
         $detail->package_id = '21';
-        $detail->product_id = '56';
+        $detail->product_id = '54';
         $detail->save();
 
         $detail = new PackageDetail;

@@ -33,7 +33,6 @@ class BillDetail extends Model
             ->join('products', 'bill_details.codprod', '=', 'products.cod_manager')
             ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
             ->where('products.is_package', '=', '1')
-            ->where('admissions.status', '=', 'Finalizado')
             ->groupBy('products.cod_manager')
             ->orderBy('product_count', 'DESC')
             ->get();
