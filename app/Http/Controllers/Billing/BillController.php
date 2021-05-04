@@ -92,11 +92,18 @@ class BillController extends Controller
      */
     public function search(Request $request)
     {
+
         // flag for detail product, if at least one product is tagged as virtual then its value is 1
         $is_virtual= 0;
 
+        if ($request->doctipo == 'OS'){
+            $docclase = "FV00";
+        }
+        else{
+            $docclase = "FV01";
+        }
+
         $bill = $request->invoice;
-        $docclase = $request->docclase;
         $doctipo = $request->doctipo;
 
         //Search Invoice into ManagarDB
@@ -151,6 +158,7 @@ class BillController extends Controller
                 }
             }
         }
+        //dd($request);
         return view('admission.create', compact('invoice', 'details', 'is_virtual'));
     }
 }

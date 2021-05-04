@@ -14,63 +14,20 @@
 @section('content')
     <div class="section-body">
         <div class="container-fluid">
-           <div class="d-flex justify-content-between align-items-center mb-3">
-               {{--<ul class="nav nav-tabs page-header-tab">
-                   <div class="header-action">
-                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
-                               class="fe fe-plus mr-2"></i>Factura</button>
-                   </div>
-                       &nbsp;&nbsp;
-                   <div class="header-action">
-                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalos"><i
-                               class="fe fe-plus mr-2"></i>Órden Servicio</button>
-                   </div>
-               </ul>--}}
-
-               <div class="card">
-                   <div class="card-header">
-                       <h3 class="card-title">Buscar Factura / Órden de Servicio</h3>
-                   </div>
-                   <div class="card-body">
-                       <form method="POST" action="{{ route('bill.search') }}">
-
-                           @csrf
-                           <div class="custom-control custom-radio custom-control-inline">
-                               <input type="radio"
-                                      id="doctipo"
-                                      name="doctipo"
-                                      value="FV"
-                                      class="custom-control-input"
-                                      required>
-
-                               <label class="custom-control-label" for="doctipo">Factura</label>
-                           </div>
-                           <div class="custom-control custom-radio custom-control-inline">
-                               <input type="radio"
-                                      id="doctipo1"
-                                      name="doctipo"
-                                      value="OS"
-                                      class="custom-control-input">
-                               <label class="custom-control-label" for="doctipo1">Orden Servicio</label>
-                           </div>
-                           <div class="custom-control custom-control-inline">
-                               <input type="number"
-                                      name="invoice"
-                                      class="form-control"
-                                      placeholder="N° Factura"
-                                      required>
-                           </div>
-                           <div class="custom-control custom-control-inline">
-                               <button class="btn btn-primary">Buscar</button>
-                           </div>
-
-                       </form>
-
-                   </div>
-               </div>
-           </div>
-
-           {{-- Start Stats --}}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <ul class="nav nav-tabs page-header-tab">
+                    <div class="header-action">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fe fe-plus mr-2"></i>Factura</button>
+                    </div>
+                        &nbsp;&nbsp;
+                    <div class="header-action">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalos"><i
+                                class="fe fe-plus mr-2"></i>Órden Servicio</button>
+                    </div>
+                </ul>
+            </div>
+            {{-- Start Stats --}}
             @include('admission.partials.stats')
             {{-- End Stats --}}
         </div>
@@ -168,7 +125,7 @@
                     <div class="modal-body">
                         <div class="row clearfix">
                             <div class="col-md-12 col-sm-6">
-
+                                <input type="hidden" id="docclase" name="docclase" value="FV01">
                                 <input type="hidden" id="doctipo" name="doctipo" value="FV">
 
 
@@ -205,6 +162,7 @@
                             <div class="col-md-12 col-sm-6">
 
                                 <div class="form-group">
+                                    <input type="hidden" id="docclase" name="docclase" value="FV00">
                                     <input type="hidden" id="doctipo" name="doctipo" value="OS">
                                     <input type="number" name="invoice" class="form-control" placeholder="N° Orden Servicio">
                                 </div>

@@ -18,10 +18,17 @@ class CheckInvoice
     public function handle($request, Closure $next)
     {
 
+        if ($request->doctipo == 'OS'){
+            $docclase = "FV00";
+        }
+        else{
+            $docclase = "FV01";
+        }
+
         $invoice = DB::connection('manager')
                 ->table('manager.mngdoc')
                 ->select(   'docnumero')
-                ->where('docclase', $request->docclase)
+                ->where('docclase', $docclase)
                 ->where('docnumero', $request->invoice)
                 ->first();
 
