@@ -1,40 +1,39 @@
-version: '3.2'
+version: '3.7'
+
+networks:
+  travellist:
+    driver: bridge
+
 services:
-  laravel-db:
+  mysql-db:
     image: mysql:5.7
+    volumes:
+      - ./data/db:/var/lib/mysql
+    container_name: mysql-db
+    ports:
+      - 30369:3036
     environment:
-      MYSQL_ROOT_PASSWORD: 12345678
-      MYSQL_DATABASE: rxdent2
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: 12345678
-    ports:
-      - 33069:3306
-    volumes:
-      - ./data/schemas/:/var/lib/mysql
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=rxportal2
+      - MYSQL_USER=laravel
+      - MYSQL_PASSWORD=12345678
     networks:
-      laravel_prod_net:
-        - ipv4_address: "192.168.0.70"
-  laravel-prod:
+      - travellist
+
+  laravel-app:
     build:
-      context: ./
-      dockerfile: Dockerfile
+      context: '.'
+      args:
+        uid: ${UID}
+    container_name: laravel-app
     ports:
-      - 8200:80
+      - 8009:80
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
     volumes:
-      - ./example-prod:/var/www
-      - ./example-prod/public:/var/www/html
-    networks:
-      laravel_prod_net:
-        - ipv4_address: "192.168.0.71"
+      - .:/var/www/html
     depends_on:
-      - laravel-db
-  networks:
-    laravel_prod_net:
-      driver: bridge
-      ipam:
-        driver: default
-        config:
-          - subnet: 192.168.0.0/24
-
-
-
+      - mysql-db
+    networks:
+      - travellist
