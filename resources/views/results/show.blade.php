@@ -177,7 +177,7 @@
                                 @endphp
                                 @foreach ($os_details as $order)
                                     @foreach ($order->printing as $print)
-                                        @if ($print->type == 'Virtual')
+                                        @if ($print->type == 'Virtual' || $print->serviceorderdetail->status == 'nuevo' )
                                             @continue
                                         @endif
                                         <tr>

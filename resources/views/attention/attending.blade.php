@@ -241,13 +241,26 @@
                                                 {{-- Actions --}}
                                                 {{-- Fullfilment with 100% Order Accomplished --}}
                                                 @if ($progress == 100)
-                                                    <div class="header-action">
-                                                        <button type="button" class="btn btn-primary"
-                                                                data-toggle="modal"
-                                                                data-target="#exampleModal100{{ $admission->id }}"><i
-                                                                class="fa fa-check-square-o"></i>&nbsp;
-                                                            Finalizar</button>
-                                                    </div>
+
+{{--                                                        <div class="header-action">--}}
+{{--                                                            <button type="button" class="btn btn-primary"--}}
+{{--                                                                    data-toggle="modal"--}}
+{{--                                                                    data-target="#exampleModal100{{ $admission->id }}"><i--}}
+{{--                                                                    class="fa fa-check-square-o"></i>&nbsp;--}}
+{{--                                                                Finalizar</button>--}}
+{{--                                                        </div>--}}
+
+                                                    <form method="POST"
+                                                        action="{{ route('order.complete', ['admission' => $admission->id]) }}">
+                                                        @csrf @method('PUT')
+                                                        <button class="btn btn-primary">
+                                                            <i class="fa fa-check-square-o">
+
+                                                            </i>&nbsp;
+                                                            Finalizar
+                                                        </button>
+                                                    </form>
+
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal100{{ $admission->id }}"
                                                          tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

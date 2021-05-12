@@ -142,7 +142,7 @@ Route::group([  'prefix' => 'attention',
         Route::put('/order/fullfilment/', 'FullfilmentController@update')
             ->middleware('checkpin')->name('order.fullfilment');
         Route::put('/order/complete/', 'FullfilmentController@complete')
-            ->middleware('checkpin')->name('order.complete');
+            ->name('order.complete');
 
         //Results Process
         Route::get('/results/pendding', 'PrintingController@pendding_list')->name('results.pendding');

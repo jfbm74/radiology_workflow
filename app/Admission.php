@@ -115,6 +115,7 @@ class Admission extends Model
      */
     public function scopePendding($query){
         return $query = Admission::where('status', 'Pendiente')
+                        ->orWhere('status', 'En Atención')
                         ->orderBy('invoice_date', 'asc');
     }
 

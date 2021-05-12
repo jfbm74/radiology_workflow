@@ -80,7 +80,6 @@ class FullfilmentController extends Controller
      */
     public function update(Request $request)
     {
-        //dd($request);
         $user = User::pinpad($request->pin)->first();
         $orderdetail = ServiceOrderDetail::where('id', $request->orderservicedetail)->first();
 
@@ -107,6 +106,15 @@ class FullfilmentController extends Controller
         }
         $orderdetail->save();
 
+        $admission = $orderdetail->serviceorder->admission;
+
+
+        $statistic_admission = StatisticAdmission::updateOrCreate(
+            ['admission_id' => $admission->id],
+            [
+                'user_id' => $user->id
+            ]
+        );
 
         $admissions = Admission::attending()->get();
 
@@ -135,8 +143,7 @@ class FullfilmentController extends Controller
     public function complete(Request $request)
     {
 
-
-        $user = User::where('pin', $request->pin)->first();
+        $user = auth()->user();
         $admission = Admission::where('id', $request->admission)->first();
         $os = ServiceOrder::where('admission_id', $request->admission)->first();
         $os_details_new = ServiceOrderDetail::where('service_order_id', $os->id)
