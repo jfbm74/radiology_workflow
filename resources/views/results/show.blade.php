@@ -86,6 +86,24 @@
                                         value="{{ $admission->user->name }}" readonly>
                                 </div>
                             </div>
+                            <div class="col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Nombre Archivo Portal</label>
+                                    <input type="text" value="{{$admission->patient->legal_id}}_{{$admission->patient->name}}_"
+                                           id="myInput">
+                                    <button onclick="myFunction()">Copiar</button>
+                                </div>
+                                <script>
+                                    function myFunction() {
+                                        var copyText = document.getElementById("myInput");
+                                        copyText.select();
+                                        copyText.setSelectionRange(0, 99999)
+                                        document.execCommand("copy");
+
+                                        window.location.href = '';
+                                    }
+                                </script>
+                            </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     @if (($admission->delivery == "Virtual" || $admission->delivery == 'Ambas') && $admission->user->name == "GENERICO" )
@@ -126,7 +144,6 @@
                                                     @endphp
                                     @endif
                                     </form>
-                                </div>
                             </div>
                         </div>
                     </div>

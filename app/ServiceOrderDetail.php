@@ -60,7 +60,7 @@ class ServiceOrderDetail extends Model
             table('service_order_details')
             ->select(
                 DB::raw('count(*) as id_count'),
-                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
+                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" )
                 //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
             )
             ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
@@ -84,7 +84,7 @@ class ServiceOrderDetail extends Model
         table('service_order_details')
             ->select(
                 DB::raw('count(*) as id_count'),
-                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
+                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" )
             //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
             )
             ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')

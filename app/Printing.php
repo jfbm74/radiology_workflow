@@ -79,8 +79,8 @@ class Printing extends Model
         table('printings')
             ->select(
                 DB::raw('count(*) as id_count'),
-                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" ),
-            //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' ),
+                DB::Raw("DATE_FORMAT(admissions.invoice_date, '%Y-%m') new_date" )
+            //DB::Raw('YEAR(admissions.invoice_date) year, month(admissions.invoice_date) month' )
             )
             ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
             ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
