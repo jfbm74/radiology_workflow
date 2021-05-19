@@ -64,22 +64,22 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach ($admissions as $admission)
+                                        @foreach ($patients as $patient)
 
                                             <tr>
-                                                <td>{{$admission->id}}</td>
-                                                <td>{{$admission->patient->name}}</td>
-                                                <td>{{$admission->patient->legal_id}}</td>
-                                                <td>{{$admission->invoice_date}}</td>
+                                                <td>{{$patient->id}}</td>
+                                                <td>{{$patient->name}}</td>
+                                                <td>{{$patient->legal_id}}</td>
+                                                <td></td>
                                                 <td>
-                                                    @foreach ($admission->patient->users as $doctor)
+                                                    @foreach ($patient->users as $doctor)
                                                     <div class="tags">
                                                         <span class="tag tag-azure">{{$doctor->name}}</span>
                                                     </div>
                                                     @endforeach
                                                 </td>
                                                 <td class="actions">
-                                                    <a  href="{{route('patient.show', ['id' => $admission->patient->id])}}" class="btn btn-success"><i class="fa fa-file-excel-o mr-2" data-original-title="Consultar Imágenes"></i>Imágenes</a>
+                                                    <a  href="{{route('patient.show', ['id' => $patient->id])}}" class="btn btn-success"><i class="fa fa-file-excel-o mr-2" data-original-title="Consultar Imágenes"></i>Imágenes</a>
                                                     <button class="btn btn-sm btn-icon on-default m-r-5 button-edit"
                                                         data-toggle="tooltip" data-original-title="Editar"><i
                                                             class="icon-pencil" aria-hidden="true"></i></button>

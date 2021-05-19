@@ -39,6 +39,7 @@ class Admission extends Model
         return $query;
     }
 
+
     /**
      * Function that returns a list of patients with Virtual Delivery
      * for staff users

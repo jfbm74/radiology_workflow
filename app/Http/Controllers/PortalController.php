@@ -21,13 +21,12 @@ class PortalController extends Controller
         $user = User::where('id' , Auth::user()->id)->first();
 
         if ($user->is_staff == 1) {
-            $admissions = Admission::portalpatientsforstaff()->get();
+            $patients = Patient::all();
             //dd($admissions);
-            return view('portal.index', compact('admissions'));
+            return view('portal.index', compact('patients'));
         }
         $patients = $user->patient()->get();
-        $admissions = Admission::getvirtualpatientsbypro($user->id)->get();
-        return view('portal.index', compact('admissions'));
+        return view('portal.index', compact('patients'));
     }
 
 

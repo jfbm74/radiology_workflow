@@ -78,9 +78,11 @@
                                                     <th scope="row">{{ $loop->index + 1 }}</th>
                                                     <td>{{ $adm->invoice_date }}</td>
                                                     <td>
-                                                        @foreach ($adm->serviceorder->serviceorderdetail as $order)
-                                                            <span class="tag tag-gray">{{$order->product->name}}</span>
-                                                        @endforeach
+                                                        @if (isset($adm->serviceorder->serviceorderdetail))
+                                                            @foreach ($adm->serviceorder->serviceorderdetail as $order)
+                                                                <span class="tag tag-gray">{{$order->product->name}}</span>
+                                                            @endforeach
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('patient.gallery', ['admission' => $adm]) }}"
