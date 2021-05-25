@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->boolean('is_package')->nullable();
             $table->boolean('is_active')->default(1);
             $table->boolean('is_virtual')->default(0);
+            $table->string('default')->nullable();
             $table->timestamps();
         });
     }

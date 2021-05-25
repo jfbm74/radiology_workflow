@@ -13,9 +13,5 @@ class BillDetailsSeeder extends Seeder
     public function run()
     {
         BillDetail::truncate();
-
-
-
-
     }
 }

@@ -38,7 +38,12 @@
                                             type="number"
                                             min="0"
                                             max="5"
-                                            value="0"
+                                            @if ($order->product->default == "Virtual")
+                                                value="1"
+                                            @else
+                                                value="0"
+                                            @endif
+
                                             name="print[{{$order->product_id}}][Virtual]">
                                 </td>
                                 <td>
@@ -46,7 +51,11 @@
                                             type="number"
                                             min="0"
                                             max="5"
-                                            value="0"
+                                            @if ($order->product->default == "Acetato")
+                                                value="1"
+                                                @else
+                                                    value="0"
+                                            @endif
                                             name="print[{{$order->product_id}}][Acetato]">
                                 </td>
                                 <td>
@@ -54,7 +63,11 @@
                                             type="number"
                                             min="0"
                                             max="5"
+                                            @if ($order->product->default == "Foto")
+                                            value="1"
+                                            @else
                                             value="0"
+                                            @endif
                                             name="print[{{$order->product_id}}][Foto]">
                                 </td>
                                 <td>
@@ -62,7 +75,12 @@
                                             type="number"
                                             min="0"
                                             max="5"
+                                            @if ($order->product->default == "P-cal")
+                                            value="1"
+                                            @else
                                             value="0"
+                                            @endif
+
                                             name="print[{{$order->product_id}}][P-cal]">
                                 </td>
                                 <td>
@@ -70,7 +88,11 @@
                                             type="number"
                                             min="0"
                                             max="5"
+                                            @if ($order->product->default == "TRZ")
+                                            value="1"
+                                            @else
                                             value="0"
+                                            @endif
                                             name="print[{{$order->product_id}}][TRZ]">
                                 </td>
                                 <td>
@@ -78,7 +100,11 @@
                                             type="number"
                                             min="0"
                                             max="5"
+                                            @if ($order->product->default == "ModEstudio")
+                                            value="1"
+                                            @else
                                             value="0"
+                                            @endif
                                             name="print[{{$order->product_id}}][ModEstudio]">
                                 </td>
                                 <td>
@@ -86,7 +112,11 @@
                                             type="number"
                                             min="0"
                                             max="5"
+                                            @if ($order->product->default == "Modtrabajo")
+                                            value="1"
+                                            @else
                                             value="0"
+                                            @endif
                                             name="print[{{$order->product_id}}][Modtrabajo]">
                                 </td>
                                 <td>
@@ -94,7 +124,11 @@
                                             type="number"
                                             min="0"0
                                             max="5"
+                                            @if ($order->product->default == "ModSinMontar")
+                                            value="1"
+                                            @else
                                             value="0"
+                                            @endif
                                             name="print[{{$order->product_id}}][ModSinMontar]">
                                 </td>
 

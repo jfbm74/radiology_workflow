@@ -21,6 +21,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+
         $product->save();
 
         $product = New Product;
@@ -30,6 +31,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -39,6 +41,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -48,6 +51,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -57,6 +61,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -66,6 +71,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -84,6 +90,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -93,6 +100,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -102,6 +110,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -111,6 +120,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -120,6 +130,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -129,6 +140,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Foto";
         $product->save();
 
         $product = New Product;
@@ -138,6 +150,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "TRZ";
         $product->save();
 
         $product = New Product;
@@ -147,6 +160,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "TRZ";
         $product->save();
 
         $product = New Product;
@@ -156,6 +170,7 @@ class ProductSeeder extends Seeder
         $product->station = 'laboratorio';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "ModEstudio";
         $product->save();
 
         $product = New Product;
@@ -165,6 +180,7 @@ class ProductSeeder extends Seeder
         $product->station = 'laboratorio';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "ModTrabajo";
         $product->save();
 
         $product = New Product;
@@ -174,6 +190,7 @@ class ProductSeeder extends Seeder
         $product->station = 'laboratorio';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "ModTrabajo";
         $product->save();
 
         $product = New Product;
@@ -192,6 +209,7 @@ class ProductSeeder extends Seeder
         $product->station = 'laboratorio';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "ModTrabajo";
         $product->save();
 
         $product = New Product;
@@ -377,6 +395,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -386,6 +405,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -395,6 +415,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -404,6 +425,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '1';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -413,6 +435,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -422,6 +445,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -431,6 +455,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -440,6 +465,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -449,6 +475,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '1';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -458,6 +485,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -467,6 +495,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -476,6 +505,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -485,6 +515,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -494,6 +525,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "TRZ";
         $product->save();
 
         $product = New Product;
@@ -503,6 +535,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Virtual";
         $product->save();
 
         $product = New Product;
@@ -512,6 +545,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -521,6 +555,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "TRZ";
         $product->save();
 
         $product = New Product;
@@ -530,6 +565,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Virtual";
         $product->save();
 
         $product = New Product;
@@ -539,6 +575,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -548,6 +585,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -557,6 +595,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Virtual";
         $product->save();
 
         $product = New Product;
@@ -566,6 +605,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -575,6 +615,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_virtual = '1';
         $product->is_package = '0';
+        $product->default = "Virtual";
         $product->save();
 
         $product = New Product;
@@ -584,6 +625,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -593,6 +635,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -602,6 +645,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -611,6 +655,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -620,6 +665,7 @@ class ProductSeeder extends Seeder
         $product->station = 'periapical';
         $product->is_package = '0';
         $product->is_virtual = '1';
+        $product->default = "Virtual";
         $product->save();
 
         $product = New Product;
@@ -629,6 +675,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -638,6 +685,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -647,6 +695,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -656,6 +705,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -665,6 +715,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -674,6 +725,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -683,6 +735,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -692,6 +745,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -701,6 +755,7 @@ class ProductSeeder extends Seeder
         $product->station = 'rayos-x';
         $product->is_package = '0';
         $product->is_virtual = '0';
+        $product->default = "Acetato";
         $product->save();
 
         $product = New Product;
@@ -710,6 +765,7 @@ class ProductSeeder extends Seeder
         $product->station = 'fotos';
         $product->is_virtual = '0';
         $product->is_package = '0';
+        $product->default = "TRZ";
         $product->save();
 
         $product = New Product;

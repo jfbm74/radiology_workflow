@@ -1,10 +1,8 @@
-
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Printing;
 
-class PrintingSeeder extends Seeder
+class DeliverySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +11,6 @@ class PrintingSeeder extends Seeder
      */
     public function run()
     {
-        Printing::truncate();
-
-
+        //
     }
 }
