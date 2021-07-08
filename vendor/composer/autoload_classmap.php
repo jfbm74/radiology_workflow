@@ -10,7 +10,6 @@ return array(
     'App\\Admission' => $baseDir . '/app/Admission.php',
     'App\\BillDetail' => $baseDir . '/app/BillDetail.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
-    'App\\Delivery' => $baseDir . '/app/Delivery.php',
     'App\\Events\\AdmissionWasDeleted' => $baseDir . '/app/Events/AdmissionWasDeleted.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\PrintingExport' => $baseDir . '/app/Exports/PrintingExport.php',
