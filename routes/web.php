@@ -101,7 +101,10 @@ Route::group([  'prefix' => 'reports',
             ->name('report.productivity.detail');
         Route::get('/prod-detail-csv', 'ReportController@productivity_detail_csv')
             ->name('report.productivity.detail.csv');
-
+        Route::get('/paquetes', 'ReportController@show_paquetes_form')
+            ->name('report.paquetes');
+        Route::get('/paquete-csv', 'ReportController@paquetes_csv')
+            ->name('report.paquetes.csv');
     }
 );
 

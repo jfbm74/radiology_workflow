@@ -19,6 +19,23 @@ class Printing extends Model
     ];
 
 ////    =================================SCOPES============================
+///
+///
+    /**
+     * Function that returns a collection patients given date range
+     * @param $query
+     * @param $date_ini initial range date
+     * @param $date_end final range date*
+     * @return mixed
+     */
+    public function scopePaquete($query, $date_ini, $date_end)
+    {
+        return DB::
+        table('bill_details')
+            ->select('*')
+            ->whereBetween('bill_details.created_at', [$date_ini, $date_end])
+            ->get();
+    }
     /**
      * Function that returns a collection patients given date range
      * @param $query

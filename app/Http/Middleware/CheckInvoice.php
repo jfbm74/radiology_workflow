@@ -38,6 +38,7 @@ class CheckInvoice
         if ($invoice) {
             //echo "la Factura Existe";
             //Check if given invoice number is associated with an Admission
+
             $admission = Admission::where('invoice_number', $request->invoice)
                                         ->where('doctype', $request->doctipo )
                                         ->first();

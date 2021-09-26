@@ -26,8 +26,8 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
 
     use Exportable;
     /**
-    * @return \Illuminate\Support\Collection
-    */
+    * @return \Illuminate\Database\Query\Builder
+     */
     public function query()
     {
         return DB::

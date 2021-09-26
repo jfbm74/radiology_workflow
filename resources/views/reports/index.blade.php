@@ -36,7 +36,8 @@
                                         <div class="col-5 py-1"><a href="{{route('report.productivity.detail')}}"> <span class="tag tag-cyan">Productividad Detallado</span></a></div>
                                         <div class="col-5 py-1"><strong>Reporte:</strong></div>
                                         <div class="col-5 py-1"><a href="{{route('report.opportunity')}}"> <span class="tag tag-azure">Oportunidad Detallado</span></a></div>
-
+                                        <div class="col-5 py-1"><strong>Reporte:</strong></div>
+                                        <div class="col-5 py-1"><a href="{{route('report.paquetes')}}"> <span class="tag tag-azure">Paquetes</span></a></div>
                                     </div>
                                 </div>
                                 <div class="card-footer">

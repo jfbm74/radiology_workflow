@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Report;
 
+use App\Exports\PaquetesExport;
 use App\Printing;
 use App\ServiceOrderDetail;
 use App\StatisticAdmission;
@@ -25,6 +26,40 @@ class ReportController extends Controller
         return view('reports.index');
     }
 
+    /**
+     * Show page packages
+     *
+     * @return view
+     */
+    public function show_paquetes_form(Request $request)
+    {
+        # Case 1: Dates given
+        $new_end_date = Carbon::parse($request->date_end)->addDay();
+        //dd($new_end_date);
+        if ($request->date_ini && $request->date_end) {
+            $data = Printing::paquete
+            (
+                $request->date_ini,
+                $new_end_date
+            );
+            //dd($data);
+            return view('reports.main.paquetes', compact('data'));
+        }
+
+        return view('reports.main.paquetes');
+    }
+
+    /**
+     * Show opportunity in attention of patients in xls exportable file.
+     *
+     * @param $request
+     * @return File
+     */
+    public function paquetes_csv(Request $request){
+            //Excel::download(new \App\Exports\PaquetesExport([$request->date_ini, $request->date_end]),
+            //    'reporte_paquetes_'.Carbon::now().'.xlsx');
+            return (new PaquetesExport($request->date_ini, $request->date_end))->download('Paquetes.xlsx');
+    }
 
 
     /**
