@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Default extends Migration
+class AddWeigthToPatientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class Default extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('patients', function (Blueprint $table) {
+            $table->string('weight')->nullable();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class Default extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('patients', function (Blueprint $table) {
+            $table->dropColumn('weight');
+        });
     }
 }

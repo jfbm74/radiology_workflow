@@ -573,6 +573,7 @@ class ComposerStaticInit5b11c10badcbbcf26343d3f85964c6e8
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\AdmissionWasDeleted' => __DIR__ . '/../..' . '/app/Events/AdmissionWasDeleted.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Exports\\PaquetesExport' => __DIR__ . '/../..' . '/app/Exports/PaquetesExport.php',
         'App\\Exports\\PrintingExport' => __DIR__ . '/../..' . '/app/Exports/PrintingExport.php',
         'App\\Exports\\ServiceOrderDetailExport' => __DIR__ . '/../..' . '/app/Exports/ServiceOrderDetailExport.php',
         'App\\Exports\\StatisticAdmissionExport' => __DIR__ . '/../..' . '/app/Exports/StatisticAdmissionExport.php',

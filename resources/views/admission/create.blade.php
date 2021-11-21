@@ -169,7 +169,23 @@
                     <div class="col-lg-5 col-md-12">
                         <div class="card">
                                 <div class="card-body">
-                                    <h3 class="card-title">DATOS DE INGRESO</h3>
+                                    <h3 class="card-title"><strong> DATOS DE INGRESO</strong></h3>
+
+                                    <label class="form-label">Peso Paciente</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Kg</span>
+                                        </div>
+                                        <input type="number"
+                                               name="patient_weight"
+                                               class="form-control"
+                                               aria-label="weight"
+                                               value=""
+                                               min=7
+                                               max=200
+                                               required>
+
+                                    </div>
                                     <div class="col">
                                         @if($invoice->doctipo != 'OS  ')
                                             <div class="form-group">

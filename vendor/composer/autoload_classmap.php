@@ -12,6 +12,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Events\\AdmissionWasDeleted' => $baseDir . '/app/Events/AdmissionWasDeleted.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Exports\\PaquetesExport' => $baseDir . '/app/Exports/PaquetesExport.php',
     'App\\Exports\\PrintingExport' => $baseDir . '/app/Exports/PrintingExport.php',
     'App\\Exports\\ServiceOrderDetailExport' => $baseDir . '/app/Exports/ServiceOrderDetailExport.php',
     'App\\Exports\\StatisticAdmissionExport' => $baseDir . '/app/Exports/StatisticAdmissionExport.php',

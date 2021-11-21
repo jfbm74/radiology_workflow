@@ -43,14 +43,15 @@ class PatientController extends Controller
     public function store($request)
     {
         $request->name = Str::upper($request->name);
-
+        //dd($request);
         //Save Patient (name, legal_id, birthday)
         try {
             $patient = Patient::firstOrCreate([
                 'name' => $request->name,
                 'legal_id' => $request->patient_id,
                 'phone' => $request->phone,
-                'birthday' => $request->birthday
+                'birthday' => $request->birthday,
+                'weight' => $request->patient_weight
             ]);
             return $patient;
 
@@ -61,6 +62,7 @@ class PatientController extends Controller
         $patient->name = $request->name;
         $patient->phone = $request->phone;
         $patient->birthday = $request->birthday;
+        $patient->weight = $request->patient_weight;
         $patient->save();
         return $patient;
     }
