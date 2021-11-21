@@ -33,7 +33,7 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
         return DB::
         table('printings')
             ->select('admissions.invoice_date', 'admissions.doctype', 'admissions.invoice_number',
-                'patients.name as PatientName', 'patients.legal_id', 'patients.birthday', 'products.cod_manager',
+                'patients.name as PatientName', 'patients.legal_id', 'patients.birthday','patients.weight' , 'products.cod_manager',
                 'products.name', 'PRO.name as ProfessionalName', 'printings.type', 'printings.quanty',
                 'TEC.name as TechnicianName', 'service_order_details.kv', 'service_order_details.ma',
                 'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time', 'admissions.order_printing')
@@ -61,6 +61,7 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             $printing->PatientName,
             $printing->legal_id,
             $printing->birthday,
+            $printing->weight,
             $printing->cod_manager,
             $printing->name,
             $printing->ProfessionalName,
@@ -85,6 +86,7 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             'Paciente',
             'Identificación',
             'Fecha Nacimiento',
+            'Peso',
             'Código Estudio',
             'Nombre Estudio',
             'Profesional',
@@ -104,7 +106,7 @@ class PrintingExport implements FromQuery, WithMapping, WithHeadings, WithColumn
     {
         return [
             'A' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'E' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'F' => NumberFormat::FORMAT_DATE_DDMMYYYY,
         ];
     }
 
