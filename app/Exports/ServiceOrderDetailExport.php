@@ -32,15 +32,15 @@ class ServiceOrderDetailExport implements FromQuery, WithMapping, WithHeadings, 
         return ServiceOrderDetail::
         select('service_order_id', 'service_order_id', 'service_order_id',
             'service_order_id', 'service_order_id', 'service_order_id', 'product_id',
-            'kv', 'ma', 'dosis', 'extime', 'user_id' )->
-        whereBetween('fullfilment_date', [$this->date1, $this->date2]);
+            'kv', 'ma', 'dosis', 'extime', 'user_id', 'fullfilment_date' )->
+        whereBetween('fullfilment_date', [$this->date1, Carbon::parse($this->date2)->endOfDay()]);
     }
 
     public function map($row): array
     {
         $fullfilment_date = Carbon::parse($row->fullfilment_date);
-        return [
-            Date::dateTimeToExcel($fullfilment_date),
+        return [            
+            $row->fullfilment_date,
             $row->serviceorder->admission->doctype,
             $row->serviceorder->admission->invoice_number,
             $row->serviceorder->admission->patient->name,
@@ -51,7 +51,7 @@ class ServiceOrderDetailExport implements FromQuery, WithMapping, WithHeadings, 
             $row->ma,
             $row->dosis,
             $row->extime,
-            $row->user->name,
+            $row->user->name,            
         ];
     }
 
@@ -69,7 +69,7 @@ class ServiceOrderDetailExport implements FromQuery, WithMapping, WithHeadings, 
             'ma',
             'dosis',
             'extime',
-            'Técnico',
+            'Técnico'
         ];
     }
 
