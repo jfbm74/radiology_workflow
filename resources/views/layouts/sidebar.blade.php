@@ -13,10 +13,10 @@
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i
                                 class="fa fa-gear"></i><span>Configuración</span></a>
                         <ul>
-                            <li class=""><a href="index.html"><span>Usuarios</span></a></li>
+                            <!-- <li class=""><a href="index.html"><span>Usuarios</span></a></li> -->
                             <li><a href="{{ route('package.index') }}"><span>Paquetes</span></a></li>
-                            <li><a href="hr-users.html"><span>Radiometría</span></a></li>
-
+                            <!-- <li><a href="hr-users.html"><span>Radiometría</span></a></li>
+ -->
                         </ul>
                     </li>
                     <li class="">
@@ -33,38 +33,38 @@
                                 class="fa fa-dashboard"></i><span>Dashboard</span></a>
                         <ul>
                             <li class=""><a href="{{route('dashboard.manager.index')}}"><span>Administración</span></a></li>
-                            <li><a href="{{route('dashboard.manager.technician')}}"><span>Técnicos</span></a></li>
+                            <!-- <li><a href="{{route('dashboard.manager.technician')}}"><span>Técnicos</span></a></li> -->
                         </ul>
                     </li>
                     <li><a href="{{ route('admission.index') }}"><i class="fa fa-plus-circle"></i><span>Admisión</span></a>
                     </li>
                     <li><a href="{{ route('attention.index') }}"><i class="fa fa-user-md"></i><span>Atención</span></a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-archive"></i><span>Gestión
                                 Documental</span></a>
                         <ul>
                         </ul>
-                    </li>
+                    </li> -->
                     <li><a href="{{ route('report.index') }}"><i class="fa fa-plus-circle"></i><span>Reportes</span></a></li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i
                                 class="fa fa-clipboard"></i><span>Inventario</span></a>
                         <ul>
                             {{-- <li><a href="login.html">Login</a></li> --}}
 
                         </ul>
-                    </li>
+                    </li> -->
                 @endif
 
-                <li>
+                <!-- <li>
                     <a href="javascript:void(0)" class="has-arrow arrow-c"><i
                             class="fa fa-universal-access"></i><span>Portal Pacientes</span></a>
                     <ul>
                         <li><a href="{{ route('portal.index') }}">Pacientes</a></li>
 
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </nav>
     </div>
