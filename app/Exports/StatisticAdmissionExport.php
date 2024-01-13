@@ -32,27 +32,34 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
     */
     public function query()
     {
-        return StatisticAdmission::
+       /*  return StatisticAdmission::
         select('admission_date', 'admission_id', 'admission_id',
             'admission_id', 'admission_id','admission_id',
             'attention_time', 'user_id', 'professional_id')->
-        whereBetween('admission_date', [$this->date1, $this->date2]);
+        whereBetween('admission_date', [$this->date1, $this->date2]); */
+
+        return StatisticAdmission::query()
+        ->select('statistic_admissions.*')
+        ->leftJoin('admissions', 'statistic_admissions.admission_id', '=', 'admissions.id')
+        ->leftJoin('service_orders', 'admissions.id', '=', 'service_orders.admission_id')
+        ->leftJoin('service_order_details', 'service_orders.id', '=', 'service_order_details.service_order_id')
+        ->whereBetween('admissions.created_at', [$this->date1, Carbon::parse($this->date2)->endOfDay()])
+        ->groupBy('statistic_admissions.id')
+        ->selectRaw('COUNT(service_order_details.id) as order_count');
+
     }
 
     public function map($statisticadmission): array{
 
         $admission_date = Carbon::parse($statisticadmission->admission_date);
 
-        return [
-
-            Date::dateTimeToExcel($admission_date),
+        return [            
             $statisticadmission->admission->invoice_number,
-            $statisticadmission->admission->doctype,
-            $statisticadmission->admission->patient->name,
             $statisticadmission->admission->patient->legal_id,
-            $statisticadmission->admission->patient->birthday,
+            $statisticadmission->admission->patient->name,            
+            Date::dateTimeToExcel($admission_date),
             $statisticadmission->attention_time,
-            $statisticadmission->user->name,
+            $statisticadmission->order_count,
             $statisticadmission->user->name,
         ];
     }
@@ -60,15 +67,13 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
     public function headings(): array
     {
         return [
-            'Fecha Admisión',
-            'Numero Factura',
-            'Tipo Doc',
+            'Factura',
+            'Identificación Paciente',
             'Paciente',
-            'Identificación',
-            'Fecha Nacimiento',
-            'Tiempo Atención',
-            'Técnico',
-            'Profesional',
+            'Fecha Admisión',
+            'Tiempo de Atención',
+            'Numero de Órdenes de servicio',
+            'Estación',
         ];
 
     }
@@ -76,7 +81,7 @@ class StatisticAdmissionExport implements FromQuery, WithMapping, WithHeadings, 
     public function columnFormats(): array
     {
         return [
-          'A' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+          'D' => NumberFormat::FORMAT_DATE_DDMMYYYY,
         ];
     }
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use phpDocumentor\Reflection\File;
 
+
 class ReportController extends Controller
 {
 
@@ -72,25 +73,19 @@ class ReportController extends Controller
     {
         $staff = User::getstaff()->get();
 
-        # Case 1: Data given: dates and technician
-        if ($request->date_ini && $request->date_end && $request->technician)
-        {
-            $data = StatisticAdmission::
-                technicianopportunity
-            (
-                    $request->date_ini,
-                    $request->date_end,
-                    $request->technician
-            );
-            return view('reports.orders.opportunity', compact('data', 'staff'));
-        }
-       # case 2: Both dates quiven
-        if ($request->date_ini && $request->date_end)
-        {
-            $data = StatisticAdmission::opportunity($request->date_ini, $request->date_end);
-            return view('reports.orders.opportunity', compact('data', 'staff'));
-        }
-        # case 3: None parameters given
+        # Case 1: Data given: dates 
+    if ($request->date_ini && $request->date_end)
+    {
+        $query = StatisticAdmission::
+            technicianOpportunity($request->date_ini, $request->date_end);
+
+        // Imprime la consulta SQL generada
+        
+
+        $data = $query->get();
+
+        return view('reports.orders.opportunity', compact('data', 'staff'));
+    }       
         else{
             return view('reports.orders.opportunity', compact('staff'));
         }
@@ -151,11 +146,12 @@ class ReportController extends Controller
         # Case 1: Dates given
 
         if ($request->date_ini && $request->date_end) {
-            $data = Printing::productivitydetail
-            (
-                $request->date_ini,
-                $request->date_end
-            );
+            $data = Printing::
+                productivitydetail
+                (
+                    $request->date_ini,
+                    $request->date_end
+                );
             //dd($data);
             return view('reports.main.productivity', compact('data'));
         }

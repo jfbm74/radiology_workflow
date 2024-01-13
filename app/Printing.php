@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class Printing extends Model
 {
@@ -42,28 +44,38 @@ class Printing extends Model
      * @param $date_ini initial range date
      * @param $date_end final range date*
      * @return mixed
-     */
+     */   
     public function scopeProductivityDetail($query, $date_ini, $date_end)
     {
-        return DB::
-        table('printings')
-            ->select('admissions.invoice_date', 'admissions.doctype', 'admissions.invoice_number',
-                'patients.name as PatientName', 'patients.legal_id', 'patients.birthday', 'products.cod_manager',
-                'products.name', 'PRO.name as ProfessionalName', 'printings.type', 'printings.quanty',
-                'TEC.name as TechnicianName', 'service_order_details.kv', 'service_order_details.ma',
-                'service_order_details.dosis', 'service_order_details.extime', 'statistic_admissions.attention_time', 'admissions.order_printing')
-            ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
-            ->join('service_orders', 'service_order_details.service_order_id', '=', 'service_orders.id')
-            ->join('admissions', 'service_orders.id', '=', 'admissions.id')
-            ->join('patients', 'admissions.patient_id', '=', 'patients.id')
-            ->join('users as PRO', 'admissions.user_id', '=', 'PRO.id')
-            ->join('users as TEC', 'printings.user_id', '=', 'TEC.id')
-            ->join('products', 'service_order_details.product_id', '=', 'products.id')
-            ->join('statistic_admissions', 'statistic_admissions.admission_id', '=', 'admissions.id')
-            ->whereBetween('admissions.invoice_date', [$date_ini, $date_end])
-            ->get();
+        return  DB::table('printings')
+        ->join('service_order_details', 'service_order_details.id', '=', 'printings.service_order_details_id')
+        ->join('service_orders', 'service_orders.id', '=', 'service_order_details.service_order_id')
+        ->join('admissions', 'service_orders.admission_id', '=', 'admissions.id')
+        ->join('patients', 'admissions.patient_id', '=', 'patients.id')
+        ->join('users as PRO', 'admissions.user_id', '=', 'PRO.id')
+        ->join('users as TEC', 'printings.user_id', '=', 'TEC.id')
+        ->join('products', 'service_order_details.product_id', '=', 'products.id')
+        ->join('statistic_admissions', 'statistic_admissions.admission_id', '=', 'admissions.id')
+        ->select(
+            'printings.*', 
+            'service_order_details.*', 
+            'service_orders.*', 
+            'admissions.invoice_date', 
+            'admissions.doctype', 
+            'admissions.order_printing', 
+            'admissions.invoice_number', 
+            'patients.name as PatientName', 
+            'patients.legal_id', 
+            'patients.birthday', 
+            'products.cod_manager', 
+            'products.name as ProductName', 
+            'PRO.name as ProfessionalName', 
+            'TEC.name as TechnicianName', 
+            'statistic_admissions.attention_time'
+        )
+        ->whereBetween('admissions.invoice_date', [$date_ini, Carbon::parse($this->date2)->endOfDay()])
+        ->get();     
     }
-
 
 //    /**
 //     * Function that returns a JSON orders given two dates

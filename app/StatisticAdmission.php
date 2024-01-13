@@ -105,12 +105,27 @@ class StatisticAdmission extends Model
      * @param $id Technician Id User
      * @return mixed
      */
-    public function scopeTechnicianOpportunity($query, $date_ini, $date_end, $id){
-
-        $data = StatisticAdmission::whereBetween('admission_date', [$date_ini, $date_end])
-                                    ->where('user_id', $id)->get();
+/*      public function scopeTechnicianOpportunity($query, $date_ini, $date_end, $id){
+        
+        $data = StatisticAdmission::
+            whereBetween('admission_date', [$date_ini, $date_end])
+            //->where('user_id', $id)
+            ->get();
         return $query = $data;
-    }
+    }  */
+
+
+     public function scopeTechnicianOpportunity($query, $date_ini, $date_end) {
+        return $query->select('statistic_admissions.*')
+            ->leftJoin('admissions', 'statistic_admissions.admission_id', '=', 'admissions.id')
+            ->leftJoin('service_orders', 'admissions.id', '=', 'service_orders.admission_id')
+            ->leftJoin('service_order_details', 'service_orders.id', '=', 'service_order_details.service_order_id')
+            ->whereBetween('admissions.created_at', [$date_ini, Carbon::parse($this->date2)->endOfDay()])
+            ->groupBy('statistic_admissions.id')
+            ->selectRaw('COUNT(service_order_details.id) as order_count');
+    } 
+
+
 
 
 }

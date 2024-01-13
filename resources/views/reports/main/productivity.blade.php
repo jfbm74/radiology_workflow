@@ -128,97 +128,101 @@
             </div>
         </div>
     </div>
-    @isset($data)
-                    <div class="section-body mt-3">
-                        <div class="container-fluid">
-                            <div class="row clearfix">
-                                <div class="col-lg-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3 class="card-title"><strong> Listado de Paciente</strong></h3>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table
-                                                    class="table table-hover js-basic-example dataTable table_custom border-style spacing5">
-                                                    <thead>
-                                                    <tr>
-                                                        <th><strong>#</strong></th>
-                                                        <th><strong>Fecha</strong></th>
-                                                        <th><strong>Factura/OS</strong></th>
-                                                        <th><strong>Paciente</strong></th>
-                                                        <th><strong>Num Id</strong></th>
-                                                        <th><strong>Fecha Nacimiento</strong></th>
-                                                        <th><strong>Código Estudio</strong></th>
-                                                        <th><strong>Nombre Estudio</strong></th>
-                                                        <th><strong>Profesional</strong></th>
-                                                        <th><strong>Tipo Impresion</strong></th>
-                                                        <th><strong>Cantidad</strong></th>
-                                                        <th><strong>Técnico</strong></th>
-                                                        <th><strong>kv</strong></th>
-                                                        <th><strong>ma</strong></th>
-                                                        <th><strong>dosis</strong></th>
-                                                        <th><strong>extime</strong></th>
-                                                        <th>Tiempo Atención</th>
-                                                        <th>Orden Impresa</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tfoot>
-                                                    <tr>
-                                                        <th><strong>#</strong></th>
-                                                        <th><strong>Fecha</strong></th>
-                                                        <th><strong>Factura/OS</strong></th>
-                                                        <th><strong>Paciente</strong></th>
-                                                        <th><strong>Num Id</strong></th>
-                                                        <th><strong>Fecha Nacimiento</strong></th>
-                                                        <th><strong>Código Estudio</strong></th>
-                                                        <th><strong>Nombre Estudio</strong></th>
-                                                        <th><strong>Profesional</strong></th>
-                                                        <th><strong>Tipo Impresion</strong></th>
-                                                        <th><strong>Cantidad</strong></th>
-                                                        <th><strong>Técnico</strong></th>
-                                                        <th><strong>kv</strong></th>
-                                                        <th><strong>ma</strong></th>
-                                                        <th><strong>dosis</strong></th>
-                                                        <th><strong>extime</strong></th>
-                                                        <th>Tiempo Atención</th>
-                                                        <th>Orden Impresa</th>
-                                                    </tr>
-                                                    </tfoot>
-                                                    <tbody>
-
-                                                        @foreach($data as $a)
-                                                            <tr>
-                                                                <td>{{$loop->index+1}}</td>
-                                                                <td>{{$a->invoice_date}}</td>
-                                                                <td>{{$a->doctype}}-{{$a->invoice_number}} </td>
-                                                                <td>{{$a->PatientName}}</td>
-                                                                <td>{{$a->legal_id}}</td>
-                                                                <td>{{$a->birthday}}</td>
-                                                                <td>{{$a->cod_manager}}</td>
-                                                                <td>{{$a->name}}</td>
-                                                                <td>{{$a->ProfessionalName}}</td>
-                                                                <td>{{$a->type}}</td>
-                                                                <td>{{$a->quanty}}</td>
-                                                                <td>{{$a->TechnicianName}}</td>
-                                                                <td>{{$a->kv}}</td>
-                                                                <td>{{$a->ma}}</td>
-                                                                <td>{{$a->dosis}}</td>
-                                                                <td>{{$a->extime}}</td>
-                                                                <td>{{$a->attention_time}}</td>
-                                                                <td>{{$a->order_printing}}</td>
-                                                            </tr>
-                                                        @endforeach
-                                                        </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+    @isset($data)       
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><strong> Listado de Paciente</strong></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table table-hover js-basic-example dataTable table_custom border-style spacing5">
+                                        <thead>
+                                        <tr>
+                                            <th><strong>#</strong></th>
+                                            <th><strong>Fecha</strong></th>
+                                            <th><strong>Factura/OS</strong></th>
+                                            <th><strong>Paciente</strong></th>
+                                            <th><strong>Num Id</strong></th>
+                                            <th><strong>Fecha Nacimiento</strong></th>
+                                            <th><strong>Código Estudio</strong></th>
+                                            <th><strong>Nombre Estudio</strong></th>
+                                            <th><strong>Profesional</strong></th>
+                                            <th><strong>Tipo Impresion</strong></th>
+                                            <th><strong>Cantidad</strong></th>
+                                            <th><strong>Técnico</strong></th>
+                                            <th><strong>kv</strong></th>
+                                            <th><strong>ma</strong></th>
+                                            <th><strong>dosis</strong></th>
+                                            <th><strong>extime</strong></th>
+                                            <th>Tiempo Atención</th>
+                                            <th>Orden Impresa</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th><strong>#</strong></th>
+                                            <th><strong>Fecha</strong></th>
+                                            <th><strong>Factura/OS</strong></th>
+                                            <th><strong>Paciente</strong></th>
+                                            <th><strong>Num Id</strong></th>
+                                            <th><strong>Fecha Nacimiento</strong></th>
+                                            <th><strong>Código Estudio</strong></th>
+                                            <th><strong>Nombre Estudio</strong></th>
+                                            <th><strong>Profesional</strong></th>
+                                            <th><strong>Tipo Impresion</strong></th>
+                                            <th><strong>Cantidad</strong></th>
+                                            <th><strong>Técnico</strong></th>
+                                            <th><strong>kv</strong></th>
+                                            <th><strong>ma</strong></th>
+                                            <th><strong>dosis</strong></th>
+                                            <th><strong>extime</strong></th>
+                                            <th>Orden Impresa</th>
+                                        
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            
+                                        @if($data->isEmpty())
+                                            <p>No hay datos para mostrar.</p>
+                                        @else
+                                        @foreach($data as $a)
+                                                <tr>
+                                                    <td>{{$loop->index+1}}</td>
+                                                    <td>{{$a->invoice_date}}</td>
+                                                    <td>{{$a->doctype}}-{{$a->invoice_number}} </td>
+                                                    <td>{{$a->PatientName}}</td>
+                                                    <td>{{$a->legal_id}}</td>
+                                                    <td>{{$a->birthday}}</td>
+                                                    <td>{{$a->cod_manager}}</td>
+                                                    <td>{{$a->ProductName}}</td>
+                                                    <td>{{$a->ProfessionalName}}</td>
+                                                    <td>{{$a->type}}</td>
+                                                    <td>{{$a->quanty}}</td>
+                                                    <td>{{$a->TechnicianName}}</td>
+                                                    <td>{{$a->kv}}</td>
+                                                    <td>{{$a->ma}}</td>
+                                                    <td>{{$a->dosis}}</td>
+                                                    <td>{{$a->extime}}</td>
+                                                    <td>{{$a->attention_time}}</td>
+                                                    <td>{{$a->order_printing}}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif                                                        
+                                            </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endisset
+                </div>
+            </div>
+        </div>
+    @endisset
 @endsection
 @section('before-scripts')
 
